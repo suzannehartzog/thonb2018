@@ -31,6 +31,8 @@ import { CreateItineraryComponent } from './components/create-itinerary/create-i
 import { EAuctionComponent } from './components/e-auction/e-auction.component';
 import { CheckoutComponent } from './components/check-out/check-out.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { HotelListingComponent } from './components/hotel-listing/hotel-listing.component';
+import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
 
 import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
@@ -58,6 +60,8 @@ const appRoutes: Routes = [
   {path: 'e-auction', component: EAuctionComponent},
   {path: 'check-out', component: CheckoutComponent},
   {path: 'payment', component: PaymentComponent},
+  {path: 'hotel-listing', component: HotelListingComponent},
+  {path: 'hotel-details', component: HotelDetailsComponent},
   {path: '**', redirectTo: '' }
 ];
 
@@ -86,6 +90,8 @@ const appRoutes: Routes = [
     EAuctionComponent,
     CheckoutComponent,
     PaymentComponent,
+    HotelListingComponent,
+    HotelDetailsComponent,
 
     DatePicker
   ],

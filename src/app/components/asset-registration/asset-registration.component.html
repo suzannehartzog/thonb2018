@@ -1,0 +1,127 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+	<h3 class="w3agileits-title">Register Your Asset Here!</h3>
+</div>
+<div class="vendor-signup">
+	<div class="container">
+		<div class="row">
+			<div class="login-form asset-registration">
+				<form autocomplete="off" action="" method="post">
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Business Details</legend>
+						<div class="styled-input">
+							<select name="businessType" class="form-control" required="">
+									<option value="">Type of Business</option>
+									<option value="cab">Cab</option>
+									<option value="driver">Driver</option>
+									<option value="hotel">Hotel Chain</option>
+									<option value="package">Package</option>
+								</select>
+							<label>Type of Business</label>
+							<span></span>
+							<div class="styled-input">
+								<input type="text" name="h-name" required="" placeholder="">
+								<label>Hotel Name</label>
+								<span></span>
+							</div>
+							<div class="styled-input ">
+								<select name="star" class="form-control" required="">
+									<option value="">Star Rating	</option>
+									<option value="5">5</option>
+									<option value="4">4</option>
+									<option value="3">3</option>
+									<option value="2">2</option>
+									<option value="1">1</option>
+								</select>
+								<label>Star Rating</label>
+								<span></span>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Property Location</legend>
+						<div class="styled-input">
+							<input type="text" name="address" required="" placeholder="">
+							<label>Address</label>
+							<span></span>
+						</div>
+						<div class="styled-input ">
+							<select name="country" class="form-control" required="">
+									<option value="">Country</option>
+									<option value="india">India</option>
+								</select>
+							<label>Country</label>
+							<span></span>
+						</div>
+						<div class="styled-input">
+							<input type="text" name="city" required="" placeholder="">
+							<label>City</label>
+							<span></span>
+						</div>
+						<div class="styled-input ">
+							<select name="state" class="form-control" required="">
+									<option value="">State</option>
+									<option value="wb">West Bengal</option>
+								</select>
+							<label>State</label>
+							<span></span>
+						</div>
+						<div class="styled-input">
+							<input type="text" name="zipcode" required="" placeholder="">
+							<label>Zip Code</label>
+							<span></span>
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Contact Information</legend>
+						<div class="styled-input">
+							<input type="text" name="email" required="" placeholder="">
+							<label>Email</label>
+							<span></span>
+						</div>
+						<div class="styled-input">
+							<input type="text" name="mobile" required="" placeholder="">
+							<label>Mobile</label>
+							<span></span>
+						</div>
+						<div class="styled-input">
+							<input type="text" name="alt-mobile" required="" placeholder="">
+							<label>Alternate Mobile</label>
+							<span></span>
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Room Information</legend>
+							<div class="room-info">
+								<div class="room-input">
+									<div class="styled-input">
+										<select name="room-tpe" class="form-control" required="">
+											<option value="">Room Type	</option>
+											<option value=""></option>
+											<option value="delux">Deluxe</option>
+										</select>
+										<label>Star Rating</label>
+										<span></span>
+									</div>
+									<div class="styled-input">
+										<input type="number" name="no-room" required="" placeholder="">
+										<label>Room Count</label>
+										<span></span>
+									</div>
+									<div class="styled-input">
+										<input type="number" name="room-b-price" required="" placeholder="">
+										<label>Base Price</label>
+										<span></span>
+									</div>
+								</div>
+								<a href="javascript:void(0)" class="btn btn-info add-hotel" title="add-hotel">+</a>
+								<a href="javascript:void(0)" class="btn btn-info remove-hotel" title="remove hotel" (click)="removeThisHotel($event)">-</a>
+							</div>
+					</fieldset>
+					<input type="submit" value="Save">
+					<a href="javascript:void(0)" id="cancel" name="cancel" class="btn btn-warning cancel">Cancel</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,222 @@
+<div class="banner notHome">
+    <app-navbar></app-navbar>
+    <h3 class="w3agileits-title">My Trips</h3>
+</div>
+<div class="my-trips nopadding">
+    <div class="container">
+        <div class="my-trips-w3ls-row">
+            <div class="col-md-7 about-right">
+                <div class="about-agile-row">
+                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class=" nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#upcoming" id="upcoming-tab" role="tab" data-toggle="tab" aria-controls="upcoming" aria-expanded="true">Upcoming</a></li>
+                            <li role="presentation" class=""><a href="#previous" role="tab" id="hotel-tab" data-toggle="tab" aria-controls="previous" aria-expanded="false"> Previous</a></li>
+                            <li role="presentation" class=""><a href="#cancelled" role="tab" id="car-cancelled" data-toggle="tab" aria-controls="cancelled"
+                                    aria-expanded="false"> Cancelled</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<div class="my-trips">
+    <div class="container">
+        <div class="row">
+            <section>
+                <article class="booking-list card">
+                    <div class="panel-heading clickable" (click)="toggleDisplay()">
+                        <div class="col-md-9">
+                            <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-gray">Booking Id:</span>
+                            <span><b>123456</b></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h5 class="hotel-heading">Hotel Sonar Bangla, Mandarmani</h5>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                        <div class="flex-row">
+                            <div class="col-md-3">
+                                <p class="text-gray">CHECK IN</p>
+                                <p><b>Sat, 25th Jan</b></p>
+                                <p><b>10 AM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">CHECK OUT</p>
+                                <p><b>Sat, 27th Jan</b></p>
+                                <p><b>09 AM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">DURATION</p>
+                                <p><b>2 Nights</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">NUMBER OF GUESTS</p>
+                                <p><b>2 Guests</b></p>
+                                <p class="text-gray">(Adults-02, Child-00)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex-row">
+                            <div class="col-md-6">
+                                <span class="text-gray">Room Type: </span>
+                                <span><b>Non AC Deluxe</b></span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="text-gray">Meal Type: </span>
+                                <span><b>Non veg</b></span>
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="col-md-6">
+                                <p class="text-gray">Guest Details: </p>
+                                <p><b>Souvik</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>&nbsp;</p>
+                                <p><b>9674964703</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b>Souvik</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b>9674964703</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="booking-list card">
+                    <div class="panel-heading clickable" (click)="toggleDisplay()">
+                        <div class="col-md-9">
+                            <h5><i class="fa fa-taxi fa-2x" aria-hidden="true"></i>Cab Details</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-gray">Booking Id:</span>
+                            <span><b>123456</b></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h5 class="cab-heading">Sedan</h5>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                        <div class="flex-row">
+                            <div class="col-md-3">
+                                <p class="text-gray">PICKUP TIME</p>
+                                <p><b>Sat, 25th Jan</b></p>
+                                <p><b>08 AM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">DROP OFF TIME</p>
+                                <p><b>Sat, 27th Jan</b></p>
+                                <p><b>12 PM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">DURATION</p>
+                                <p><b>2 Nights</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">LUGGAGE</p>
+                                <p><b>2 Bags</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="booking-list card">
+                    <div class="panel-heading clickable" (click)="toggleDisplay()">
+                        <div class="col-md-9">
+                            <h5><i class="fa fa-users fa-2x" aria-hidden="true"></i>Package Details</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-gray">Booking Id:</span>
+                            <span><b>123456</b></span>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                        <div class="flex-row">
+                            <div class="col-md-12">
+                                <h5 class="cab-heading"><i class="fa fa-taxi fa-lg" aria-hidden="true"></i>Sedan</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">PICKUP TIME</p>
+                                <p><b>Sat, 25th Jan</b></p>
+                                <p><b>08 AM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">DROP OFF TIME</p>
+                                <p><b>Sat, 27th Jan</b></p>
+                                <p><b>12 PM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">DURATION</p>
+                                <p><b>2 Nights</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">LUGGAGE</p>
+                                <p><b>2 Bags</b></p>
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="col-md-12">
+                                <h5 class="hotel-heading"><i class="fa fa-bed fa-lg" aria-hidden="true"></i>Hotel Sonar Bangla, Mandarmani</h5>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">CHECK IN</p>
+                                <p><b>Sat, 25th Jan</b></p>
+                                <p><b>10 AM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">CHECK OUT</p>
+                                <p><b>Sat, 27th Jan</b></p>
+                                <p><b>09 AM</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">DURATION</p>
+                                <p><b>2 Nights</b></p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="text-gray">NUMBER OF GUESTS</p>
+                                <p><b>2 Guests</b></p>
+                                <p class="text-gray">(Adults-02, Child-00)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex-row">
+                            <div class="col-md-6">
+                                <span class="text-gray">Room Type: </span>
+                                <span><b>Non AC Deluxe</b></span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="text-gray">Meal Type: </span>
+                                <span><b>Non veg</b></span>
+                            </div>
+                        </div>
+                        <div class="flex-row">
+                            <div class="col-md-6">
+                                <p class="text-gray">Guest Details: </p>
+                                <p><b>Souvik</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>&nbsp;</p>
+                                <p><b>9674964703</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b>Souvik</b></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><b>9674964703</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </div>
+</div>

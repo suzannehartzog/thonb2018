@@ -1,0 +1,103 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="vendor-signup">
+	<div class="container">
+		<div class="row">
+			<div class="login-form signup-form">
+				<form autocomplete="off" action="" method="post">
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Contact Information</legend>
+						<div class="styled-input">
+							<input type="text" name="email" required="" placeholder="">
+							<label>Email</label>
+							<span></span>
+						</div>
+						<div class="styled-input name-selector">
+							<input type="text" name="fname" required="" placeholder="" id="fname">
+							<label for="fname">First Name</label>
+							<span></span>
+						</div>
+						<div class="styled-input name-selector">
+							<input type="text" name="lname" required="" placeholder="" id="lname">
+							<label for="lname">Last Name</label>
+							<span></span>
+						</div>
+						<div class="styled-input">
+							<input type="text" name="phoneNumber" required="" placeholder="">
+							<label>Business Phone Number</label>
+							<span></span>
+						</div>
+					</fieldset>
+
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Business Details</legend>
+						<div class="styled-input">
+							<select name="businessType" class="form-control" required="">
+									<option value="">Type of Business</option>
+									<option value="hotel">Hotel Chain</option>
+								</select>
+							<label>Type of Business</label>
+							<span></span>
+							<div class="styled-input">
+								<input type="text" name="propertyName" required="" placeholder="">
+								<label>Property Name</label>
+								<span></span>
+							</div>
+							<div class="styled-input ">
+								<select name="country" class="form-control" required="">
+									<option value="">Rating	</option>
+									<option value="5">5</option>
+									<option value="4">4</option>
+									<option value="3">3</option>
+									<option value="2">2</option>
+									<option value="1">1</option>
+								</select>
+								<label>Proerty Rating</label>
+								<span></span>
+								<div class="styled-input">
+									<input type="text" name="numberRooms" required="" placeholder="">
+									<label>Number of Rooms</label>
+									<span></span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<legend class="col-form-legend ">Property Location</legend>
+						<div class="styled-input">
+							<input type="text" name="strAddress" required="" placeholder="">
+							<label>Street Address</label>
+							<span></span>
+						</div>
+						<div class="styled-input">
+							<input type="text" name="strAddress" required="" placeholder="">
+							<label>City</label>
+							<span></span>
+						</div>
+						<div class="styled-input ">
+							<select name="state" class="form-control" required="">
+									<option value="">State</option>
+									<option value="wb">West Bengal</option>
+								</select>
+							<label>State</label>
+							<span></span>
+						</div>
+						<div class="styled-input ">
+							<select name="country" class="form-control" required="">
+									<option value="">Country</option>
+									<option value="india">India</option>
+								</select>
+							<label>Country</label>
+							<span></span>
+						</div>
+					</fieldset>
+
+					<input type="submit" value="Register">
+					<a href="javascript:void(0)" id="cancel" name="cancel" class="btn btn-warning cancel">Cancel</a>
+				</form>
+				<p>Already Registered ?<a href="signin.html" class="sign-in popup-top-anim"> SignIn Here !</a></p>
+			</div>
+		</div>
+	</div>
+</div>

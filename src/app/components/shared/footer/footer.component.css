@@ -1,0 +1,16 @@
+footer {
+    padding: 1em 0;
+    background: #fff;
+    border-top: 1px dashed #333;
+}
+.footer-copy {
+    margin: 0;
+    padding: 0;
+}
+.footer-copy p {
+    text-align: center;
+}
+.footer p {
+    color: #000;
+    font-weight: 300;
+}

@@ -1,0 +1,105 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+	<h3 class="w3agileits-title">Trip Planner!</h3>
+</div>
+<div class="my-trips nopadding">
+	<div class="container">
+		<div class="my-trips-w3ls-row">
+			<div class="col-md-7 about-right">
+				<div class="about-agile-row">
+					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+						<ul id="myTab" class=" nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#upcoming" id="upcoming-tab" role="tab" data-toggle="tab" aria-controls="upcoming" aria-expanded="true">Upcoming</a></li>
+							<li role="presentation" class=""><a href="#previous" role="tab" id="hotel-tab" data-toggle="tab" aria-controls="previous" aria-expanded="false"> Previous</a></li>
+							<li role="presentation" class=""><a href="#cancelled" role="tab" id="car-cancelled" data-toggle="tab" aria-controls="cancelled" aria-expanded="false"> Cancelled</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<div class="trip-planner">
+	<div class="container">
+		<div class="row">
+			<section>
+				<article class="booking-list card">
+					<div class="panel-heading clickable" (click)="toggleDisplay()">
+						<div class="col-md-12">
+							<i class="fa fa-quote-left fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-quote-right fa-lg" aria-hidden="true"></i>
+							<h2>
+								Looking for <b><span class="item">Hotel</span>, <span class="item">Guide</span></b> in month of
+								<b><span class="item">January</span></b>
+							</h2>
+						</div>
+					</div>
+					<div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+						<div class="flex-row-no-margin">
+							<div class="child-panel-heading">
+								<div class="col-md-9">
+									<i class="fa fa-hotel fa-lg" aria-hidden="true"></i>
+									<h3>
+										<span class="item">Le Pocha</span> Hotel Providing
+									</h3>
+								</div>
+								<div class="col-md-3">
+									<div class="text-gray">
+										<a href="javascript:void(0)" (click)="toggleChildDisplay()">View More...</a>
+									</div>
+								</div>
+							</div>
+							<div class="child-panel-body" [ngClass]="isChildDisplay ? '' : 'hideMe'">
+								<div class="inner-flex-row col-md-12 pt-0">
+									<div class="hotel">
+										<div class="col-md-12 hotel-name">
+											<h4>
+												Hotel ABC
+											</h4>
+										</div>
+										<div class="col-md-12">
+											<div class="col-md-6">
+												<p class="text-gray">DELUXE</p>
+												<p>
+													<b>INR 800 per Night</b>
+												</p>
+											</div>
+											<div class="col-md-6">
+												<p class="text-gray">SEMI DELUXE</p>
+												<p>
+													<b>INR 800 per Night</b>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="guide">
+										<div class="col-md-9 guide-name">
+											<h4>
+												Guide <b>Pocha</b> - Total sight seeing <b>INR 5000 per day</b>
+											</h4>
+										</div>
+										<div class="col-md-3">
+											<a href="javascript:void(0)" class="btn btn-info">I'm interested</a>
+										</div>
+										<div class="col-md-12 guide-request-input">
+											<div class="col-md-12">
+												Or comment below
+											</div>
+											<div class="col-md-12 request-guide-comment">
+												<textarea name="Message" placeholder="Let us know your plan" required="" autocomplete="off"></textarea>
+											</div>
+											<div class="col-md-12">
+												<a href="javascript:void(0)" class="btn btn-info w-100">Save</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+			</section>
+		</div>
+	</div>
+</div>

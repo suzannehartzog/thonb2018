@@ -1,0 +1,67 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+	<h3 class="w3agileits-title">Request Quote/Create Itinerary!</h3>
+</div>
+<div class="vendor-signup">
+	<div class="container">
+		<div class="login-form">
+			<form autocomplete="off" action="" method="post">
+				<div class="wthree-text">
+					<div class="register-text">Register For</div>
+					<div class="register-options">
+						<ul>
+							<li>
+								<input type="checkbox" id="package" value="package">
+								<label for="package"><span></span>package </label>
+							</li>
+							<li>
+								<input type="checkbox" id="hotel" value="hotel">
+								<label for="hotel"><span></span>Hotel </label>
+							</li>
+							<li>
+								<input type="checkbox" id="cab" value="cab">
+								<label for="cab"><span></span>Cab </label>
+							</li>
+							<li>
+								<input type="checkbox" id="guide" value="guide">
+								<label for="guide"><span></span>Guide </label>
+							</li>
+						</ul>
+					</div>
+					<div class="clear"> </div>
+				</div>
+				<div class="styled-input place-selector">
+					<input type="text" name="origin" required="" placeholder="" id="origin">
+					<label for="origin">Origin</label>
+					<span></span>
+				</div>
+				<div class="styled-input place-selector">
+					<input type="text" name="destination" required="" placeholder="" id="destination">
+					<label for="destination">Destination</label>
+					<span></span>
+				</div>
+				<div class="styled-input place-selector">
+					<input type="text" name="start-date" required="" placeholder="" id="start-date" datepicker>
+					<label for="start-date">Start Date</label>
+					<span></span>					
+				</div>
+				<div class="styled-input place-selector">
+					<input type="text" name="end-date" required="" placeholder="" id="end-date" datepicker>
+					<label for="end-date">End Date</label>
+					<span></span>
+				</div>
+				<div class="styled-input">
+					<input type="number" name="group-size" required="" />
+					<label>Group Size</label>
+					<span></span>
+				</div>
+				<div class="styled-input">
+					<input type="number" name="budget" required="">
+					<label>Budget</label>
+					<span></span>
+				</div>
+				<input type="submit" class="save" value="Save">
+			</form>
+		</div>
+	</div>
+</div>

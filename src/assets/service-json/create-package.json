@@ -1,0 +1,37 @@
+{
+  "countryId": 1,//need
+  "countryName": "string",//no need
+  "createdBy": "string",//no need
+  "description": "string",//no need
+  "guides": [
+    {
+      "guideDate": "2017-12-30T06:02:07.468Z",
+      "guideId": 0,
+      "guideName": "string"//no need
+    }
+  ],
+  "hotels": [
+    {
+      "checkinDate": "2017-12-30T06:02:07.468Z",
+      "hotelAddress": "string",//no need
+      "hotelId": 0,
+      "hotelName": "string",//no need
+      "noOfNights": 0,
+      "noOfRooms": 0,
+      "roomType": "string"
+    }
+  ],
+  "itineraryId": 0,//no need
+  "name": "string",
+  "ownerUserId": 1,//logged in user id
+  "price": 0,//from 1st screen  
+  "transports": [
+    {
+      "transportAssetId": 0,
+      "transportDate": "2017-12-30T06:02:07.468Z",
+      "transportType": "C",//need
+      "vehicleName": "string"
+    }
+  ],
+  "travellerCount": 0
+}

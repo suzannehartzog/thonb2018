@@ -1,0 +1,158 @@
+{
+  "hotels": [
+    {
+      "hotelId": 5,
+      "hotelRoomId": 9,
+      "hotelName": "Hotel North Star",
+      "roomTypeName": "Deluxe Room",
+      "roomBasePrice": 1950,
+      "hotelRoomComment": null,
+      "availableCount": 2,
+      "discountAmount": 0,
+      "hotelPromotionId": -1,
+      "img": null,
+      "amenities": [
+        {
+          "amenityId": null,
+          "assetId": 9,
+          "additionalPrice": 200,
+          "additionalItem": "breakfast",
+          "assetType": null
+        },
+        {
+          "amenityId": null,
+          "assetId": 9,
+          "additionalPrice": 375,
+          "additionalItem": "extra cot",
+          "assetType": null
+        }
+      ]
+    },
+    {
+      "hotelId": 1,
+      "hotelRoomId": 1,
+      "hotelName": "Mayfair Hotel Darjeeling",
+      "roomTypeName": "Deluxe Room",
+      "roomBasePrice": 7400,
+      "hotelRoomComment": null,
+      "availableCount": 2,
+      "discountAmount": 0,
+      "hotelPromotionId": -1,
+      "img": null,
+      "amenities": [
+        {
+          "amenityId": null,
+          "assetId": 1,
+          "additionalPrice": 500,
+          "additionalItem": "breakfast",
+          "assetType": null
+        }
+      ]
+    },
+    {
+      "hotelId": 1,
+      "hotelRoomId": 3,
+      "hotelName": "Mayfair Hotel Darjeeling",
+      "roomTypeName": "Standard Room",
+      "roomBasePrice": 4800,
+      "hotelRoomComment": null,
+      "availableCount": 1,
+      "discountAmount": 500,
+      "hotelPromotionId": 1,
+      "img": null,
+      "amenities": [
+        {
+          "amenityId": null,
+          "assetId": 3,
+          "additionalPrice": 350,
+          "additionalItem": "breakfast",
+          "assetType": null
+        }
+      ]
+    },
+    {
+      "hotelId": 3,
+      "hotelRoomId": 4,
+      "hotelName": "Sterling Darjeeling",
+      "roomTypeName": "Classic Room",
+      "roomBasePrice": 4080,
+      "hotelRoomComment": null,
+      "availableCount": 2,
+      "discountAmount": 0,
+      "hotelPromotionId": -1,
+      "img": null,
+      "amenities": [
+        {
+          "amenityId": null,
+          "assetId": 4,
+          "additionalPrice": 250,
+          "additionalItem": "breakfast",
+          "assetType": null
+        }
+      ]
+    },
+    {
+      "hotelId": 3,
+      "hotelRoomId": 7,
+      "hotelName": "Sterling Darjeeling",
+      "roomTypeName": "Premium Room",
+      "roomBasePrice": 4600,
+      "hotelRoomComment": null,
+      "availableCount": 2,
+      "discountAmount": 0,
+      "hotelPromotionId": -1,
+      "img": null,
+      "amenities": [
+        {
+          "amenityId": null,
+          "assetId": 7,
+          "additionalPrice": 250,
+          "additionalItem": "breakfast",
+          "assetType": null
+        }
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "packageId": 2,
+      "packageName": "Christmas special",
+      "packageBasePrice": 10000,
+      "availableCount": 15,
+      "discountAmount": 1000,
+      "packagePromotionId": 1,
+      "packageDescription": "Darjeeling relaxing package",
+      "img": null
+    },
+    {
+      "packageId": 3,
+      "packageName": "Winter Special",
+      "packageBasePrice": 15000,
+      "availableCount": 16,
+      "discountAmount": 500,
+      "packagePromotionId": 2,
+      "packageDescription": "Darjeeling leisure package",
+      "img": null
+    }
+  ],
+  "guides": [
+    {
+      "guideId": 2,
+      "userName": "anand",
+      "perDayPrice": 600,
+      "guideDescription": "Darjeeling Guide"
+    }
+  ],
+  "transports": [
+    {
+      "transportAssetId": 1,
+      "transportName": "Hill Queen Transport Transporters",
+      "vehicalName": "Sumo"
+    },
+    {
+      "transportAssetId": 2,
+      "transportName": "Hill Queen Transport Transporters",
+      "vehicalName": "DZire"
+    }
+  ]
+}

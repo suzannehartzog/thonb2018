@@ -7,7 +7,14 @@ export class SharedService {
 
   constructor(
     private apiSrv: ApiDataService
-  ){
+  ) {
     this.apiSrv = apiSrv;
+    localStorage.setItem("countryId", "1");
+    localStorage.setItem("countryName", "india");
+    localStorage.setItem("createdBy", "tapa");
+    localStorage.setItem("description", "tapa");
+    localStorage.setItem("ownerUserId", "1");
+    localStorage.setItem("name", "tapa");
+    localStorage.setItem("itineraryId", "1");
   }
 }

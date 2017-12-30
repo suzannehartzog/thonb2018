@@ -7,4 +7,5 @@ interface NodeModule {
 interface JQuery {
    //daterangepicker(options?: any, callback?: Function) : any;
    datepicker(options?: any, callback?: Function) : any;
+   datetimepicker(options?: any, callback?: Function) : any;
 }

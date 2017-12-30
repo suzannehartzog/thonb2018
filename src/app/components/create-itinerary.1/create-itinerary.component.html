@@ -7,22 +7,22 @@
 		<div class="login-form">
 			<form #itinForm="ngForm" (ngSubmit)="submitItinerary(itinForm.value)">
 				<div class="styled-input">
-					<input type="text" name="originCityId" required placeholder="" id="originCityId" ngModel>
-					<label for="originCityId">Starting City</label>
+					<input type="text" name="origin" required="" placeholder="" id="origin" ngModel>
+					<label for="origin">Starting City</label>
 					<span></span>
 				</div>
 				<div class="styled-input">
-					<input type="text" name="fromDate" required placeholder="" id="fromDate" datepicker ngModel>
-					<label for="fromDate">Starting Date</label>
+					<input type="text" name="startDate" required="" placeholder="" id="startDate" datepicker ngModel>
+					<label for="startDate">Starting Date</label>
 					<span></span>
 				</div>
 				<div class="styled-input">
-					<input type="text" name="destinationCityId" required placeholder="" id="destinationCityId" ngModel>
-					<label for="destinationCityId">Travelling City</label>
+					<input type="text" name="destination" required="" placeholder="" id="destination" ngModel>
+					<label for="destination">Travelling City</label>
 					<span></span>
 				</div>
 				<div class="styled-input">
-					<select name="nights" class="form-control" required ngModel>
+					<select name="nights" class="form-control" required="" ngModel>
 						<option value="">No. of Nights</option>
 						<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
 					</select>
@@ -30,7 +30,7 @@
 					<span></span>
 				</div>
 				<div class="styled-input">
-					<select name="rooms" class="form-control" required ngModel>
+					<select name="rooms" class="form-control" required="" ngModel>
 						<option value="">No. of Rooms</option>
 						<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
 					</select>
@@ -38,17 +38,11 @@
 					<span></span>
 				</div>
 				<div class="styled-input">
-					<select name="groupSize" class="form-control" required ngModel id="groupSize">
-						<option value="">No. of Travellers</option>
-						<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
-					</select>
+					<select name="groupSize" class="form-control" required="" ngModel>
+							<option value="">No. of Travellers</option>
+							<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
+						</select>
 					<label>No. of Travellers</label>
-					<span></span>
-				</div>
-
-				<div class="styled-input">
-					<input type="text" name="expectedResponseWithinTime" required placeholder="" id="expectedResponseWithinTime" datetimepicker ngModel>
-					<label for="expectedResponseWithinTime">Accept Quote Till Time</label>
 					<span></span>
 				</div>
 
@@ -57,15 +51,15 @@
 					<div class="register-options">
 						<ul>
 							<li>
-								<input type="checkbox" id="pickup" value="pickup" name="pickup" ngModel>
+								<input type="checkbox" id="pickup" value="pickup" name="tourAdditional" ngModel>
 								<label for="pickup"><span></span>Pick-up </label>
 							</li>
 							<li>
-								<input type="checkbox" id="drop" value="drop" name="drop" ngModel>
+								<input type="checkbox" id="drop" value="drop" name="tourAdditional" ngModel>
 								<label for="drop"><span></span>Drop </label>
 							</li>
 							<li>
-								<input type="checkbox" id="guide" value="guide" name="guide" ngModel>
+								<input type="checkbox" id="guide" value="guide" name="tourAdditional" ngModel>
 								<label for="guide"><span></span>Guide </label>
 							</li>
 						</ul>
@@ -74,12 +68,12 @@
 				</div>
 
 				<div class="styled-input">
-					<input type="number" name="budget" required placeholder="" id="budget" ngModel>
-					<label for="budget">Budget</label>
+					<input type="number" name="price" required="" placeholder="" id="price" ngModel>
+					<label for="price">Package Price</label>
 					<span></span>
 				</div>
 
-				<input type="submit" class="getDetls form-control" value="Save">
+				<input type="submit" class="getDetls form-control" value="Get Details">
 			</form>
 		</div>
 	</div>

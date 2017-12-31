@@ -59,4 +59,24 @@ export class ApiDataService {
 
     return hotelArray;
   }
+
+  public getAllHotelsByOnwer(ownerId){
+    return this.http.get('assets/service-json/hotel-listing.json').map(
+      (response) =>response.json()
+    );
+  }
+
+  // public dummygetNotificationsPosts(){
+  //   let param = {
+  //     title: 'foo',
+  //     body: 'bar',
+  //     userId: 1
+  //   };
+  //   let headers = new Headers();
+  //   this.createAuthorizationHeader(headers);     
+  //   let options = new RequestOptions({headers: headers});
+  //   return this.http.post('https://jsonplaceholder.typicode.com/posts', param, options).map(
+  //     (response) =>response.json()
+  //   );
+  // }
 }

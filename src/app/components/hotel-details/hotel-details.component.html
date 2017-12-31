@@ -36,9 +36,6 @@
 									Dharmatala, Taltala, 15, Jawaharlal Nehru Road, New Market Area, <br/>Dharmatala, Taltala, Kolkata, <br/>West Bengal 700013
 								</p>						
 							</div>
-							<!-- <div class="col-xs-12 col-sm-12 col-md-2 excerpet">
-								<a class="btn btn-info" href="#" title="Lorem ipsum">Details</a>
-							</div> -->
 						</article>
 						<div class="about nopadding top-margin-1em clear">
 							<div class="row dash-border">
@@ -80,21 +77,22 @@
 								</ul> 
 								<div id="myTabContent" class="tab-content">
 									<div role="tabpanel" *ngIf = "showAuction" class="tab-pane fade active in" id="auction" aria-labelledby="auction-tab">
-										<form>
+										<form [formGroup]="auctionForm" (ngSubmit)="addAuction($event)">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">Start From</label>
-													<input type="date" class="form-control" id="inputEmail4" placeholder="Email">
+													<input formControlName="startDate" type="text" placeholder="Start Date" class="form-control">
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputPassword4">Room Type</label>
-													<select id="inputState" class="form-control">
+													<!-- <select id="inputState" class="form-control">
 														<option selected>Choose...</option>
 														<option>...</option>
-													</select>
+													</select> -->
+													<input formControlName="endDate" type="text" placeholder="Start Date" class="form-control" >
 												</div>
 											</div>
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<div class="form-group col-md-6">
 													<label for="inputAddress">Ends On</label>
 													<input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
@@ -116,7 +114,7 @@
 													<label for="inputAddress2">Buy Now Price</label>
 													<input type="text" class="form-control" id="inputAddress" placeholder="">
 												</div>
-											</div>
+											</div> -->
 											<div class="form-group">
 												<div class="form-group col-md-12">
 													<button type="submit" class="btn btn-info pull-right">Save</button>

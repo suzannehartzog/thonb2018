@@ -1,0 +1,138 @@
+[
+  {
+    "hotelId": 1,
+    "ownerId": 2,
+    "hotelName": "Dolphin",
+    "hotelAddress": "Old Digha,West Midnapore,West Bengal",
+    "hotelRooms": [
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Delux",
+        "totalRoomCount": 2,
+        "totalBooked": 1,
+        "roomBasePrice": 2500,
+        "capacity": 2,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Delux",
+        "totalRoomCount": 2,
+        "totalBooked": 1,
+        "roomBasePrice": 4000,
+        "capacity": 3,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Premium",
+        "totalRoomCount": 1,
+        "totalBooked": 1,
+        "roomBasePrice": 3500,
+        "capacity": 2,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Premium",
+        "totalRoomCount": 1,
+        "totalBooked": 1,
+        "roomBasePrice": 6000,
+        "capacity": 4,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Regular",
+        "totalRoomCount": 1,
+        "totalBooked": 0,
+        "roomBasePrice": 1500,
+        "capacity": 3,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Super-Delux",
+        "totalRoomCount": 1,
+        "totalBooked": 1,
+        "roomBasePrice": 7500,
+        "capacity": 2,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Super-Delux",
+        "totalRoomCount": 1,
+        "totalBooked": 1,
+        "roomBasePrice": 8500,
+        "capacity": 3,
+        "allAmenities": []
+      }
+    ]
+  },
+  {
+    "hotelId": 2,
+    "ownerId": 2,
+    "hotelName": "Hotel Coral Digha",
+    "hotelAddress": "Plot No. 373 & 373/534, N-2 Sector, Purba Midnapore, Digha, West Bengal",
+    "hotelRooms": [
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Delux",
+        "totalRoomCount": 1,
+        "totalBooked": 0,
+        "roomBasePrice": 5000,
+        "capacity": 2,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Delux",
+        "totalRoomCount": 1,
+        "totalBooked": 0,
+        "roomBasePrice": 7000,
+        "capacity": 3,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Regular",
+        "totalRoomCount": 1,
+        "totalBooked": 0,
+        "roomBasePrice": 1500,
+        "capacity": 1,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Regular",
+        "totalRoomCount": 1,
+        "totalBooked": 0,
+        "roomBasePrice": 2500,
+        "capacity": 3,
+        "allAmenities": []
+      },
+      {
+        "roomId": 0,
+        "hotelId": 0,
+        "roomType": "Regular",
+        "totalRoomCount": 1,
+        "totalBooked": 0,
+        "roomBasePrice": 3500,
+        "capacity": 5,
+        "allAmenities": []
+      }
+    ]
+  }
+]

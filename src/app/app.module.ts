@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- import required BrowserAnimationsModule  
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
   {path: 'check-out', component: CheckoutComponent},
   {path: 'payment', component: PaymentComponent},
   {path: 'hotel-listing', component: HotelListingComponent},
-  {path: 'hotel-details', component: HotelDetailsComponent},
+  {path: 'hotel-details/:id', component: HotelDetailsComponent},
   {path: '**', redirectTo: '' }
 ];
 
@@ -97,6 +98,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     HttpModule,
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true}), 

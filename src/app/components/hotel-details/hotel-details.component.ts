@@ -36,6 +36,18 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     hotelId: ["", Validators.required],
     auctionComment: ["", Validators.required]
   });
+  public flashSellForm = this.fb.group({
+    startDate: ["", Validators.required],
+    endDate: ["", Validators.required],
+    flashsellPrice : ["", Validators.required],    
+    roomCapacity : ["", Validators.required],
+    roomLockedFrom: ["", Validators.required],
+    roomLockedTill: ["", Validators.required],
+    roomTypeName : ["", Validators.required],
+    eventType: ["", Validators.required],
+    hotelId: ["", Validators.required],
+    flashSellComment: ["", Validators.required]
+  });
   constructor(
     public fb: FormBuilder,
     private router: Router,
@@ -74,6 +86,11 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   addAuction(event) {
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
     this.auctionForm.controls['eventType'].setValue('a');
+    console.log(this.auctionForm.value);
+  }  
+  addFlashSell(event) {
+    this.flashSellForm.controls['hotelId'].setValue(this.hotelId);
+    this.flashSellForm.controls['eventType'].setValue('f');
     console.log(this.auctionForm.value);
   }  
   setRoomCapacity(event){

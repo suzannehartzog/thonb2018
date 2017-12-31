@@ -28,7 +28,7 @@
 					<h1>Hotel Details</h1>
 					<div class="box">
 						<article class="search-result row">
-							<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
+							<div class="col-xs-12 col-sm-12 col-md-12 excerpet">
 								<h3>
 									<a href="#" title="">Obri Hotel</a>							
 								</h3>
@@ -138,48 +138,59 @@
 										</form>
 									</div>
 									<div role="tabpanel" *ngIf = "showFlashSell" class="tab-pane fade active in" id="flashsell" aria-labelledby="flashsell-tab">
-											<form>
-												<div class="form-row">
-													<div class="form-group col-md-6">
-														<label for="inputEmail4">Start From</label>
-														<input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-													</div>
-													<div class="form-group col-md-6">
-														<label for="inputPassword4">Room Type</label>
-														<select id="inputState" class="form-control">
-															<option selected>Choose...</option>
-															<option>...</option>
-														</select>
-													</div>
+										<form [formGroup]="flashSellForm" (ngSubmit)="addFlashSell($event)">
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="inputEmail4">Start From</label>
+													<input formControlName="startDate" type="date" placeholder="Start Date" class="form-control">
 												</div>
-												<div class="form-group">
-													<div class="form-group col-md-6">
-														<label for="inputAddress">Ends On</label>
-														<input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
-													</div>
-													<div class="form-group col-md-6">
-														<label for="inputAddress2">No of Rooms</label>
-														<select id="inputState" class="form-control">
-															<option selected>Choose...</option>
-															<option>...</option>
-														</select>
-													</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Ends On</label>
+													<input formControlName="endDate" type="date" placeholder="End Date" class="form-control" >
 												</div>
-												<div class="form-group">
-													<div class="form-group col-md-6">
-														
-													</div>
-													<div class="form-group col-md-6">
-														<label for="inputAddress">Price</label>
-														<input type="text" class="form-control" id="inputAddress" placeholder="">
-													</div>
+											</div>
+											<div class="form-group">												
+												<div class="form-group col-md-6">
+													<label for="inputPassword4">Room Type</label>
+													<select id="inputState" formControlName="roomTypeName" class="form-control" (change)="setRoomCapacity($event);">
+														<option selected>Choose Room Type</option>
+														<option *ngFor="let roomtype of roomTypeList" value="{{roomtype.roomType}}" [attr.data-capacity]="roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+													</select>
 												</div>
-												<div class="form-group">
-													<div class="form-group col-md-12">
-														<button type="submit" class="btn btn-info pull-right">Save</button>
-													</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress2">Room Quantity</label>
+													<select id="inputState" formControlName="roomCapacity" class="form-control">
+														<option selected>Choose No of Rooms</option>
+														<option *ngFor="let ca of roomCapacity; let i = index">{{i+1}}</option>
+													</select>
 												</div>
-											</form>												
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Booking Start Date</label>
+													<input type="date"  formControlName="roomLockedFrom" class="form-control" id="inputAddress" placeholder="">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress2">Booking End Date</label>
+													<input type="date"  formControlName="roomLockedTill" class="form-control" id="inputAddress" placeholder="">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Price</label>
+													<input type="number"  formControlName="flashsellPrice" class="form-control"  placeholder="">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Auction Description</label>
+													<textarea  formControlName="auctionComment" class="form-control"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-12">
+													<button type="submit" class="btn btn-info pull-right">Save</button>
+												</div>
+											</div>
+										</form>											
 									</div>
 									<div role="tabpanel" *ngIf = "showPromotions" class="tab-pane fade active in" id="promotions" aria-labelledby="flashsell-tab">
 											<form>

@@ -1894,7 +1894,9 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .login-form input[type="text"], 
 .login-form input[type="password"],
 .login-form input[type="number"],
-.login-form textarea {
+.login-form textarea,
+.login-form input[type="date"],
+.login-form input[type="time"] {
     font-size: 1em;
     color: #555;
     padding: 0.5em 1em;
@@ -1944,7 +1946,9 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 }
 .styled-input input ~ span,
 .styled-input select ~ span,
-.styled-input textarea ~ span {
+.styled-input textarea ~ span
+.login-form input[type="date"] ~ span,
+.login-form input[type="time"] ~ span {
 	display: block;
 	width: 0;
 	height:2px;
@@ -3071,4 +3075,9 @@ legend{
 .cab-desc, 
 .guide-desc {
     line-height: 3em;    
+}
+.create-itinerary label[for="fromDate"],
+.create-itinerary label[for="expectedResponseWithinDate"],
+.create-itinerary label[for="expectedResponseWithinTime"] {
+    top: -1em;
 }

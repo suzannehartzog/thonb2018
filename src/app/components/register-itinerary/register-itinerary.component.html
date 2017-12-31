@@ -15,15 +15,15 @@
                         </div>
                         <div class="col-md-3">
                             <span class="text-gray">Place:</span>
-                            <span><b>Dareeeling</b></span>
+                            <span><b>{{hotelLocation}}</b></span>
                         </div>
                         <div class="col-md-3">
                             <span class="text-gray">Check-in Date:</span>
-                            <span><b id="checkinDate">2018-01-04</b></span>
+                            <span><b id="checkinDate">{{hotelInDate}} 2018</b></span>
                         </div>
                         <div class="col-md-3">
                             <span class="text-gray">No. of Nights:</span>
-                            <span><b>3</b></span>
+                            <span><b>{{hotelOutDate}} 2018</b></span>
                         </div>
                     </div>
                     <div class="panel-body" [ngClass]="hideHotelBodyPanel ? 'hideMe' : ''" [ngClass]="hideHotelBodyPanel ? '' : 'hideMe'">
@@ -34,13 +34,13 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h5 class="hotel-name">{{hotel.hotelName}}</h5>
-                                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-                                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
-                                        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including 
-                                        versions of Lorem Ipsum.
+                                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                        has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                        printer took a galley of type and scrambled it to make a type specimen book. It has
+                                        survived not only five centuries, but also the leap into electronic typesetting,
+                                        remaining essentially unchanged. It was popularised in the 1960s with the release
+                                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </p>
                                 </div>
                             </div>
@@ -86,17 +86,21 @@
                             <i class="fa fa-cab fa-2x" aria-hidden="true"></i>
                             <h5>Pick-up Transport</h5>
                         </div>
-                        <div class="col-md-4">
-                            <span class="text-gray">Pick-up Point:</span>
-                            <span><b>Dareeeling station</b></span>
+                        <div class="col-md-3">
+                            <span class="text-gray">Pick-up From:</span>
+                            <span><b>{{pickUpFromLoc}}</b></span>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <span class="text-gray">Pick-up Upto:</span>
+                            <span><b>{{pickUpToLoc}}</b></span>
+                        </div>
+                        <div class="col-md-3">
                             <span class="text-gray">Date:</span>
-                            <span><b id="pickupDate">2018-01-04</b></span>
+                            <span><b id="pickupDate">{{pickUpDate}} 2018</b></span>
                         </div>
                     </div>
                     <div class="panel-body" [ngClass]="hidePickupBodyPanel ? 'hideMe' : ''" [ngClass]="hidePickupBodyPanel ? '' : 'hideMe'">
-                        <div class="flex-row bottom-dashed-border" *ngFor="let transport of transports; let i = index">
+                        <div class="flex-row bottom-dashed-border" *ngFor="let transport of pickUpTransports; let i = index">
                             <div class="row">
                                 <div class="col-md-4">
                                     <img src="assets/images/car.jpg" alt="car" />
@@ -122,16 +126,20 @@
                             <h5>Drop Transport</h5>
                         </div>
                         <div class="col-md-4">
-                            <span class="text-gray">Pick-up Point:</span>
-                            <span><b>Dareeeling station</b></span>
+                            <span class="text-gray">Drop From:</span>
+                            <span><b>{{dropFromLoc}}</b></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="text-gray">Drop To:</span>
+                            <span><b>{{dropToLoc}}</b></span>
                         </div>
                         <div class="col-md-4">
                             <span class="text-gray">Date:</span>
-                            <span><b id="dropDate">2018-01-04</b></span>
+                            <span><b id="dropDate">{{dropDate}} 2018</b></span>
                         </div>
                     </div>
                     <div class="panel-body" [ngClass]="hideDropBodyPanel ? 'hideMe' : ''" [ngClass]="hideDropBodyPanel ? '' : 'hideMe'">
-                        <div class="flex-row bottom-dashed-border" *ngFor="let transport of transports; let i = index">
+                        <div class="flex-row bottom-dashed-border" *ngFor="let transport of dropTransports; let i = index">
                             <div class="row">
                                 <div class="col-md-4">
                                     <img src="assets/images/car.jpg" alt="car" />
@@ -157,8 +165,8 @@
                             <h5>Guide</h5>
                         </div>
                         <div class="col-md-4">
-                            <span class="text-gray">Date:</span>
-                            <span><b id="guideDate">2018-01-04</b></span>
+                            <span class="text-gray">Guide Date:</span>
+                            <span><b id="guideDate">{{guideDate}} 2018</b></span>
                         </div>
                     </div>
                     <div class="panel-body" [ngClass]="hideGuideBodyPanel ? 'hideMe' : ''" [ngClass]="hideGuideBodyPanel ? '' : 'hideMe'">
@@ -169,7 +177,7 @@
                                 </div>
                                 <div class="col-md-4" *ngFor="let guide of allGuides; let i = index">
                                     <div class="row">
-                                        <h5 class="trasnpsort-name">{{guide.guideDescription}}</h5>                                        
+                                        <h5 class="trasnpsort-name">{{guide.guideDescription}}</h5>
                                     </div>
                                     <div class="row guide-desc">
                                         <span>Price per day</span>

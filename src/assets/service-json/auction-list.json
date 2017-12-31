@@ -1,0 +1,86 @@
+[
+  {
+    "auctionId": 20,
+    "auctionComment": "new auction comment",
+    "startDate": "2017-12-01",
+    "endDate": "2018-01-10",
+    "startingPrice": 2500,
+    "roomQuantity": 0,
+    "roomId": 13,
+    "buyNowPrice": 2700,
+    "hotelId": 1,
+    "eventType": "A",
+    "roomLockedFrom": "2018-01-20",
+    "roomLockedTill": "2018-01-25",
+    "roomTypeName": "Delux",
+    "roomCapacity": 3,
+    "roomDetail": {
+      "roomId": 13,
+      "hotelId": 1,
+      "roomType": "Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 4000,
+      "capacity": 3,
+      "allAmenities": [
+        {
+          "roomAmenityId": 7,
+          "roomId": 13,
+          "additionalPrice": 250,
+          "amenityName": "free swimming pool"
+        },
+        {
+          "roomAmenityId": 8,
+          "roomId": 13,
+          "additionalPrice": 200,
+          "amenityName": "wifi"
+        },
+        {
+          "roomAmenityId": 9,
+          "roomId": 13,
+          "additionalPrice": 300,
+          "amenityName": "TV"
+        }
+      ]
+    }
+  },
+  {
+    "auctionId": 21,
+    "auctionComment": "new auction comment",
+    "startDate": "2017-12-01",
+    "endDate": "2018-01-10",
+    "startingPrice": 2500,
+    "roomQuantity": 0,
+    "roomId": 14,
+    "buyNowPrice": 2700,
+    "hotelId": 1,
+    "eventType": "A",
+    "roomLockedFrom": "2018-01-20",
+    "roomLockedTill": "2018-01-25",
+    "roomTypeName": "Delux",
+    "roomCapacity": 3,
+    "roomDetail": {
+      "roomId": 14,
+      "hotelId": 1,
+      "roomType": "Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 4000,
+      "capacity": 3,
+      "allAmenities": [
+        {
+          "roomAmenityId": 10,
+          "roomId": 14,
+          "additionalPrice": 200,
+          "amenityName": "WIFI"
+        },
+        {
+          "roomAmenityId": 11,
+          "roomId": 14,
+          "additionalPrice": 300,
+          "amenityName": "hot water"
+        }
+      ]
+    }
+  }
+]

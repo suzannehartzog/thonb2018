@@ -93,6 +93,20 @@ export class ApiDataService {
       (response) =>response.json()
     );
   }
+  public activeAuctions(){
+    return this.http.get('assets/service-json/auction-list.json').map(
+      (response) =>response.json()
+    );
+  }
+  public checkValidBidder(){
+    return;
+  }
+  public createPromotion(){
+    return;
+  }
+  public createFlashSale(){
+    return;
+  }
   // public dummygetNotificationsPosts(){
   //   let param = {
   //     title: 'foo',

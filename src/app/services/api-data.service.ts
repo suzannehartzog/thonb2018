@@ -65,7 +65,11 @@ export class ApiDataService {
       (response) =>response.json()
     );
   }
-
+  public roomTypeCapacity(hoteld){
+    return this.http.get('assets/service-json/hotel-room-type.json').map(
+      (response) =>response.json()
+    );
+  }
   // public dummygetNotificationsPosts(){
   //   let param = {
   //     title: 'foo',

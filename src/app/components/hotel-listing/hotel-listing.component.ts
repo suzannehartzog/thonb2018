@@ -12,7 +12,7 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./hotel-listing.component.css']
 })
 export class HotelListingComponent implements OnInit {
-  public ownerId:number = 1;
+  public ownerId:number = 1; // need to set the session userID
   public hotelList:any=[];
   constructor(
     private router: Router,

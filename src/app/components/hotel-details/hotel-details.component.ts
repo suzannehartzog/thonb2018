@@ -15,7 +15,9 @@ declare var $: any;
   styleUrls: ['./hotel-details.component.css']
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
-  public id: number;
+  public hotelId: number;
+  public roomTypeList:any=[];
+  public roomCapacity:any=[];
   private sub: any;
   public showAuction: boolean = true;
   public showFlashSell: boolean = false;
@@ -23,29 +25,61 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   public showHotelDetails: boolean = false;
   public auctionForm = this.fb.group({
     startDate: ["", Validators.required],
-    endDate: ["", Validators.required]
+    endDate: ["", Validators.required],
+    buyNowPrice : ["", Validators.required],    
+    roomCapacity : ["", Validators.required],
+    roomLockedFrom: ["", Validators.required],
+    roomLockedTill: ["", Validators.required],
+    roomTypeName : ["", Validators.required],
+    startingPrice: ["", Validators.required],
+    eventType: ["", Validators.required],
+    hotelId: ["", Validators.required],
+    auctionComment: ["", Validators.required]
   });
   constructor(
     public fb: FormBuilder,
     private router: Router,
     private titleService: Title,
     private el: ElementRef,
-    private activeroute: ActivatedRoute
+    private activeroute: ActivatedRoute,
+    private apiSrv: ApiDataService,
+    private shrSrv: SharedService
   ) {}
   ngOnInit() {
     this.titleService.setTitle('Hotel Details:: Yayaati');
     this.sub = this.activeroute.params.subscribe(params => {
-      this.id = +params['id'];
-      console.log(this.id);
+      this.hotelId = +params['id'];
+      this.getAllroomTypeCapacity(this.hotelId);
    });
+   
+  }
+  getAllroomTypeCapacity(hotelId) {
+    //console.log(params);   
+    //localStorage.setItem("originCityId", params.originCityId);
+    this.apiSrv.roomTypeCapacity(hotelId).subscribe(
+      (data) => {
+        console.log(data);
+        this.roomTypeList = data; 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
   addAuction(event) {
-    console.log(event);
+    this.auctionForm.controls['hotelId'].setValue(this.hotelId);
+    this.auctionForm.controls['eventType'].setValue('a');
     console.log(this.auctionForm.value);
   }  
+  setRoomCapacity(event){
+    const capacity = event.target.options[event.target.selectedIndex].getAttribute('data-capacity');
+    this.roomCapacity.length = capacity; 
+  }
   toggleTab(tabnae){
     this.showAuction  = false;
     this.showFlashSell = false;

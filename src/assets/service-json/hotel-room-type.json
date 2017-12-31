@@ -1,0 +1,72 @@
+[
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Delux",
+    "totalRoomCount": 2,
+    "totalBooked": -1,
+    "roomBasePrice": 2500,
+    "capacity": 2,
+    "allAmenities": null
+  },
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Delux",
+    "totalRoomCount": 2,
+    "totalBooked": -1,
+    "roomBasePrice": 4000,
+    "capacity": 3,
+    "allAmenities": null
+  },
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Premium",
+    "totalRoomCount": 1,
+    "totalBooked": -1,
+    "roomBasePrice": 3500,
+    "capacity": 2,
+    "allAmenities": null
+  },
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Premium",
+    "totalRoomCount": 1,
+    "totalBooked": -1,
+    "roomBasePrice": 6000,
+    "capacity": 4,
+    "allAmenities": null
+  },
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Regular",
+    "totalRoomCount": 1,
+    "totalBooked": -1,
+    "roomBasePrice": 1500,
+    "capacity": 3,
+    "allAmenities": null
+  },
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Super-Delux",
+    "totalRoomCount": 1,
+    "totalBooked": -1,
+    "roomBasePrice": 7500,
+    "capacity": 2,
+    "allAmenities": null
+  },
+  {
+    "roomId": 0,
+    "hotelId": 0,
+    "roomType": "Super-Delux",
+    "totalRoomCount": 1,
+    "totalBooked": -1,
+    "roomBasePrice": 8500,
+    "capacity": 3,
+    "allAmenities": null
+  }
+]

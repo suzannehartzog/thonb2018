@@ -1,0 +1,109 @@
+.box {
+    background: #fff;
+    margin: 10px 0 30px;
+    border: solid 1px #e6e6e6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+.panel.sidebar-menu {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+.panel.sidebar-menu .nav {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+.panel.sidebar-menu .nav-pills > li > a {
+    border-radius: 0;
+}
+.panel.sidebar-menu .nav > li > a {
+    padding: 10px 15px;
+}
+
+.table-responsive{
+    border:none;
+}
+.box h6{
+    font-size: 1.3em;
+}
+.table td, .table>tbody>tr>td{
+    padding: 5px!important;
+    color: #000;
+}
+.box-header .image-holder{
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+}
+.box-header .image-holder img{
+    width: 100%;
+    border: none;
+}
+.save-bid-btn{
+    background: #001947;
+    color: #fff!important;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px!important;
+}
+.search-result a.save-bid-btn i{
+    color: #fff!important;
+}
+.no-margin{
+    margin: 0;
+}
+h3{
+    padding: 5px 0;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+}
+.no-padding{
+    padding: 0;
+}
+.top-margin-1em{
+    margin-top: 1em;
+}
+.dash-border{
+    border-bottom: 1px dashed #ccc;
+    padding: 5px;
+}
+.table-fixed {
+    width: 100%;
+    background-color: #f3f3f3;
+    font-size: .6em;
+}
+.image-holder{
+    width: 90%;
+}
+.image-holder img{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+.bidding .bid-now{
+    background: #ccc;
+    display: inline-block;
+    padding: 0px 5px;
+    margin: 0 2px;
+    border-radius: 2px;                    
+}
+.bidding p{
+    line-height: 2em;
+}
+.margin-top-32{
+    margin-top:35px;
+}
+.width-100{
+    width: 100%;
+}

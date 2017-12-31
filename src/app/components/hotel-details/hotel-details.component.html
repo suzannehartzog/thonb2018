@@ -1,0 +1,309 @@
+<div class="banner notHome">
+		<app-navbar></app-navbar>
+	</div>
+	<div class="about">
+			<div class="container">
+				<div class="col-md-3">
+					<div class="panel panel-default sidebar-menu">
+						<div class="panel-heading">
+							<h3 class="panel-title">Pages</h3>
+						</div>
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked">
+								<li>
+									<a href="text.html">Text page</a>
+								</li>
+								<li>
+									<a href="contact.html">Contact page</a>
+								</li>
+								<li>
+									<a href="faq.html">FAQ</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-9" id="basket">
+					<h1>Hotel Details</h1>
+					<div class="box">
+						<article class="search-result row">
+							<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
+								<h3>
+									<a href="#" title="">Obri Hotel</a>							
+								</h3>
+								<p>
+									Dharmatala, Taltala, 15, Jawaharlal Nehru Road, New Market Area, <br/>Dharmatala, Taltala, Kolkata, <br/>West Bengal 700013
+								</p>						
+							</div>
+						</article>
+						<div class="about nopadding top-margin-1em clear">
+							<div class="row dash-border">
+								<div class="col-xs-12 col-sm-12 col-md-6">
+									<h4>Deluxe Room</h4>
+									<p><strong>No. of Rooms:</strong> 12</p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6">
+									<p><strong>Price:</strong> Rs.1200 per Night</p>
+									<p><strong>Booked:</strong> 2</p>
+								</div>
+							</div>
+							<div class="row dash-border">
+								<div class="col-xs-12 col-sm-12 col-md-6">
+									<h4>Super Deluxe Room</h4>
+									<p><strong>No. of Rooms:</strong> 12</p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-6">
+										<p><strong>Price:</strong> Rs.1600 per Night</p>
+									<p><strong>Booked:</strong> 2</p>
+								</div>
+							</div>
+						</div>								
+						<div class="about nopadding top-margin-1em clear">
+							<div class="hotel-details" role="tabpanel" data-example-id="togglable-tabs">
+								<ul id="myTab" class="nav-tabs" role="tablist">
+									<li role="presentation" [ngClass]="{'active':showAuction}">
+										<a href="javascript:void(0);" (click) = "toggleTab('auction')" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" class="btn btn-info">Auction</a>
+									</li>
+									<li role="presentation" [ngClass]="{'active':showFlashSell}">
+										<a href="javascript:void(0);" (click) = "toggleTab('flashsell')" role="tab" id="flashsell-tab" data-toggle="tab" aria-controls="flashsell" aria-expanded="false" class="btn btn-info">Flash Sell</a>
+									</li>
+									<li role="presentation" [ngClass]="{'active':showPromotions}">
+										<a href="javascript:void(0);" (click) = "toggleTab('promotions')" role="tab" id="promotions-tab" data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Promotions</a>
+									</li>
+									<li role="presentation" [ngClass]="{'active':showHotelDetails}">
+										<a href="javascript:void(0);" (click) = "toggleTab('roomdetails')" role="tab" id="roomdetails-tab" data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Room Details</a>
+									</li>
+								</ul> 
+								<div id="myTabContent" class="tab-content">
+									<div role="tabpanel" *ngIf = "showAuction" class="tab-pane fade active in" id="auction" aria-labelledby="auction-tab">
+										<form [formGroup]="auctionForm" (ngSubmit)="addAuction($event)">
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<label for="inputEmail4">Start From</label>
+													<input formControlName="startDate" type="date" placeholder="Start Date" class="form-control">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Ends On</label>
+													<input formControlName="endDate" type="date" placeholder="End Date" class="form-control" >
+												</div>
+											</div>
+											<div class="form-group">												
+												<div class="form-group col-md-6">
+													<label for="inputPassword4">Room Type</label>
+													<select id="inputState" formControlName="roomTypeName" class="form-control" (change)="setRoomCapacity($event);">
+														<option selected>Choose Room Type</option>
+														<option *ngFor="let roomtype of roomTypeList" value="{{roomtype.roomType}}" [attr.data-capacity]="roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress2">Room Quantity</label>
+													<select id="inputState" formControlName="roomCapacity" class="form-control">
+														<option selected>Choose No of Rooms</option>
+														<option *ngFor="let ca of roomCapacity; let i = index">{{i+1}}</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Booking Start Date</label>
+													<input type="date"  formControlName="roomLockedFrom" class="form-control" id="inputAddress" placeholder="">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress2">Booking End Date</label>
+													<input type="date"  formControlName="roomLockedTill" class="form-control" id="inputAddress" placeholder="">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Start Price</label>
+													<input type="number"  formControlName="startingPrice" class="form-control"  placeholder="">
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress2">Buy Now Price</label>
+													<input type="number"  formControlName="buyNowPrice" class="form-control"  placeholder="">
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-12">
+													<label for="inputAddress">Auction Description</label>
+													<textarea  formControlName="auctionComment" class="form-control"></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-12">
+													<button type="submit" class="btn btn-info pull-right">Save</button>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div role="tabpanel" *ngIf = "showFlashSell" class="tab-pane fade active in" id="flashsell" aria-labelledby="flashsell-tab">
+											<form>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputEmail4">Start From</label>
+														<input type="date" class="form-control" id="inputEmail4" placeholder="Email">
+													</div>
+													<div class="form-group col-md-6">
+														<label for="inputPassword4">Room Type</label>
+														<select id="inputState" class="form-control">
+															<option selected>Choose...</option>
+															<option>...</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-group col-md-6">
+														<label for="inputAddress">Ends On</label>
+														<input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
+													</div>
+													<div class="form-group col-md-6">
+														<label for="inputAddress2">No of Rooms</label>
+														<select id="inputState" class="form-control">
+															<option selected>Choose...</option>
+															<option>...</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-group col-md-6">
+														
+													</div>
+													<div class="form-group col-md-6">
+														<label for="inputAddress">Price</label>
+														<input type="text" class="form-control" id="inputAddress" placeholder="">
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-group col-md-12">
+														<button type="submit" class="btn btn-info pull-right">Save</button>
+													</div>
+												</div>
+											</form>												
+									</div>
+									<div role="tabpanel" *ngIf = "showPromotions" class="tab-pane fade active in" id="promotions" aria-labelledby="flashsell-tab">
+											<form>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputEmail4">Start From</label>
+														<input type="date" class="form-control" id="inputEmail4" placeholder="Email">
+													</div>
+													<div class="form-group col-md-6">
+														<label for="inputPassword4">Room Type</label>
+														<select id="inputState" class="form-control">
+															<option selected>Choose...</option>
+															<option>...</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-group col-md-6">
+														<label for="inputAddress">Ends On</label>
+														<input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
+													</div>
+													<div class="form-group col-md-6">
+														<label for="inputAddress2">No of Rooms</label>
+														<select id="inputState" class="form-control">
+															<option selected>Choose...</option>
+															<option>...</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-group col-md-6">
+														
+													</div>
+													<div class="form-group col-md-6">
+														<label for="inputAddress">Price</label>
+														<input type="text" class="form-control" id="inputAddress" placeholder="">
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-group col-md-12">
+														<button type="submit" class="btn btn-info pull-right">Save</button>
+													</div>
+												</div>
+											</form>												
+									</div>
+									<div role="tabpanel" *ngIf = "showHotelDetails" class="tab-pane fade active in" id="roomdetails" aria-labelledby="roomdetails-tab">
+										<form class="">
+											<div class="form-row">										
+												<div class="form-group col-md-12  top-margin-1em clear">
+													<select id="inputState" class="form-control">
+														<option selected>Dec</option>
+														<option>Jan</option>
+													</select>
+												</div>
+											</div>
+										</form>
+										<table class="table table-fixed">
+											<thead>
+												<tr>
+													<th class="col-xs-2">Room Type/Days</th>
+													<th class="col-xs-2">Deluxe</th>
+													<th class="col-xs-2">Super Deluxe</th>
+													<th class="col-xs-2">Type 3</th>
+													<th class="col-xs-2">Type 4</th>
+													<th class="col-xs-2">Type 5</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="col-xs-2">Day 1</td>
+													<td class="col-xs-2">1/2</td>
+													<td class="col-xs-2">2/3</td>
+													<td class="col-xs-2">3/4</td>
+													<td class="col-xs-2">4/5</td>
+													<td class="col-xs-2">5/6</td>
+												</tr>
+												<tr>
+													<td class="col-xs-2">Day 2</td>
+													<td class="col-xs-2">1/2</td>
+													<td class="col-xs-2">2/3</td>
+													<td class="col-xs-2">3/4</td>
+													<td class="col-xs-2">4/5</td>
+													<td class="col-xs-2">5/6</td>
+												</tr>
+												<tr>
+													<td class="col-xs-2">Day 3</td>
+													<td class="col-xs-2">1/2</td>
+													<td class="col-xs-2">2/3</td>
+													<td class="col-xs-2">3/4</td>
+													<td class="col-xs-2">4/5</td>
+													<td class="col-xs-2">5/6</td>
+												</tr>
+												<tr>
+													<td class="col-xs-2">Day 4</td>
+													<td class="col-xs-2">1/2</td>
+													<td class="col-xs-2">2/3</td>
+													<td class="col-xs-2">3/4</td>
+													<td class="col-xs-2">4/5</td>
+													<td class="col-xs-2">5/6</td>
+												</tr>
+												<tr>
+													<td class="col-xs-2">Day 5</td>
+													<td class="col-xs-2">1/2</td>
+													<td class="col-xs-2">2/3</td>
+													<td class="col-xs-2">3/4</td>
+													<td class="col-xs-2">4/5</td>
+													<td class="col-xs-2">5/6</td>
+												</tr>
+												<tr>
+													<td class="col-xs-2">Day 30</td>
+													<td class="col-xs-2">1/2</td>
+													<td class="col-xs-2">2/3</td>
+													<td class="col-xs-2">3/4</td>
+													<td class="col-xs-2">4/5</td>
+													<td class="col-xs-2">5/6</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="clearfix"> </div>
+								</div>								
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+	</div>

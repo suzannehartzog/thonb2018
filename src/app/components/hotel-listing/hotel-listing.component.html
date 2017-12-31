@@ -1,0 +1,46 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="about">
+		<div class="container">
+			<div class="col-md-3">
+				<div class="panel panel-default sidebar-menu">
+					<div class="panel-heading">
+						<h3 class="panel-title">Pages</h3>
+					</div>
+					<div class="panel-body">
+						<ul class="nav nav-pills nav-stacked">
+							<li>
+								<a href="#" routerLink="/asas">Text page</a>
+							</li>
+							<li>
+								<a href="#" routerLink="/dfdf">Contact page</a>
+							</li>
+							<li>
+								<a href="#" routerLink="/dfdf">FAQ</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-md-9" id="basket">
+				<h1>Hotel Listing</h1>
+				<div class="box">
+					<article *ngFor="let hotel of hotelList" class="search-result row">
+						<div class="col-xs-12 col-sm-12 col-md-12 excerpet">
+							<h3>
+								<a  title="{{hotel.hotelName}}" href="#" [routerLink]="['/hotel-details', hotel.hotelId]">{{hotel.hotelName}}</a>							
+							</h3>
+							<i class="fa fa-tags"></i> <span>Hotel</span>
+							<p>
+								{{hotel.hotelAddress}}
+							</p>												
+						</div>
+					</article>
+				</div>
+				<!-- /.box -->
+			</div>
+
+		</div>
+</div>

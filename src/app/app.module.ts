@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- import required BrowserAnimationsModule  
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
@@ -33,6 +34,8 @@ import { CheckoutComponent } from './components/check-out/check-out.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { GetResourcesForPackage } from './components/resources-for-package/resources-for-package.component';
 import { RegisterItineraryComponent } from './components/register-itinerary/register-itinerary.component';
+import { HotelListingComponent } from './components/hotel-listing/hotel-listing.component';
+import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
 
 import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
@@ -63,6 +66,8 @@ const appRoutes: Routes = [
   {path: 'e-auction', component: EAuctionComponent},
   {path: 'check-out', component: CheckoutComponent},
   {path: 'payment', component: PaymentComponent},
+  {path: 'hotel-listing', component: HotelListingComponent},
+  {path: 'hotel-details/:id', component: HotelDetailsComponent},
   {path: '**', redirectTo: '' }
 ];
 
@@ -93,12 +98,15 @@ const appRoutes: Routes = [
     EAuctionComponent,
     CheckoutComponent,
     PaymentComponent,
+    HotelListingComponent,
+    HotelDetailsComponent,
 
     DatePicker,
     DateTimePicker
   ],
   imports: [
     HttpModule,
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true}), 

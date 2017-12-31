@@ -1,0 +1,188 @@
+<div class="banner notHome">
+    <app-navbar></app-navbar>
+</div>
+<div class="register-itin">
+    <div class="container">
+        <h1>Register Itinerary</h1>
+        <div [ngClass]="messageClass">{{message}}</div>
+        <div class="row">
+            <section class="col-md-12 top-margin-1em bottom-margin-1em">
+                <article class="booking-list card">
+                    <div class="panel-heading clickable no-gutter" (click)="toggleDisplay('hotel')">
+                        <div class="col-md-3">
+                            <i class="fa fa-bed fa-2x" aria-hidden="true"></i>
+                            <h5>Select Hotel</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-gray">Place:</span>
+                            <span><b>Dareeeling</b></span>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-gray">Check-in Date:</span>
+                            <span><b id="checkinDate">2018-01-04</b></span>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text-gray">No. of Nights:</span>
+                            <span><b>3</b></span>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="hideHotelBodyPanel ? 'hideMe' : ''" [ngClass]="hideHotelBodyPanel ? '' : 'hideMe'">
+                        <div class="flex-row" *ngFor="let hotel of allHotels; let i = index;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="assets/images/hotel.jpg" alt="{{hotel.hotelName}}" />
+                                </div>
+                                <div class="col-md-8">
+                                    <h5 class="hotel-name">{{hotel.hotelName}}</h5>
+                                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
+                                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
+                                        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including 
+                                        versions of Lorem Ipsum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row top-margin-1em bottom-dashed-border">
+                                <div class="col-md-12">
+                                    <h5>Select Room</h5>
+                                </div>
+                            </div>
+                            <div class="row top-margin-1em hotel-room-desc" *ngFor="let hotelClass of hotel.hotelClass; let j = index">
+                                <div class="col-md-4 room-class">
+                                    <img src="assets/images/hotel-room-ac-deluxe.jpg" alt="{{hotelClass.roomTypeName}}" />
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row bottom-dashed-border">
+                                        <strong>{{hotelClass.roomTypeName}}</strong>
+                                    </div>
+                                    <div class="row">
+                                        <strong>{{hotelClass.roomBasePrice}} INR</strong>
+                                        <span>per night</span>
+                                        <a class="btn btn-info pull-right" href="javascript:void(0)" title="select room" (click)="showPickup(hotel, hotelClass.roomTypeName)">Book Now</a>
+                                    </div>
+                                    <div class="row">
+                                        <strong>Only {{hotelClass.availableCount}} room(s) available</strong>
+                                    </div>
+                                    <div class="row">
+                                        <div><strong>Room amenities</strong></div>
+                                        <Ul class="list-group row no-bottom-margin room-amenity">
+                                            <li class="list-group-item" *ngFor="let amenity of hotelClass.amenities; let k = index">
+                                                <span class="pull-left amenity-item">{{amenity.additionalItem}}</span>
+                                                <span class="pull-right amenity-price">{{amenity.additionalPrice}}</span>
+                                            </li>
+                                        </Ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="booking-list card" [ngClass]="isHotelSelected ? '' : 'hideMe'">
+                    <div class="panel-heading clickable no-gutter" (click)="toggleDisplay('pickup')">
+                        <div class="col-md-4">
+                            <i class="fa fa-cab fa-2x" aria-hidden="true"></i>
+                            <h5>Pick-up Transport</h5>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="text-gray">Pick-up Point:</span>
+                            <span><b>Dareeeling station</b></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="text-gray">Date:</span>
+                            <span><b id="pickupDate">2018-01-04</b></span>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="hidePickupBodyPanel ? 'hideMe' : ''" [ngClass]="hidePickupBodyPanel ? '' : 'hideMe'">
+                        <div class="flex-row bottom-dashed-border" *ngFor="let transport of transports; let i = index">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="assets/images/car.jpg" alt="car" />
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <h5 class="trasnpsort-name">{{transport.transportName}}}</h5>
+                                        <p class="cab-desc">
+                                            <strong>Vehicle: {{transport.vehicalName}}</strong>
+                                            <a class="btn btn-info pull-right" href="javascript:void(0)" title="select pickup" (click)="showDrop(transport)">Select</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="booking-list card" [ngClass]="isPickupSelected ? '' : 'hideMe'">
+                    <div class="panel-heading clickable no-gutter" (click)="toggleDisplay('drop')">
+                        <div class="col-md-4">
+                            <i class="fa fa-cab fa-2x" aria-hidden="true"></i>
+                            <h5>Drop Transport</h5>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="text-gray">Pick-up Point:</span>
+                            <span><b>Dareeeling station</b></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="text-gray">Date:</span>
+                            <span><b id="dropDate">2018-01-04</b></span>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="hideDropBodyPanel ? 'hideMe' : ''" [ngClass]="hideDropBodyPanel ? '' : 'hideMe'">
+                        <div class="flex-row bottom-dashed-border" *ngFor="let transport of transports; let i = index">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="assets/images/car.jpg" alt="car" />
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <h5 class="trasnpsort-name">{{transport.transportName}}}</h5>
+                                        <p class="cab-desc">
+                                            <strong>Vehicle: {{transport.vehicalName}}</strong>
+                                            <a class="btn btn-info pull-right" href="javascript:void(0)" title="select pickup" (click)="showGuide(transport)">Select</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="booking-list card" [ngClass]="isDropSelected ? '' : 'hideMe'">
+                    <div class="panel-heading clickable no-gutter" (click)="toggleDisplay('guide')">
+                        <div class="col-md-8">
+                            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                            <h5>Guide</h5>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="text-gray">Date:</span>
+                            <span><b id="guideDate">2018-01-04</b></span>
+                        </div>
+                    </div>
+                    <div class="panel-body" [ngClass]="hideGuideBodyPanel ? 'hideMe' : ''" [ngClass]="hideGuideBodyPanel ? '' : 'hideMe'">
+                        <div class="flex-row bottom-dashed-border">
+                            <div class="row">
+                                <div class="col-md-4 room-class">
+                                    <img src="assets/images/guide.jpg" alt="ac deluxe" />
+                                </div>
+                                <div class="col-md-4" *ngFor="let guide of allGuides; let i = index">
+                                    <div class="row">
+                                        <h5 class="trasnpsort-name">{{guide.guideDescription}}</h5>                                        
+                                    </div>
+                                    <div class="row guide-desc">
+                                        <span>Price per day</span>
+                                        <strong>{{guide.perDayPrice}} INR</strong>
+                                        <a class="btn btn-info pull-right" href="javascript:void(0)" title="select {{guide.guideDescription}}" (click)="addGuide(guide)">Hire</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <a href="javascript:void(0)" class="btn btn-info form-control" (click)="createPackage()" [ngClass]="isDropSelected ? '' : 'hideMe'">Submit</a>
+        </div>
+    </div>
+</div>

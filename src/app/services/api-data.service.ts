@@ -12,6 +12,11 @@ export class ApiDataService {
 
   public ENV_URL_SEARCH = 'https://yayaati.herokuapp.com/';
 
+ public getCities() {
+    return this.http.get(this.ENV_URL_SEARCH + '/v1/search/getAllCities').map(
+      (response) =>response.json()
+    );
+  }
   public createItinerary(product) {
     //POST /v1/booking/createItinerary    
     let params = {
@@ -25,8 +30,26 @@ export class ApiDataService {
           //tempVar = response["_body"].substring(8);
 
         } else {
-
         }
+      }
+    );
+  }
+
+  public getResourcesForPackage(product) {
+    //POST /v1/booking/getResourcesForPackage
+    console.log(product) ;
+    if(product.pickUpIncluded == "") {
+      product.pickUpIncluded = false;
+    }
+    if(product.dropIncluded == "") {
+      product.dropIncluded = false;
+    }
+    if(product.guideIncluded == "") {
+      product.guideIncluded = false;
+    }
+
+    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/getResourcesForPackage', product).map(
+      (response) => {
       }
     );
   }

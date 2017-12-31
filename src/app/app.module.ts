@@ -32,6 +32,8 @@ import { CreateItineraryComponent } from './components/create-itinerary/create-i
 import { EAuctionComponent } from './components/e-auction/e-auction.component';
 import { CheckoutComponent } from './components/check-out/check-out.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { GetResourcesForPackage } from './components/resources-for-package/resources-for-package.component';
+import { RegisterItineraryComponent } from './components/register-itinerary/register-itinerary.component';
 import { HotelListingComponent } from './components/hotel-listing/hotel-listing.component';
 import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
 
@@ -39,6 +41,7 @@ import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
 
 import { DatePicker } from './directives/datepicker/datepicker';
+import { DateTimePicker } from './directives/datetimepicker/datetimepicker';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -57,6 +60,8 @@ const appRoutes: Routes = [
   {path: 'show-quote-response', component: ShowQuoteResponseComponent},
   {path: 'trip-planner', component: TripPlannerComponent},
   {path: 'quote-request', component: QuoteRequestComponent},
+  {path: 'resources-for-package', component: GetResourcesForPackage},
+  {path: 'register-itinerary', component: RegisterItineraryComponent},
   {path: 'create-itinerary', component: CreateItineraryComponent},
   {path: 'e-auction', component: EAuctionComponent},
   {path: 'check-out', component: CheckoutComponent},
@@ -87,6 +92,8 @@ const appRoutes: Routes = [
     ShowQuoteResponseComponent,
     TripPlannerComponent,
     QuoteRequestComponent,
+    GetResourcesForPackage,
+    RegisterItineraryComponent,
     CreateItineraryComponent,
     EAuctionComponent,
     CheckoutComponent,
@@ -94,7 +101,8 @@ const appRoutes: Routes = [
     HotelListingComponent,
     HotelDetailsComponent,
 
-    DatePicker
+    DatePicker,
+    DateTimePicker
   ],
   imports: [
     HttpModule,

@@ -1,0 +1,80 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="create-itinerary">
+	<div class="container">
+		<h1>Create Itinerary!</h1>
+		<div class="login-form">
+			<form #itinForm="ngForm" (ngSubmit)="getResourcesForPackage(itinForm.value)">
+				<div class="styled-input">
+				<select name="starttingCityId" class="form-control" required ngModel>
+						<option value="">Origin</option>
+						<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
+					</select>
+				<label>Origin</label>
+				<span></span>
+				</div>
+				<div class="styled-input">
+					<input type="text" name="startingDate" required placeholder="" id="startingDate" datetimepicker ngModel>
+					<label for="startingDate">Starting Date</label>
+					<span></span>
+				</div>
+				<div class="styled-input">
+					<select name="travellingCityId" class="form-control" required ngModel>
+						<option value="">Travel Desitination</option>
+						<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
+					</select>
+					<label>No. of Nights</label>
+					<span></span>
+				</div>
+				<div class="styled-input">
+					<select name="noOfNights" class="form-control" required ngModel>
+						<option value="">No. of Nights</option>
+						<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
+					</select>
+					<label>No. of Nights</label>
+					<span></span>
+				</div>
+				<div class="styled-input">
+					<select name="noOfRooms" class="form-control" required ngModel>
+						<option value="">No. of Rooms</option>
+						<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
+					</select>
+					<label>No. of Rooms</label>
+					<span></span>
+				</div>
+				<div class="styled-input">
+					<select name="noOfTravellers" class="form-control" required ngModel id="noOfTravellers">
+						<option value="">No. of Travellers</option>
+						<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
+					</select>
+					<label>No. of Travellers</label>
+					<span></span>
+				</div>
+
+				<div class="wthree-text">
+					<div class="register-text">Request For</div>
+					<div class="register-options">
+						<ul>
+							<li>
+								<input type="checkbox" id="pickUpIncluded" value="pickUpIncluded" name="pickUpIncluded" ngModel>
+								<label for="pickUpIncluded"><span></span>Pick-up </label>
+							</li>
+							<li>
+								<input type="checkbox" id="dropIncluded" value="dropIncluded" name="dropIncluded" ngModel>
+								<label for="dropIncluded"><span></span>Drop </label>
+							</li>
+							<li>
+								<input type="checkbox" id="guideIncluded" value="guide" name="guideIncluded" ngModel>
+								<label for="guideIncluded"><span></span>Guide </label>
+							</li>
+						</ul>
+					</div>
+					<div class="clear"> </div>
+				</div>
+
+				<input type="submit" class="getDetls form-control" value="Get Details">
+			</form>
+		</div>
+	</div>
+</div>

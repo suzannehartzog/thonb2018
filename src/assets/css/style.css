@@ -321,7 +321,7 @@ input[type=text]#search {
 }
 /*-- //banner --*/ 
 /*-- welcome --*/
-.welcome,.trips,.news,.about,.team,.services,.gallery,.contact,.codes, .customer-signup,.vendor-signup,.signin,.my-trips, .trip-planner,.show-interest{
+.welcome,.trips,.news,.about,.team,.services,.gallery,.contact,.codes, .customer-signup,.vendor-signup,.signin,.my-trips, .trip-planner,.show-interest, .register-itin, .create-itinerary{
 	padding: 0 0 20px 0;
 }
 .contact{

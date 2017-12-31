@@ -98,14 +98,6 @@ export class ApiDataService {
       (response) =>response.json()
     );
   }
-<<<<<<< HEAD
-=======
-  public activeAuctions(){
-    return this.http.get('assets/service-json/auction-list.json').map(
-      (response) =>response.json()
-    );
-  }
->>>>>>> 24203ccccc504b6ee365717852d88c971a65db24
   public checkValidBidder(){
     return;
   }

@@ -65,8 +65,8 @@
 									<li role="presentation" [ngClass]="{'active':showAuction}">
 										<a href="javascript:void(0);" (click) = "toggleTab('auction')" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" class="btn btn-info">Auction</a>
 									</li>
-									<li role="presentation" [ngClass]="{'active':showFlashSell}">
-										<a href="javascript:void(0);" (click) = "toggleTab('flashsell')" role="tab" id="flashsell-tab" data-toggle="tab" aria-controls="flashsell" aria-expanded="false" class="btn btn-info">Flash Sell</a>
+									<li role="presentation" [ngClass]="{'active':showFlashSale}">
+										<a href="javascript:void(0);" (click) = "toggleTab('flashsale')" role="tab" id="flashsale-tab" data-toggle="tab" aria-controls="flashsale" aria-expanded="false" class="btn btn-info">Flash Sale</a>
 									</li>
 									<li role="presentation" [ngClass]="{'active':showPromotions}">
 										<a href="javascript:void(0);" (click) = "toggleTab('promotions')" role="tab" id="promotions-tab" data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Promotions</a>
@@ -137,8 +137,8 @@
 											</div>
 										</form>
 									</div>
-									<div role="tabpanel" *ngIf = "showFlashSell" class="tab-pane fade active in" id="flashsell" aria-labelledby="flashsell-tab">
-										<form [formGroup]="flashSellForm" (ngSubmit)="addFlashSell($event)">
+									<div role="tabpanel" *ngIf = "showFlashSale" class="tab-pane fade active in" id="flashsale" aria-labelledby="flashsale-tab">
+										<form [formGroup]="flashSaleForm" (ngSubmit)="addFlashSale($event)">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">Start From</label>
@@ -178,11 +178,11 @@
 											<div class="form-group">
 												<div class="form-group col-md-6">
 													<label for="inputAddress">Price</label>
-													<input type="number"  formControlName="flashsellPrice" class="form-control"  placeholder="">
+													<input type="number"  formControlName="flashsalePrice" class="form-control"  placeholder="">
 												</div>
 												<div class="form-group col-md-6">
-													<label for="inputAddress">Auction Description</label>
-													<textarea  formControlName="auctionComment" class="form-control"></textarea>
+													<label for="inputAddress">Flash Sale Description</label>
+													<textarea  formControlName="flashSaleComment" class="form-control"></textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -192,49 +192,40 @@
 											</div>
 										</form>											
 									</div>
-									<div role="tabpanel" *ngIf = "showPromotions" class="tab-pane fade active in" id="promotions" aria-labelledby="flashsell-tab">
-											<form>
-												<div class="form-row">
-													<div class="form-group col-md-6">
-														<label for="inputEmail4">Start From</label>
-														<input type="date" class="form-control" id="inputEmail4" placeholder="Email">
-													</div>
-													<div class="form-group col-md-6">
-														<label for="inputPassword4">Room Type</label>
-														<select id="inputState" class="form-control">
-															<option selected>Choose...</option>
-															<option>...</option>
-														</select>
-													</div>
+									<div role="tabpanel" *ngIf = "showPromotions" class="tab-pane fade active in" id="promotions" aria-labelledby="flashsale-tab">
+										<form [formGroup]="promotionForm" (ngSubmit)="addPromotion($event)">
+											<div class="form-group">												
+												<div class="form-group col-md-6">
+													<label for="inputPassword4">Room Type</label>
+													<select id="inputState" formControlName="roomTypeName" class="form-control" (change)="setRoomCapacity($event);">
+														<option selected>Choose Room Type</option>
+														<option *ngFor="let roomtype of roomTypeList" value="{{roomtype.roomType}}" [attr.data-capacity]="roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+													</select>
 												</div>
-												<div class="form-group">
-													<div class="form-group col-md-6">
-														<label for="inputAddress">Ends On</label>
-														<input type="date" class="form-control" id="inputAddress" placeholder="1234 Main St">
-													</div>
-													<div class="form-group col-md-6">
-														<label for="inputAddress2">No of Rooms</label>
-														<select id="inputState" class="form-control">
-															<option selected>Choose...</option>
-															<option>...</option>
-														</select>
-													</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress2">Room Quantity</label>
+													<select id="inputState" formControlName="roomCapacity" class="form-control">
+														<option selected>Choose No of Rooms</option>
+														<option *ngFor="let ca of roomCapacity; let i = index">{{i+1}}</option>
+													</select>
 												</div>
-												<div class="form-group">
-													<div class="form-group col-md-6">
-														
-													</div>
-													<div class="form-group col-md-6">
-														<label for="inputAddress">Price</label>
-														<input type="text" class="form-control" id="inputAddress" placeholder="">
-													</div>
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Discount</label>
+													<input type="number"  formControlName="discountAmount" class="form-control"  placeholder="">
 												</div>
-												<div class="form-group">
-													<div class="form-group col-md-12">
-														<button type="submit" class="btn btn-info pull-right">Save</button>
-													</div>
+												<div class="form-group col-md-6">
+													<label for="inputAddress">Promotion Description</label>
+													<textarea  formControlName="promotionComment" class="form-control"></textarea>
 												</div>
-											</form>												
+											</div>
+											<div class="form-group">
+												<div class="form-group col-md-12">
+													<button type="submit" class="btn btn-info pull-right">Save</button>
+												</div>
+											</div>
+										</form>											
 									</div>
 									<div role="tabpanel" *ngIf = "showHotelDetails" class="tab-pane fade active in" id="roomdetails" aria-labelledby="roomdetails-tab">
 										<form class="">

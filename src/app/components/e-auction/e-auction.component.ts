@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+import { ApiDataService } from '../../services/api-data.service';
+import { SharedService } from '../../services/shared.service';
+
 declare var jquery: any;
 declare var $: any;
 
@@ -39,22 +42,29 @@ export class EAuctionComponent implements OnInit {
   constructor(
     private router: Router,
     private titleService: Title,
-    private el: ElementRef
+    private el: ElementRef,    
+    private apiSrv: ApiDataService,
+    private shrSrv: SharedService
   ) {}
 
   ngOnInit() {
     this.titleService.setTitle('E Auction:: Yayaati');
-    this.auctionList = [
-      {id:7, name:"Auction 7"},
-      {id:8, name:"Auction 8"},
-      {id:9, name:"Auction 9"},
-      {id:10, name:"Auction 10"},
-      {id:11, name:"Auction 11"},
-      {id:12, name:"Auction 12"}
-    ];
-    setTimeout(()=>{ 
-      this.startSlider();
-    },100);    
+    this.getActiveAuctions();        
+  }
+  getActiveAuctions(){
+    this.apiSrv.activeAuctions().subscribe(
+      (data) => {
+        this.auctionList = data; 
+        setTimeout(()=>{ 
+          this.startSlider();
+        },100);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );
   }
   toggleChild(auction){
     auction.showdetails = !auction.showdetails;

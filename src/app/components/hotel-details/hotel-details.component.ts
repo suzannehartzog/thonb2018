@@ -20,7 +20,7 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   public roomCapacity:any=[];
   private sub: any;
   public showAuction: boolean = true;
-  public showFlashSell: boolean = false;
+  public showFlashSale: boolean = false;
   public showPromotions: boolean = false;
   public showHotelDetails: boolean = false;
   public auctionForm = this.fb.group({
@@ -36,17 +36,25 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     hotelId: ["", Validators.required],
     auctionComment: ["", Validators.required]
   });
-  public flashSellForm = this.fb.group({
+  public flashSaleForm = this.fb.group({
     startDate: ["", Validators.required],
     endDate: ["", Validators.required],
-    flashsellPrice : ["", Validators.required],    
+    flashsalePrice : ["", Validators.required],    
     roomCapacity : ["", Validators.required],
     roomLockedFrom: ["", Validators.required],
     roomLockedTill: ["", Validators.required],
     roomTypeName : ["", Validators.required],
     eventType: ["", Validators.required],
     hotelId: ["", Validators.required],
-    flashSellComment: ["", Validators.required]
+    flashSaleComment: ["", Validators.required]
+  });
+  public promotionForm = this.fb.group({
+    discountAmount : ["", Validators.required],    
+    roomCapacity : ["", Validators.required],
+    roomTypeName : ["", Validators.required],
+    eventType: ["", Validators.required],
+    hotelId: ["", Validators.required],
+    promotionComment: ["", Validators.required]
   });
   constructor(
     public fb: FormBuilder,
@@ -88,24 +96,29 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     this.auctionForm.controls['eventType'].setValue('a');
     console.log(this.auctionForm.value);
   }  
-  addFlashSell(event) {
-    this.flashSellForm.controls['hotelId'].setValue(this.hotelId);
-    this.flashSellForm.controls['eventType'].setValue('f');
-    console.log(this.auctionForm.value);
+  addFlashSale(event) {
+    this.flashSaleForm.controls['hotelId'].setValue(this.hotelId);
+    this.flashSaleForm.controls['eventType'].setValue('f');
+    console.log(this.flashSaleForm.value);
   }  
+  addPromotion(event) {
+    this.promotionForm.controls['hotelId'].setValue(this.hotelId);
+    this.promotionForm.controls['eventType'].setValue('p');
+    console.log(this.promotionForm.value);
+  }
   setRoomCapacity(event){
     const capacity = event.target.options[event.target.selectedIndex].getAttribute('data-capacity');
     this.roomCapacity.length = capacity; 
   }
   toggleTab(tabnae){
     this.showAuction  = false;
-    this.showFlashSell = false;
+    this.showFlashSale = false;
     this.showPromotions = false;
     this.showHotelDetails = false;
     if(tabnae==="auction"){
       this.showAuction  = true;
-    }else if(tabnae==="flashsell"){
-      this.showFlashSell  = true;
+    }else if(tabnae==="flashsale"){
+      this.showFlashSale  = true;
     }else if(tabnae==="promotions"){
       this.showPromotions  = true;
     }else{

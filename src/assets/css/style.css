@@ -2935,7 +2935,9 @@ fieldset.form-group {
 }
 .about h1,
 .register-itin h1,
-.create-itinerary h1{
+.create-itinerary h1,
+.itinerary-request h1,
+.chat-wrap h1 {
     font-size: 30px;
     color: #001e4e;
 }
@@ -3080,4 +3082,24 @@ legend{
 .create-itinerary label[for="expectedResponseWithinDate"],
 .create-itinerary label[for="expectedResponseWithinTime"] {
     top: -1em;
+}
+.itinerary-request {
+    padding: 0 !important;
+}
+#Messages .getDetls {
+    display: inline-block;
+    width: 65% !important;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+}
+.display-table-row {
+    display: table-row;
+}
+.couponCode {
+    width: 100%;
+}
+.showCouponHeight {
+    height: 96% !important;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { DatePicker } from '../../directives/datepicker/datepicker';
-import { DateTimePicker } from '../../directives/datetimepicker/datetimepicker';
+//import { DatePicker } from '../../directives/datepicker/datepicker';
+//import { DateTimePicker } from '../../directives/datetimepicker/datetimepicker';
 
 import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';

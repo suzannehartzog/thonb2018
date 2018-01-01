@@ -1,0 +1,35 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="contact itinerary-request">
+	<div class="container">
+		<h1>Happy Haggling!</h1>
+		<div class="contact-info">
+			<div class="col-md-12 contact-grids">
+				<p>Let us Help you make your trip a memorable one. </p>
+				<div [ngClass]="messageClass">{{message}}</div>
+				<div class="contact-form">
+					<form #hagForm="ngForm" (ngSubmit)="startHaggling(hagForm.value)">
+						<div class="styled-input place-selector">
+							<select name="hotel" class="form-control" required ngModel>
+								<option value="1">ABC</option>
+							</select>
+							<label>Select Hotel</label>
+							<span></span>
+						</div>
+						<div class="styled-input place-selector">
+							<select name="roomType" class="form-control" required ngModel>
+								<option value="Delux">Delux</option>
+							</select>
+							<label>Starting City</label>
+							<span></span>
+						</div>
+						<textarea name="message" placeholder="Let us know your plan" required="" ngModel></textarea>
+						<input type="submit" value="SUBMIT">
+					</form>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>

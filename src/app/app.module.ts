@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+//import { BsDatepickerModule } from 'ngx-bootstrap';
 
 // Import your library
 import { CollapsibleModule } from 'angular2-collapsible'; // <-- import the module
@@ -18,8 +19,8 @@ import { CustomerSignupComponent } from './components/customer-signup/customer-s
 import { VendorSignupComponent } from './components/vendor-signup/vendor-signup.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { MyTripsComponent } from './components/my-trips/my-trips.component';
-import { ItineraryConversation } from './components/itinerary-conversation/itinerary-conversation.component';
-import { ItineraryRequest } from './components/itinerary-request/itinerary-request.component';
+import { HagglingConversation } from './components/haggling-conversation/haggling-conversation.component';
+import { StartHaggling } from './components/start-haggling/start-haggling.component';
 import { MyHotels } from './components/my-hotels/my-hotels.component';
 import { AssetRegistrationComponent } from './components/asset-registration/asset-registration.component';
 import { DriverRegistrationComponent } from './components/driver-registration/driver-registration.component';
@@ -40,8 +41,8 @@ import { HotelDetailsComponent } from './components/hotel-details/hotel-details.
 import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
 
-import { DatePicker } from './directives/datepicker/datepicker';
-import { DateTimePicker } from './directives/datetimepicker/datetimepicker';
+//import { DatePicker } from './directives/datepicker/datepicker';
+//import { DateTimePicker } from './directives/datetimepicker/datetimepicker';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -50,8 +51,8 @@ const appRoutes: Routes = [
   {path: 'vendor-signup', component: VendorSignupComponent},
   {path: 'result', component: SearchResultComponent},
   {path: 'my-trips', component: MyTripsComponent},
-  {path: 'itinerary-conversation', component: ItineraryConversation},
-  {path: 'request-itinerary', component: ItineraryRequest},
+  {path: 'haggling-conversation', component: HagglingConversation},
+  {path: 'start-haggle', component: StartHaggling},
   {path: 'my-hotels', component: MyHotels},
   {path: 'asset-register', component: AssetRegistrationComponent},
   {path: 'driver-register', component: DriverRegistrationComponent},
@@ -82,8 +83,8 @@ const appRoutes: Routes = [
     VendorSignupComponent,
     SearchResultComponent,
     MyTripsComponent,
-    ItineraryConversation,
-    ItineraryRequest,
+    HagglingConversation,
+    StartHaggling,
     MyHotels,
     AssetRegistrationComponent,
     DriverRegistrationComponent,
@@ -101,8 +102,8 @@ const appRoutes: Routes = [
     HotelListingComponent,
     HotelDetailsComponent,
 
-    DatePicker,
-    DateTimePicker
+    // DatePicker,
+    // DateTimePicker
   ],
   imports: [
     HttpModule,
@@ -110,6 +111,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true}), 
+    //BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     CollapsibleModule
   ],

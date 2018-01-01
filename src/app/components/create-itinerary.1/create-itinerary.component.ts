@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { DatePicker } from '../../directives/datepicker/datepicker';
+//import { DatePicker } from '../../directives/datepicker/datepicker';
 import { FormsModule } from '@angular/forms';
 
 import { ApiDataService } from '../../services/api-data.service';

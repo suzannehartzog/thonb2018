@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Router} from "@angular/router";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Router } from "@angular/router";
 import 'rxjs/add/operator/map';
 
 
@@ -43,9 +43,9 @@ export class ApiDataService {
 
   public getResourcesForPackage(product) {
     //POST /v1/booking/getResourcesForPackage
-    console.log(product);    
+    console.log(product);
 
-    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/getResourcesForPackage', product).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getResourcesForPackage', product).map(
       (response) => {
         //return response.json();
         this.apiData.next(response);
@@ -57,7 +57,7 @@ export class ApiDataService {
   public createPackage(product) {
     //POST /v1/booking/createPackage
     console.log(product);
-    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/createPackage', product).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/createPackage', product).map(
       (response) => {
         return response;
       }
@@ -98,20 +98,43 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
-  public activeAuctions(){
+  public activeAuctions() {
     return this.http.get('assets/service-json/auction-list.json').map(
-      (response) =>response.json()
+      (response) => response.json()
     );
   }
-  public checkValidBidder(){
+  public checkValidBidder() {
     return;
   }
-  public createPromotion(){
+  public createPromotion() {
     return;
   }
-  public createFlashSale(){
+  public createFlashSale() {
     return;
   }
+
+  public addToHotelHaggling(params) {
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/addToHotelHaggling', params).map(
+      (response) => {
+        return response;
+      }
+    );
+  }
+
+  public getHotelHagglingDetailForUser(user) {
+    //POST /v1/booking/getHotelHagglingDetailForUser
+    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/getHotelHagglingDetailForUser', user).map(
+      (response) => response.json()
+    );
+  }
+
+  public getHotelHagglingDetailForOwner(user) {
+    //POST /v1/booking/getHotelHagglingDetailForOwner
+    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/getHotelHagglingDetailForOwner', user).map(
+      (response) => response.json()
+    );
+  }
+
   // public dummygetNotificationsPosts(){
   //   let param = {
   //     title: 'foo',

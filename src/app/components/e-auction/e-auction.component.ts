@@ -11,7 +11,7 @@ declare var $: any;
 @Component({
   selector: 'app-e-auction',
   templateUrl: './e-auction.component.html',
-  styleUrls: ['./e-auction.component.css' , './flexslider.css']
+  styleUrls: ['./e-auction.component.css']
 })
 export class EAuctionComponent implements OnInit {
   public bids:any=[

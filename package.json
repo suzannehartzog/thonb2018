@@ -34,6 +34,7 @@
     "jquery": "^3.2.1",
     "materialize-css": "^0.100.2",
     // "ngx-bootstrap": "^2.0.0-rc.0",
+    "ngx-bootstrap-datetime-popup": "^1.2.7",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

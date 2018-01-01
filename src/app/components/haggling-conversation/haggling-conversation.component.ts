@@ -27,15 +27,15 @@ export class HagglingConversation implements OnInit {
     this.userType = localStorage.getItem("userType");
 
     if (this.userType == "user") {
-      this.getHotelHagglingDetailForUser(this.user);
+      this.getHotelHagglingDetailForUser(2);
     }
     if (this.userType == "owner") {
-      this.getHotelHagglingDetailForOwner(this.user);
+      this.getHotelHagglingDetailForOwner(3);
     }
   }
 
-  getHotelHagglingDetailForUser(user) {
-    this.apiSrv.getHotelHagglingDetailForUser(user).subscribe(
+  getHotelHagglingDetailForUser(hagglingId) {
+    this.apiSrv.getHotelHagglingDetailForUser(hagglingId).subscribe(
       (data) => {
         this.comments = data.comments;
       },
@@ -44,8 +44,8 @@ export class HagglingConversation implements OnInit {
     );
   }
 
-  getHotelHagglingDetailForOwner(user) {
-    this.apiSrv.getHotelHagglingDetailForOwner(user).subscribe(
+  getHotelHagglingDetailForOwner(hagglingId) {
+    this.apiSrv.getHotelHagglingDetailForOwner(hagglingId).subscribe(
       (data) => {
         this.comments = data.comments;
       },
@@ -60,7 +60,7 @@ export class HagglingConversation implements OnInit {
       "consumerUserId": parseInt(this.user),
       "firstConversation": false,
       "roomType": "Deluxe",
-      "hotelId": "ABC",
+      "hotelId": 1,
       "hagglingId": 1
     };
 
@@ -75,7 +75,12 @@ export class HagglingConversation implements OnInit {
 
     this.apiSrv.addToHotelHaggling(hagglingJson).subscribe(
       (data) => {
-        console.log(data);
+        if (this.userType == "user") {
+          this.getHotelHagglingDetailForUser(2);
+        }
+        if (this.userType == "owner") {
+          this.getHotelHagglingDetailForOwner(3);
+        }
       }, (error) => {
         console.log(error);
       },

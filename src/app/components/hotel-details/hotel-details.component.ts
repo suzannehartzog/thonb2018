@@ -16,6 +16,7 @@ declare var $: any;
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
   public defaultValue = {roomTypeName: null, roomCapacity:null}
+  public hotelDetails = {};
   public hotelId: number;
   public roomTypeList:any=[];
   public roomCapacity:any=[];
@@ -70,9 +71,23 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     this.titleService.setTitle('Hotel Details:: Yayaati');
     this.sub = this.activeroute.params.subscribe(params => {
       this.hotelId = +params['id'];
+      this.getHotelDetails(this.hotelId);
       this.getAllroomTypeCapacity(this.hotelId);
-   });
-   
+   });   
+  }
+  getHotelDetails(hotelId) {
+    //console.log(params);   
+    //localStorage.setItem("originCityId", params.originCityId);
+    this.apiSrv.getHotelDtlByHotelId(hotelId).subscribe(
+      (data) => {
+        this.hotelDetails = data; 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }
   getAllroomTypeCapacity(hotelId) {
     //console.log(params);   

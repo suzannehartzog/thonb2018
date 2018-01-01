@@ -91,3 +91,18 @@ h3{
 .width-100{
     width: 100%;
 }
+p, p strong {
+    color: #001e53;
+}
+span.aminities {
+    padding: 2px 5px;
+    background: #001e4e47;
+    margin: 0 3px;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 0.9em;
+}
+.about h4{
+    margin-bottom: 0;
+    line-height: 1.5;
+}

@@ -33,7 +33,7 @@ export class GetResourcesForPackage implements OnInit {
       (error) => console.log(error),//Error Handler
       () => console.log("completed cityList")//Complete Handler
     );
-    console.log(this.cityList)
+    //console.log(this.cityList)
   }
 
   getResourcesForPackage(params:any) {

@@ -17,4 +17,14 @@ export class SharedService {
     localStorage.setItem("name", "tapa");
     localStorage.setItem("itineraryId", "1");
   }
+  public getMon(mon) {
+    switch(mon) {
+      case "Jan":
+      case "jan":
+        return "01";
+      case "Feb":
+      case "feb":
+        return "02";
+    }
+  }
 }

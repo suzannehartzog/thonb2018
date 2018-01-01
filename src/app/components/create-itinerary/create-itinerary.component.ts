@@ -1,8 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { DatePicker } from '../../directives/datepicker/datepicker';
-import { DateTimePicker } from '../../directives/datetimepicker/datetimepicker';
 import { NgForm } from '@angular/forms';
 
 
@@ -17,6 +15,7 @@ import { SharedService } from '../../services/shared.service';
 export class CreateItineraryComponent implements OnInit {
 
   public itinParam: Object;
+  public cityList;
   constructor(
     private router: Router,
     private titleService: Title,
@@ -26,26 +25,55 @@ export class CreateItineraryComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('Create Itinerary:: Yayaati');
+
+    this.apiSrv.getCities().subscribe(
+      (res:Response) => {
+        console.log(res);
+        this.cityList = res;
+      },
+      (error) => console.log(error),//Error Handler
+      () => console.log("completed cityList")//Complete Handler
+    );
   }
 
-  submitItinerary(params:any) {
-    console.log(params);   
+  getResourcesForPackage(params:any) {
+    console.log(params);
+    params.startingDate = params.startingDate + "T12:14:53.094Z"// " + params.startingTime;
+
+    params.starttingCityId = parseInt(params.starttingCityId);
+    params.travellingCityId = parseInt(params.travellingCityId);
+    params.noOfNights = parseInt(params.noOfNights);
+    params.noOfRooms = parseInt(params.noOfRooms);
+    params.noOfTravellers = parseInt(params.noOfTravellers);
+
+    if (params.pickUpIncluded == "") {
+      params.pickUpIncluded = false;
+    }
+    if (params.dropIncluded == "") {
+      params.dropIncluded = false;
+    }
+    if (params.guideIncluded == "") {
+      params.guideIncluded = false;
+    }
+
+    localStorage.setItem("starttingCityId", params.starttingCityId);
+    localStorage.setItem("startingDate", params.startingDate + params.startingTime);
+    localStorage.setItem("travellingCityId", params.travellingCityId);
+    localStorage.setItem("noOfNights", params.noOfNights);
+    localStorage.setItem("noOfRooms", params.noOfRooms);
+    localStorage.setItem("noOfTravellers", params.noOfTravellers);    
+    localStorage.setItem("pickUpIncluded", params.pickUpIncluded);
+    localStorage.setItem("guideIncluded", params.guideIncluded);
+    localStorage.setItem("dropIncluded", params.dropIncluded);
+    localStorage.setItem("price", params.budget);
+
+    delete params.fromDate;
+    delete params.startingTime;
+    delete params.budget;
     
-    localStorage.setItem("originCityId", params.originCityId);
-    localStorage.setItem("fromDate", params.fromDate);
-    localStorage.setItem("destinationCityId", params.destinationCityId);
-    localStorage.setItem("nights", params.nights);
-    localStorage.setItem("rooms", params.rooms);
-    localStorage.setItem("groupSize", params.groupSize);    
-    localStorage.setItem("price", params.price);
-    localStorage.setItem("hotel", "true");
-    localStorage.setItem("pickup", params.pickup);
-    localStorage.setItem("guide", params.guide);
-    
-    
-    this.apiSrv.createItinerary(params).subscribe(
+    this.apiSrv.getResourcesForPackage(params).subscribe(
       (data) => {
-        
+        console.log(data);
       }, (error) => {
         console.log(error); 
       },

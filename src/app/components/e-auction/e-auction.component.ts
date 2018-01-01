@@ -110,7 +110,7 @@ export class EAuctionComponent implements OnInit {
     $('.flexslider').flexslider({
       animation: "slide",
       controlNav: false,
-      animationLoop: true,
+      animationLoop: false,
       itemWidth: $(".flexslider").outerWidth()/3,
       itemMargin: 0,
       slideshow:false,

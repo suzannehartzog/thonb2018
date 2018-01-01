@@ -78,16 +78,14 @@
 							<a (click)="toggleChild(auction)" href="javascript:void(0);" title="">
 								<i *ngIf="!auction.showdetails" class="fa fa-angle-down"></i>
 								<i *ngIf="auction.showdetails" class="fa fa-angle-up"></i>
-								Auction Name:: {{auction.name}}</a>
+								Auction Name:: {{auction.auctionComment}}</a>
 							<a (click)="toggleChild(auction)" class="save-bid-btn pull-right" href="javascript:void(0);" title="View the Auction Details">
 								<i *ngIf="!auction.showdetails" class="fa fa-angle-down"></i>
 								<i *ngIf="auction.showdetails" class="fa fa-angle-up"></i>
 								<strong> Bid Now </strong>							
 							</a>							
 						</h3>
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-						</p>						
+						<p [innerHtml]="auction.auctionComment"></p>						
 					</div>
 				</div>
 				<div class="row top-margin-1em" *ngIf="auction.showdetails">

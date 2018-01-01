@@ -15,6 +15,8 @@ declare var $: any;
   styleUrls: ['./hotel-details.component.css']
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
+  public defaultValue = {roomTypeName: null, roomCapacity:null}
+  public hotelDetails = {};
   public hotelId: number;
   public roomTypeList:any=[];
   public roomCapacity:any=[];
@@ -69,9 +71,23 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     this.titleService.setTitle('Hotel Details:: Yayaati');
     this.sub = this.activeroute.params.subscribe(params => {
       this.hotelId = +params['id'];
+      this.getHotelDetails(this.hotelId);
       this.getAllroomTypeCapacity(this.hotelId);
-   });
-   
+   });   
+  }
+  getHotelDetails(hotelId) {
+    //console.log(params);   
+    //localStorage.setItem("originCityId", params.originCityId);
+    this.apiSrv.getHotelDtlByHotelId(hotelId).subscribe(
+      (data) => {
+        this.hotelDetails = data; 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }
   getAllroomTypeCapacity(hotelId) {
     //console.log(params);   
@@ -94,7 +110,7 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   addAuction(event) {
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
     this.auctionForm.controls['eventType'].setValue('a');
-    console.log(this.auctionForm.value);
+    console.log(this.auctionForm);
   }  
   addFlashSale(event) {
     this.flashSaleForm.controls['hotelId'].setValue(this.hotelId);

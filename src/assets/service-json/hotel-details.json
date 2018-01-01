@@ -1,0 +1,187 @@
+{
+  "hotelId": 1,
+  "ownerId": 2,
+  "hotelName": "Dolphin",
+  "hotelRating": 3,
+  "country": "India",
+  "state": "West Bengal",
+  "city": "Digha",
+  "zip": 745659,
+  "hotelDescription": "There are many variations of passages available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. ",
+  "hotelPlace": null,
+  "mobile": "2233665589",
+  "altMobile": "0",
+  "hotelAddress": "Old Digha,West Midnapore,West Bengal",
+  "hotelRooms": [
+    {
+      "roomId": 1,
+      "hotelId": 1,
+      "roomType": "Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 2500,
+      "capacity": 2,
+      "roomComment": "Room with hot water and AC",
+      "allAmenities": [
+        {
+          "roomAmenityId": 1,
+          "roomId": 1,
+          "additionalPrice": 300,
+          "amenityName": "TV"
+        },
+        {
+          "roomAmenityId": 2,
+          "roomId": 1,
+          "additionalPrice": 50,
+          "amenityName": "wifi"
+        }
+      ]
+    },
+    {
+      "roomId": 2,
+      "hotelId": 1,
+      "roomType": "Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 2500,
+      "capacity": 2,
+      "roomComment": "Room with hot water and AC",
+      "allAmenities": [
+        {
+          "roomAmenityId": 3,
+          "roomId": 2,
+          "additionalPrice": 250,
+          "amenityName": "Hot water"
+        },
+        {
+          "roomAmenityId": 4,
+          "roomId": 2,
+          "additionalPrice": 400,
+          "amenityName": "Gym"
+        }
+      ]
+    },
+    {
+      "roomId": 3,
+      "hotelId": 1,
+      "roomType": "Premium",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 3500,
+      "capacity": 2,
+      "roomComment": "Sea facing room",
+      "allAmenities": [
+        {
+          "roomAmenityId": 5,
+          "roomId": 3,
+          "additionalPrice": 200,
+          "amenityName": "TV"
+        },
+        {
+          "roomAmenityId": 6,
+          "roomId": 3,
+          "additionalPrice": 90,
+          "amenityName": "wifi"
+        }
+      ]
+    },
+    {
+      "roomId": 4,
+      "hotelId": 1,
+      "roomType": "Premium",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 6000,
+      "capacity": 4,
+      "roomComment": "Room with hot water and AC",
+      "allAmenities": []
+    },
+    {
+      "roomId": 5,
+      "hotelId": 1,
+      "roomType": "Super-Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 8500,
+      "capacity": 3,
+      "roomComment": "Hot water, AC, TV",
+      "allAmenities": []
+    },
+    {
+      "roomId": 6,
+      "hotelId": 1,
+      "roomType": "Super-Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 7500,
+      "capacity": 2,
+      "roomComment": "Hot water, AC, TV",
+      "allAmenities": []
+    },
+    {
+      "roomId": 7,
+      "hotelId": 1,
+      "roomType": "Regular",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 1500,
+      "capacity": 3,
+      "roomComment": "Non AC",
+      "allAmenities": []
+    },
+    {
+      "roomId": 13,
+      "hotelId": 1,
+      "roomType": "Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 4000,
+      "capacity": 3,
+      "roomComment": "Wifi, TV, Non-AC",
+      "allAmenities": [
+        {
+          "roomAmenityId": 7,
+          "roomId": 13,
+          "additionalPrice": 250,
+          "amenityName": "free swimming pool"
+        },
+        {
+          "roomAmenityId": 8,
+          "roomId": 13,
+          "additionalPrice": 200,
+          "amenityName": "wifi"
+        },
+        {
+          "roomAmenityId": 9,
+          "roomId": 13,
+          "additionalPrice": 300,
+          "amenityName": "TV"
+        }
+      ]
+    },
+    {
+      "roomId": 14,
+      "hotelId": 1,
+      "roomType": "Delux",
+      "totalRoomCount": 0,
+      "totalBooked": 0,
+      "roomBasePrice": 4000,
+      "capacity": 3,
+      "roomComment": "Wifi, TV, Non-AC",
+      "allAmenities": [
+        {
+          "roomAmenityId": 10,
+          "roomId": 14,
+          "additionalPrice": 200,
+          "amenityName": "WIFI"
+        },
+        {
+          "roomAmenityId": 11,
+          "roomId": 14,
+          "additionalPrice": 300,
+          "amenityName": "hot water"
+        }
+      ]
+    }
+  ]
+}

@@ -66,13 +66,13 @@
 										<a href="javascript:void(0);" (click) = "toggleTab('auction')" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" class="btn btn-info">Auction</a>
 									</li>
 									<li role="presentation" [ngClass]="{'active':showFlashSale}">
-										<a href="javascript:void(0);" (click) = "toggleTab('flashsale')" role="tab" id="flashsale-tab" data-toggle="tab" aria-controls="flashsale" aria-expanded="false" class="btn btn-info">Flash Sale</a>
+										<a href="javascript:void(0);" (click) = "toggleTab('flashsale')" role="tab"  data-toggle="tab" aria-controls="flashsale" aria-expanded="false" class="btn btn-info">Flash Sale</a>
 									</li>
 									<li role="presentation" [ngClass]="{'active':showPromotions}">
-										<a href="javascript:void(0);" (click) = "toggleTab('promotions')" role="tab" id="promotions-tab" data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Promotions</a>
+										<a href="javascript:void(0);" (click) = "toggleTab('promotions')" role="tab"  data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Promotions</a>
 									</li>
 									<li role="presentation" [ngClass]="{'active':showHotelDetails}">
-										<a href="javascript:void(0);" (click) = "toggleTab('roomdetails')" role="tab" id="roomdetails-tab" data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Room Details</a>
+										<a href="javascript:void(0);" (click) = "toggleTab('roomdetails')" role="tab" data-toggle="tab" aria-controls="roomdetails" aria-expanded="false" class="btn btn-info">Room Details</a>
 									</li>
 								</ul> 
 								<div id="myTabContent" class="tab-content">
@@ -91,15 +91,15 @@
 											<div class="form-group">												
 												<div class="form-group col-md-6">
 													<label for="inputPassword4">Room Type</label>
-													<select id="inputState" formControlName="roomTypeName" class="form-control" (change)="setRoomCapacity($event);">
-														<option selected>Choose Room Type</option>
-														<option *ngFor="let roomtype of roomTypeList" value="{{roomtype.roomType}}" [attr.data-capacity]="roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+													<select [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control" (change)="setRoomCapacity($event);">
+														<option [value]="null">Choose Room Type</option>
+														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType" [attr.data-capacity]="roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
 													</select>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputAddress2">Room Quantity</label>
-													<select id="inputState" formControlName="roomCapacity" class="form-control">
-														<option selected>Choose No of Rooms</option>
+													<select [(ngModel)]="defaultValue.roomCapacity" formControlName="roomCapacity" class="form-control">
+														<option [value]="null">Choose No of Rooms</option>
 														<option *ngFor="let ca of roomCapacity; let i = index">{{i+1}}</option>
 													</select>
 												</div>
@@ -132,7 +132,7 @@
 											</div>
 											<div class="form-group">
 												<div class="form-group col-md-12">
-													<button type="submit" class="btn btn-info pull-right">Save</button>
+													<button type="submit" class="btn btn-info pull-right" [disabled]="auctionForm.invalid">Save</button>
 												</div>
 											</div>
 										</form>

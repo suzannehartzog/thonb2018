@@ -15,6 +15,7 @@ declare var $: any;
   styleUrls: ['./hotel-details.component.css']
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
+  public defaultValue = {roomTypeName: null, roomCapacity:null}
   public hotelId: number;
   public roomTypeList:any=[];
   public roomCapacity:any=[];
@@ -94,7 +95,7 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   addAuction(event) {
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
     this.auctionForm.controls['eventType'].setValue('a');
-    console.log(this.auctionForm.value);
+    console.log(this.auctionForm);
   }  
   addFlashSale(event) {
     this.flashSaleForm.controls['hotelId'].setValue(this.hotelId);

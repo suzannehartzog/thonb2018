@@ -85,8 +85,8 @@ h3{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 10px;
-    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 5px rgb(68, 100, 158);
+    box-shadow: 0 1px 5px rgb(68, 100, 158);
 }
 .upcoming-slider h3{
     color: #001d4e !important;

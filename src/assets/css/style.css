@@ -321,7 +321,7 @@ input[type=text]#search {
 }
 /*-- //banner --*/ 
 /*-- welcome --*/
-.welcome,.trips,.news,.about,.team,.services,.gallery,.contact,.codes, .customer-signup,.vendor-signup,.signin,.my-trips, .trip-planner,.show-interest, .register-itin, .create-itinerary{
+.welcome,.trips,.news,.about,.team,.services,.gallery,.contact,.codes, .customer-signup,.vendor-signup,.signin,.my-trips, .trip-planner,.show-interest, .register-itin, .create-itinerary, .quote-request{
 	padding: 0 0 20px 0;
 }
 .contact{
@@ -824,12 +824,15 @@ h3.w3agileits-title{
 .my-trips h5,
 .register-itin h5,
 .trip-planner h2,
-.register-itin h5 {
+.register-itin h5,
+.quote-request h5,
+.quote-request h2 {
 	font-size: 1.5em;
     width: 96%;
     display: inline-block;
 }
-.register-itin h5 {
+.register-itin h5,
+.quote-request h5 {
     width: auto;
 }
 .trip-planner h3,
@@ -842,7 +845,8 @@ h3.w3agileits-title{
 }
 .about h4,
 .my-trips h4,
-.register-itin h4{
+.register-itin h4,
+.quote-request h4 {
     font-size: 1em;
     color: #001845;
     font-weight: 600;
@@ -857,7 +861,8 @@ h3.w3agileits-title{
 .about .bs-example-tabs ul.nav-tabs li,
 .my-trips .bs-example-tabs ul.nav-tabs li,
 .trip-planner .bs-example-tabs ul.nav-tabs li,
-.register-itin .bs-example-tabs ul.nav-tabs li {
+.register-itin .bs-example-tabs ul.nav-tabs li,
+ .quote-request .bs-example-tabs ul.nav-tabs li {
     display: inline-block;
     margin-right: 1em;
     float: none;
@@ -884,7 +889,8 @@ h3.w3agileits-title{
 }
 .my-trips .bs-example-tabs ul.nav-tabs li a,
 .trip-planner .bs-example-tabs ul.nav-tabs li a,
-.register-itin .bs-example-tabs ul.nav-tabs li a {
+.register-itin .bs-example-tabs ul.nav-tabs li a,
+ .quote-request .bs-example-tabs ul.nav-tabs li a {
     display: block;
     text-align: center;
     margin: 0;
@@ -902,7 +908,8 @@ h3.w3agileits-title{
 .about .bs-example-tabs ul.nav-tabs li a:focus,
 .my-trips .bs-example-tabs ul.nav-tabs li a:focus,
 .trip-planner .bs-example-tabs ul.nav-tabs li a:focus,
-.register-itin .bs-example-tabs ul.nav-tabs li a:focus {
+.register-itin .bs-example-tabs ul.nav-tabs li a:focus,
+.quote-request .bs-example-tabs ul.nav-tabs li a:focus {
 	text-decoration: none;
 }
 .about .bs-example-tabs ul.nav-tabs li a:hover,.about .bs-example-tabs ul.nav-tabs li.active a {
@@ -914,7 +921,9 @@ h3.w3agileits-title{
 .trip-planner .bs-example-tabs ul.nav-tabs li a:hover,
 .trip-planner .bs-example-tabs ul.nav-tabs li.active a,
 .register-itin .bs-example-tabs ul.nav-tabs li a:hover,
-.register-itin .bs-example-tabs ul.nav-tabs li.active a {
+.register-itin .bs-example-tabs ul.nav-tabs li.active a,
+.quote-request .bs-example-tabs ul.nav-tabs li a:hover,
+.quote-request .bs-example-tabs ul.nav-tabs li.active a {
     color: #001d4e; 
     background: none;
 	font-weight: bold;	
@@ -931,7 +940,8 @@ h3.w3agileits-title{
 }  
 .my-trips .tabcontent-grids ul li,
 .trip-planner .tabcontent-grids ul li,
-.register-itin .tabcontent-grids ul li {
+.register-itin .tabcontent-grids ul li,
+.quote-request .tabcontent-grids ul li {
     display: block;
     color: #999;
     margin-top: 1.2em;
@@ -939,7 +949,8 @@ h3.w3agileits-title{
 }
 .my-trips .tabcontent-grids ul li  i.fa,
 .trip-planner .tabcontent-grids ul li  i.fa,
-.register-itin .tabcontent-grids ul li  i.fa{
+.register-itin .tabcontent-grids ul li  i.fa,
+.quote-request .tabcontent-grids ul li  i.fa {
     margin-right: 0.5em;
     color: #4362ca;
 }  
@@ -1749,7 +1760,7 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .search-result h3 > a, .search-result i { color: #001d4e !important; }
 .search-result p { font: normal normal 1em "Roboto",Arial,Verdana,sans-serif; color: #001947;} 
 .search-result span.plus a { background-color: #001d4e; padding: 5px 5px 3px 5px; }
-.search-result .btn-info,.guide .btn-info, .asset-section .btn-info, .register-itin  .btn-info { background-color: #001d4e; border: 1px solid #001d4e;}
+.search-result .btn-info,.guide .btn-info, .asset-section .btn-info, .register-itin  .btn-info, .quote-request .btn-info { background-color: #001d4e; border: 1px solid #001d4e;}
 .search-result .btn-info:hover,.guide .btn-info:hover,.guide .asset-section .btn-info:hover { background-color: #01348f; }
 .search-result span.plus a i { color: #fff !important; }
 .search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
@@ -2936,11 +2947,13 @@ fieldset.form-group {
 }
 /* Custom */
 .about,
-.register-itin {
+.register-itin,
+.quote-request {
     color:#050a10;
 }
 .about h1,
 .register-itin h1,
+.quote-request h1,
 .create-itinerary h1,
 .itinerary-request h1,
 .chat-wrap h1 {
@@ -3055,7 +3068,8 @@ legend{
 /*.room-class img {
     width: 65% !important;
 }*/
-.register-itin strong {
+.register-itin strong,
+.quote-request strong {
     font-weight: 800;
 }
 .bottom-dashed-border {

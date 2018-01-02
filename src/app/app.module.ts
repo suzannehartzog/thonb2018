@@ -29,12 +29,12 @@ import { PackageRegistrationComponent } from './components/package-registration/
 import { ShowQuoteResponseComponent } from './components/show-quote-response/show-quote-response.component';
 import { TripPlannerComponent } from './components/trip-planner/trip-planner.component';
 import { QuoteRequestComponent } from './components/quote-request/quote-request.component';
-import { CreateItineraryComponent } from './components/create-itinerary/create-itinerary.component';
+import { GetResourceForPackage } from './components/get-resource-for-package/get-resource-for-package.component';
 import { EAuctionComponent } from './components/e-auction/e-auction.component';
 import { CheckoutComponent } from './components/check-out/check-out.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { GetResourcesForPackage } from './components/resources-for-package/resources-for-package.component';
-import { RegisterItineraryComponent } from './components/register-itinerary/register-itinerary.component';
+import { CreatePackage } from './components/create-package/create-package.component';
 import { HotelListingComponent } from './components/hotel-listing/hotel-listing.component';
 import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
 
@@ -62,8 +62,8 @@ const appRoutes: Routes = [
   {path: 'trip-planner', component: TripPlannerComponent},
   {path: 'quote-request', component: QuoteRequestComponent},
   {path: 'resources-for-package', component: GetResourcesForPackage},
-  {path: 'register-itinerary', component: RegisterItineraryComponent},
-  {path: 'create-itinerary', component: CreateItineraryComponent},
+  {path: 'create-package', component: CreatePackage},
+  {path: 'request-package', component: GetResourceForPackage},
   {path: 'e-auction', component: EAuctionComponent},
   {path: 'check-out', component: CheckoutComponent},
   {path: 'payment', component: PaymentComponent},
@@ -94,8 +94,8 @@ const appRoutes: Routes = [
     TripPlannerComponent,
     QuoteRequestComponent,
     GetResourcesForPackage,
-    RegisterItineraryComponent,
-    CreateItineraryComponent,
+    CreatePackage,
+    GetResourceForPackage,
     EAuctionComponent,
     CheckoutComponent,
     PaymentComponent,

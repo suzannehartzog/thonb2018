@@ -23,12 +23,8 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
-  public createItinerary(product) {
+  public createItinerary(params) {
     //POST /v1/booking/createItinerary    
-    let params = {
-      product: product
-    };
-    let tempVar;
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/createItinerary', params).map(
       (response) => {
         response.toString();
@@ -49,7 +45,7 @@ export class ApiDataService {
       (response) => {
         //return response.json();
         this.apiData.next(response);
-        this.router.navigate(['register-itinerary']);
+        this.router.navigate(['create-package']);
       }
     );
   }

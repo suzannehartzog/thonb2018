@@ -27,6 +27,7 @@ export class SearchResultComponent implements OnInit {
 	public showGuides:boolean=false;
 	public showPackages:boolean=false;
 	public showTransports:boolean=false;
+
 	constructor(
 		private router: Router, 
 		private titleService: Title,

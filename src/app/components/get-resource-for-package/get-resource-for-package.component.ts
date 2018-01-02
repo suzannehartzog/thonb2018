@@ -38,7 +38,7 @@ export class GetResourceForPackage implements OnInit {
 
   getResourcesForPackage(params:any) {
     console.log(params);
-    params.startingDate = params.fromDate + " " + params.fromTime;
+    params.startingDateTime = params.fromDate + " " + params.fromTime;
 
     params.starttingCityId = parseInt(params.starttingCityId);
     params.travellingCityId = parseInt(params.travellingCityId);

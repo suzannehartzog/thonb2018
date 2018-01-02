@@ -25,7 +25,7 @@ export class ApiDataService {
   }
   public createItinerary(params) {
     //POST /v1/booking/createItinerary    
-    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/createItinerary', params).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/createItinerary', params).map( 
       (response) => {
         response.toString();
         if (response.status == 200) {

@@ -2,8 +2,8 @@
 	<app-navbar></app-navbar>
 	<div class="container">
 		<div class="col-md-7">
-			<form action="#">
-				<input id="search" type="text" value="I want to visit Puri" name="search" placeholder="Search as you wish">
+			<form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)" >
+                <input id="search" formControlName="searchQuery" value="{{queryString}}" type="text" placeholder="Search as you wish">
 				<p>&nbsp;</p>
 			</form>
 		</div>
@@ -15,16 +15,14 @@
 					<div class="about-agile-row">
 						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 							<ul id="myTab" class=" nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">All</a></li>
-								<li role="presentation" class=""><a href="#hotel" role="tab" id="hotel-tab" data-toggle="tab" aria-controls="hotel" aria-expanded="false"> Hotel</a></li>
-								<li role="presentation" class=""><a href="#car" role="tab" id="car-tab" data-toggle="tab" aria-controls="car" aria-expanded="false"> Car</a></li>
-								<li role="presentation" class=""><a href="#guide" role="tab" id="guide-tab" data-toggle="tab" aria-controls="guide" aria-expanded="false"> Guide</a></li>
+								<li role="presentation" class=""><a (click)="filterResult('all')" href="javascript:void(0)">All</a></li>
+								<li role="presentation" class=""><a (click)="filterResult('hotel')"  href="javascript:void(0)"> Hotels</a></li>
+								<li role="presentation" class=""><a (click)="filterResult('package')"  href="javascript:void(0)"> Packages</a></li>
+								<li role="presentation" class=""><a (click)="filterResult('transport')"  href="javascript:void(0)"> Transports</a></li>
+								<li role="presentation" class=""><a (click)="filterResult('guide')"  href="javascript:void(0)"> Guides</a></li>
 							</ul>
-							<div id="myTabContent" class="tab-content">
-								<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-
-								</div>
-								<div role="tabpanel" class="tab-pane fade" id="hotel" aria-labelledby="carl-tab">
+							<div id="myTabContent" class="tab-content">								
+								<div id="hotel" class="hide">
 									<h3>Near by Attractions</h3>
 									<div class="checkbox-inline "><label><input type="checkbox"> Jagannath Temple</label></div>
 									<div class="checkbox-inline"><label><input type="checkbox"> Puri Beach</label></div>
@@ -35,12 +33,6 @@
 									<div class="checkbox-inline"><label><input type="checkbox"> Vimala Temple</label></div>
 									<div class="checkbox-inline"><label><input type="checkbox"> Lakshmi Temple</label></div>
 									<div class="checkbox-inline"><label><input type="checkbox"> Sakshi Gopal Temple</label></div>
-								</div>
-								<div role="tabpanel" class="tab-pane fade active in" id="car" aria-labelledby="home-tab">
-
-								</div>
-								<div role="tabpanel" class="tab-pane fade active in" id="guide" aria-labelledby="home-tab">
-
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -55,17 +47,16 @@
 <div class="about">
 	<div class="container">
 		<div class="mb20">
-			<h2 class="lead"><strong class="text-danger">4</strong> relevant results were found for the <strong class="text-danger">Puri</strong></h2>
+			<h3 class="lead"><!--<strong class="text-danger">4</strong>--> Relevant results were found for the <strong class="text-danger">Puri</strong></h3>
 		</div>
 		<section class="col-xs-12 col-sm-7 col-md-12">
-			<article class="search-result row">
+			<article *ngFor="let hotel of showResults.hotels" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
-						<a href="javascript:void(0);" title="">Shelvac Hotel</a>
+						<a href="javascript:void(0);" title="">{{hotel.hotelName}}</a>
 					</h3>
 					<i class="fa fa-tags"></i> <span>Hotel</span>
-					<p>Very good hotel value for the money The hotel does not leave a smallest reason for not staying here Except u get a room
-						vacant We love this hotel in all respect ...</p>
+					<p [innerHtml]="hotel.hotelDescription"></p>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
 					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>
@@ -73,15 +64,13 @@
 				<span class="clearfix borda"></span>
 			</article>
 
-			<article class="search-result row">
+			<article *ngFor="let package of showResults.packages" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
-						<a href="javascript:void(0);" title="">The Chariot</a>
+						<a href="javascript:void(0);" title="">{{package.packageName}}</a>
 					</h3>
-					<i class="fa fa-tags"></i> <span>Hotel</span>
-					<p>This upscale beachfront resort set within lush gardens is 5 km from the 12th-century Jagannath Temple and 7 km from
-						Puri railway station. Elegant, contemporary rooms feature free Wi-Fi, flat-screen TVs, tea and coffeemaking facilities,
-						and balconies. Upgraded rooms and suites add sitting areas. Room service is available.....</p>
+					<i class="fa fa-tags"></i> <span>Package</span>
+					<p [innerHtml]="package.packageDescription"></p>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
 					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>
@@ -89,29 +78,27 @@
 				<span class="clearfix borda"></span>
 			</article>
 
-			<article class="search-result row">
+			<article *ngFor="let guide of showResults.guides" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
-						<a href="javascript:void(0);" title="">Puri Hotel</a>
-					</h3>
-					<i class="fa fa-tags"></i> <span>Hotel</span>
-					<p>A 2-minute walk from the closest beach, this straightforward budget hotel is 14 minutes on foot from the Hindu Vimala
-						Temple. It's also 2.3 km from Puri's railway ...</p>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
-					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>
-				</div>
-				<span class="clearfix borda"></span>
-			</article>
-
-			<article class="search-result row">
-				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
-					<h3>
-						<a href="javascript:void(0);" title="">Puri Guide Agency</a>
+						<a href="javascript:void(0);" title="">{{guide.userName}}</a>
 					</h3>
 					<i class="fa fa-tags"></i> <span>Guide</span>
-					<p>As a leading travel agent in puri, we have access to the best hotel rates and have tied-up with top resorts, airlines,
-						and ground transport companies to provide our customers with the best value for their money....</p>
+					<p [innerHtml]="guide.guideDescription"></p>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
+					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>
+				</div>
+				<span class="clearfix borda"></span>
+			</article>
+
+			<article *ngFor="let transport of showResults.transports" class="search-result row">
+				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
+					<h3>
+						<a href="javascript:void(0);" title="">{{transport.transportName}}</a>
+					</h3>
+					<i class="fa fa-tags"></i> <span>Transport</span>
+					<p [innerHtml]="transport.transportDescription"></p>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
 					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>

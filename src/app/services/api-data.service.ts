@@ -141,7 +141,15 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
-
+	
+	public textSearch(searchQuery){
+		let headers = new Headers({ 'Content-Type': 'application/json'});
+		let options = new RequestOptions({ headers: headers });
+		let param = {searchText: searchQuery};
+		return this.http.post(this.ENV_URL_SEARCH + 'v1/search/textSearch', param, options).map(
+			(response) =>response.json()
+		);
+	}
   // public dummygetNotificationsPosts(){
   //   let param = {
   //     title: 'foo',

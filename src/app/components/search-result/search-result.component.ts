@@ -21,10 +21,12 @@ export class SearchResultComponent implements OnInit {
 	public queryString:string;
 	public searchResults:{};
 	public showResults:{};
-	public showResults.hotels:[];
-	public showResults.packages:[];
-	public showResults.guides:[];
-	public showResults.transports:[];
+	public sub:any;
+	public showAll:boolean=false;
+	public showHotels:boolean=false;
+	public showGuides:boolean=false;
+	public showPackages:boolean=false;
+	public showTransports:boolean=false;
 	constructor(
 		private router: Router, 
 		private titleService: Title,
@@ -45,7 +47,12 @@ export class SearchResultComponent implements OnInit {
 		this.apiSrv.textSearch(queryString).subscribe(
 		  (data) => {
 			console.log(data);
-			this.showResults = this.searchResults = data; 
+			this.searchResults = data; 
+			this.showAll=true;
+			this.showHotels=false;
+			this.showPackages=false;
+			this.showGuides=false;
+			this.showTransports=false;
 		  }, (error) => {
 			console.log(error); 
 		  },
@@ -58,29 +65,25 @@ export class SearchResultComponent implements OnInit {
 		this.router.navigate(['/search-result/'+searchQuery.searchQuery]);
 	}
 	filterResult(filterBy){
-		this.showResults='';	
 		if(filterBy=="all"){
-			this.showResults = this.searchResults;
+			this.showAll=true;
+			this.showHotels= this.showPackages= this.showGuides= this.showTransports=false;
 			$("#hotel").addClass("hide");
 		}else if(filterBy=="hotel"){
-			this.showResults={
-				hotels:this.searchResults.hotels
-			};
+			this.showAll= this.showPackages= this.showGuides= this.showTransports=false;
+			this.showHotels=true;			
 			$("#hotel").removeClass("hide");
 		}else if(filterBy=="guide"){
-			this.showResults={
-				guides:this.searchResults.guides
-			};
+			this.showAll= this.showHotels= this.showPackages= this.showTransports=false;
+			this.showGuides=true;
 			$("#hotel").addClass("hide");
 		}else if(filterBy=="transport"){
-			this.showResults={
-				transports:this.searchResults.transports
-			};
+			this.showAll= this.showHotels= this.showPackages= this.showGuides=false;
+			this.showTransports=true;
 			$("#hotel").addClass("hide");
 		}else{//package
-			this.showResults={
-				packages:this.searchResults.packages
-			};
+			this.showAll = this.showHotels= this.showGuides= this.showTransports=false;
+			this.showPackages=true;			
 			$("#hotel").addClass("hide");
 		}		
 	}

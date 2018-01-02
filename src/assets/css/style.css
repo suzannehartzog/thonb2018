@@ -2216,10 +2216,13 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
     margin: 0 0 1em;
 }
 .logo h1 {
-    font-size: 1.3em;  
+    font-size: 2em;  
 }
 .header-right { 
-    padding-top: 0.6em;
+    /* padding-top: 0.6em; */
+}
+.menu.open{
+    width:50%;
 }
 .w3about .banner-w3lstext h2 {
     font-size: 4em; 
@@ -2276,7 +2279,7 @@ h3.w3agileits-title {
     font-size: 1em; 
 }
 .w3nav li { 
-    margin-right: 2em; 
+    /* margin-right: 2em;  */
 }
 .banner-text {
     margin-top: 5em;
@@ -2313,7 +2316,10 @@ h3.w3agileits-title {
     padding-left: 1em;
 }
 .logo h1 {
-    font-size: 1.3em;
+    font-size: 1.5em;
+}
+.header-right ul li{
+    margin-left: 1em;
 }
 .banner-w3lstext h2, .banner-w3lstext h3 {
     font-size: 2em;
@@ -2398,10 +2404,10 @@ h3.w3agileits-title {
 }
 .w3nav li {
     display: block;
-    margin-top: 1.5em;
+    /* margin-top: 1.5em; */
 }
 .w3nav li:nth-child(1){ 
-    margin-top: 0;
+    /* margin-top: 0; */
 }
 .w3nav.show-w3nav li a { 
     display: block;

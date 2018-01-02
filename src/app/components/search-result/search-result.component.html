@@ -49,22 +49,22 @@
 		<div class="mb20">
 			<h3 class="lead"><!--<strong class="text-danger">4</strong>--> Relevant results were found for the <strong class="text-danger">Puri</strong></h3>
 		</div>
-		<section class="col-xs-12 col-sm-7 col-md-12">
-			<article *ngFor="let hotel of showResults.hotels" class="search-result row">
+		<section class="col-xs-12 col-sm-7 col-md-12" *ngIf="showAll || showHotels">
+			<article *ngFor="let hotel of searchResults.hotels" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
 						<a href="javascript:void(0);" title="">{{hotel.hotelName}}</a>
 					</h3>
 					<i class="fa fa-tags"></i> <span>Hotel</span>
-					<p [innerHtml]="hotel.hotelDescription"></p>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
 					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>
 				</div>
 				<span class="clearfix borda"></span>
 			</article>
-
-			<article *ngFor="let package of showResults.packages" class="search-result row">
+		</section>
+		<section class="col-xs-12 col-sm-7 col-md-12 margin-top" *ngIf="showAll || showPackages">
+			<article *ngFor="let package of searchResults.packages" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
 						<a href="javascript:void(0);" title="">{{package.packageName}}</a>
@@ -77,8 +77,9 @@
 				</div>
 				<span class="clearfix borda"></span>
 			</article>
-
-			<article *ngFor="let guide of showResults.guides" class="search-result row">
+		</section>
+		<section class="col-xs-12 col-sm-7 col-md-12 margin-top" *ngIf="showAll || showGuides">
+			<article *ngFor="let guide of searchResults.guides" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
 						<a href="javascript:void(0);" title="">{{guide.userName}}</a>
@@ -91,8 +92,9 @@
 				</div>
 				<span class="clearfix borda"></span>
 			</article>
-
-			<article *ngFor="let transport of showResults.transports" class="search-result row">
+		</section>
+		<section class="col-xs-12 col-sm-7 col-md-12 margin-top" *ngIf="showAll || showTransports">
+			<article *ngFor="let transport of searchResults.transports" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
 						<a href="javascript:void(0);" title="">{{transport.transportName}}</a>
@@ -105,7 +107,6 @@
 				</div>
 				<span class="clearfix borda"></span>
 			</article>
-
 		</section>
 	</div>
 </div>

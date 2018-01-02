@@ -41,11 +41,11 @@ export class QuoteRequestComponent implements OnInit {
     console.log(params);    
     params.budget = parseInt(params.budget);
     params.destinationCityId = parseInt(params.destinationCityId);
-    params.expectedResponseWithin = params.expectedResponseWithinDate + "T16:52:28.244Z";//" " + params.expectedResponseWithinTime;
-    params.fromDate = params.fromDate + "T16:52:28.244Z"; //" " + params.fromTime;
+    params.expectedResponseWithin = params.expectedResponseWithinDate + " " + params.expectedResponseWithinTime;
+    params.fromDate = params.fromDate + " " + params.fromTime;
     params.groupSize = parseInt(params.groupSize);
     params.originCityId = parseInt(params.originCityId);
-    params.toDate = params.toDate +  "T16:52:28.244Z";//" " + params.toTime;
+    params.toDate = params.toDate +  " " + params.toTime;
     params.userId = parseInt(localStorage.getItem("userId"));
 
     

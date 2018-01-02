@@ -108,21 +108,21 @@ body a:hover{
 .menu {
     display: none;
     box-sizing: border-box;
-    background: rgba(0, 21, 64, 0.75);
-	overflow: hidden;
+    background: rgb(255, 255, 255);
+    overflow: hidden;
     height: 50px;
     width: 55px;
-    border-radius: 0 0 6px 6px; 
+    /* border-radius: 0 0 6px 6px; */
     position: absolute;
-	-webkit-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-	-o-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-	-ms-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
-	-webkit-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
-	-moz-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
-	-o-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
-	-ms-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
+    -webkit-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.48);
+    -webkit-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
+    -moz-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
+    -o-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
+    -ms-transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
     transition: 1s cubic-bezier(0.15, 0, 0, 0.97);
     right: 0;
     z-index: 100;

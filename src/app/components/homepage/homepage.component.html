@@ -5,8 +5,8 @@
     <div class="banner-search"> 
         <div class="container">
             <div class="searchbox-holder">
-                <form action="#">
-                    <input id="search" type="text" name="search" placeholder="Search as you wish">
+                <form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)" >
+                    <input id="search" formControlName="searchQuery" type="text" placeholder="Search as you wish">
                 </form>
             </div>
         </div>

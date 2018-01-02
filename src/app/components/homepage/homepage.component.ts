@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { FormBuilder, Validators } from '@angular/forms';
 
 declare var jquery:any;
 declare var $ :any;
@@ -11,9 +12,13 @@ declare var $ :any;
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  public searchForm = this.fb.group({
+    searchQuery: [""]
+  });
   constructor(
     private router: Router, 
-    private titleService: Title
+    private titleService: Title,
+	public fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -32,5 +37,8 @@ export class HomepageComponent implements OnInit {
           $('body').removeClass('loading');
         }
     });
+  }
+  search(searchQuery){
+	 this.router.navigate(['/search-result/'+searchQuery.searchQuery]);
   }
 }

@@ -33,10 +33,12 @@ export class NavComponent implements OnInit {
   }
   
   toggleNotificationWindow(){
-    $('.menu').removeClass('open').slideUp();
-    $('.w3nav').removeClass('show-w3nav');  
-    $('.w3nav a').removeClass('show-w3nav-link');  
-    $('.toggle').addClass('close'); 
+    if($('.toggle').hasClass('close')){
+      $('.menu').removeClass('open').slideUp();
+      $('.w3nav').removeClass('show-w3nav');  
+      $('.w3nav a').removeClass('show-w3nav-link');  
+      $('.toggle').removeClass('close'); 
+    }    
     $('#notifications').fadeToggle('fast', 'linear', function () {
       if ($('#notifications').is(':hidden')) {
           $('#noti_Button').css('background-color', '#2E467C');

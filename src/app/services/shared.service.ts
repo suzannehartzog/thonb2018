@@ -17,7 +17,7 @@ export class SharedService {
     localStorage.setItem("name", "tapa");
     localStorage.setItem("itineraryId", "1");
 
-    localStorage.setItem("userType", "user"); //TO BE CHANGED LATER AFTER INCORPORATION OFLOGIN!
+    localStorage.setItem("userType", "owner"); //TO BE CHANGED LATER AFTER INCORPORATION OFLOGIN!
   }
   public getMon(mon) {
     switch(mon) {

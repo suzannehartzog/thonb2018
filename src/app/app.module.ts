@@ -49,7 +49,7 @@ const appRoutes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'customer-signup', component: CustomerSignupComponent},
   {path: 'vendor-signup', component: VendorSignupComponent},
-  {path: 'result', component: SearchResultComponent},
+  {path: 'search-result/:query', component: SearchResultComponent},
   {path: 'my-trips', component: MyTripsComponent},
   {path: 'haggling-conversation', component: HagglingConversation},
   {path: 'start-haggle', component: StartHaggling},

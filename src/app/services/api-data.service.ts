@@ -114,6 +114,7 @@ export class ApiDataService {
   }
 
   public addToHotelHaggling(params) {
+    console.log(params);
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/addToHotelHaggling', params).map(
       (response) => {
         return response;
@@ -121,20 +122,34 @@ export class ApiDataService {
     );
   }
 
-  public getHotelHagglingDetailForUser(user) {
+  public getHotelHagglingDetailForUser(hagglingId) {
     //POST /v1/booking/getHotelHagglingDetailForUser
-    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/getHotelHagglingDetailForUser', user).map(
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(hagglingId);
+    return this.http.post(this.ENV_URL_SEARCH + "v1/booking/getHotelHagglingDetailForUser", body, options).map(
       (response) => response.json()
     );
   }
 
-  public getHotelHagglingDetailForOwner(user) {
+  public getHotelHagglingDetailForOwner(hagglingId) {
     //POST /v1/booking/getHotelHagglingDetailForOwner
-    return this.http.post(this.ENV_URL_SEARCH + '/v1/booking/getHotelHagglingDetailForOwner', user).map(
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(hagglingId);
+    return this.http.post(this.ENV_URL_SEARCH + "v1/booking/getHotelHagglingDetailForOwner", body, options).map(
       (response) => response.json()
     );
   }
-
+	
+	public textSearch(searchQuery){
+		let headers = new Headers({ 'Content-Type': 'application/json'});
+		let options = new RequestOptions({ headers: headers });
+		let param = {searchText: searchQuery};
+		return this.http.post(this.ENV_URL_SEARCH + 'v1/search/textSearch', param, options).map(
+			(response) =>response.json()
+		);
+	}
   // public dummygetNotificationsPosts(){
   //   let param = {
   //     title: 'foo',

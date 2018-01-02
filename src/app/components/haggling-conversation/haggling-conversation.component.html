@@ -62,11 +62,11 @@
                 <div class="row content-wrap messages">
                     <div class="msg" *ngFor="let comment of comments; let i = index;">
                         <div class="media-body">
-                            <small class="pull-right time"><i class="fa fa-clock-o"></i> {{commentMadeOn}}</small>
+                            <small class="pull-right time"><i class="fa fa-clock-o"></i> {{comment.commentMadeOn}}</small>
 
-                            <h5 class="media-heading">{{commentMadeBy}}</h5>
+                            <h5 class="media-heading">{{comment.commentMadeBy}}</h5>
                             <small class="col-sm-11">
-                                <p>{{comment}}</p>
+                                <p>{{comment.comment}}</p>
                             </small>
                         </div>
                     </div>

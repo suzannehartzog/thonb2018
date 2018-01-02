@@ -32,6 +32,7 @@
 npm-debug.log
 testem.log
 package-lock.json
+dist.zip
 /typings
 
 # e2e

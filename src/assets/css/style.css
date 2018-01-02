@@ -4,10 +4,14 @@ Author URL: http://Yayaati.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+html {
+    position: relative;
+    min-height: 100%;
+}
 body{
-	margin:0;
+	margin:0 0 60px 0;
 	font-family: 'Roboto', sans-serif;
-	background: #fff;
+    background: #fff;
 }
 body a{
 	transition: 0.5s all;
@@ -656,6 +660,9 @@ h3.w3agileits-title{
 	padding: 1em 0; 
     background:#fff; 
     border-top: 1px dashed #333;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 .footer h3 {
     font-size: 2.5em;

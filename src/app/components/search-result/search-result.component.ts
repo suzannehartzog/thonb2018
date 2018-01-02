@@ -21,10 +21,10 @@ export class SearchResultComponent implements OnInit {
 	public queryString:string;
 	public searchResults:{};
 	public showResults:{};
-	public showResults.hotels:[];
-	public showResults.packages:[];
-	public showResults.guides:[];
-	public showResults.transports:[];
+	// public showResults.hotels:[];
+	// public showResults.packages:[];
+	// public showResults.guides:[];
+	// public showResults.transports:[];
 	constructor(
 		private router: Router, 
 		private titleService: Title,

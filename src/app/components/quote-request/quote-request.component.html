@@ -1,29 +1,26 @@
 <div class="banner notHome">
 	<app-navbar></app-navbar>
-	<h3 class="w3agileits-title">Request Quote/Create Itinerary!</h3>
 </div>
-<div class="vendor-signup">
+<div class="quote-request">
 	<div class="container">
+		<h1>Request Quote/Create Itinerary!</h1>
+		<div [ngClass]="messageClass">{{message}}</div>
 		<div class="login-form">
-			<form autocomplete="off" action="" method="post">
+			<form #quoteForm="ngForm" (ngSubmit)="createItinerary(quoteForm.value)">
 				<div class="wthree-text">
 					<div class="register-text">Register For</div>
 					<div class="register-options">
 						<ul>
 							<li>
-								<input type="checkbox" id="package" value="package">
-								<label for="package"><span></span>package </label>
-							</li>
-							<li>
-								<input type="checkbox" id="hotel" value="hotel">
+								<input type="checkbox" id="hotel" value="hotel" name="hotel" ngModel>
 								<label for="hotel"><span></span>Hotel </label>
 							</li>
 							<li>
-								<input type="checkbox" id="cab" value="cab">
-								<label for="cab"><span></span>Cab </label>
+								<input type="checkbox" id="transport" value="transport" name="transport" ngModel>
+								<label for="transport"><span></span>Cab </label>
 							</li>
 							<li>
-								<input type="checkbox" id="guide" value="guide">
+								<input type="checkbox" id="guide" value="guide" name="guide" ngModel>
 								<label for="guide"><span></span>Guide </label>
 							</li>
 						</ul>
@@ -31,32 +28,60 @@
 					<div class="clear"> </div>
 				</div>
 				<div class="styled-input place-selector">
-					<input type="text" name="origin" required="" placeholder="" id="origin">
-					<label for="origin">Origin</label>
+					<select name="originCityId" class="form-control" required ngModel>
+						<option value="">Origin City</option>
+						<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
+					</select>
+					<label>Origin City</label>
 					<span></span>
 				</div>
 				<div class="styled-input place-selector">
-					<input type="text" name="destination" required="" placeholder="" id="destination">
-					<label for="destination">Destination</label>
+					<select name="destinationCityId" class="form-control" required ngModel>
+						<option value="">Destination City</option>
+						<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
+					</select>
+					<label>Destination City</label>
 					<span></span>
 				</div>
 				<div class="styled-input place-selector">
-					<input type="text" name="start-date" required="" placeholder="" id="start-date" >
-					<label for="start-date">Start Date</label>
-					<span></span>					
+					<input type="date" name="fromDate" required placeholder="" id="fromDate" ngModel>
+					<label for="fromDate">Start Date</label>
+					<span></span>
 				</div>
 				<div class="styled-input place-selector">
-					<input type="text" name="end-date" required="" placeholder="" id="end-date" >
-					<label for="end-date">End Date</label>
+					<input type="time" name="fromTime" required placeholder="" id="fromTime" ngModel>
+					<label for="fromTime">Starting Time</label>
+					<span></span>
+				</div>
+				<div class="styled-input place-selector">
+					<input type="date" name="toDate" required placeholder="" id="toDate" ngModel/>
+					<label for="toDate">End Date</label>
+					<span></span>
+				</div>
+				<div class="styled-input place-selector">
+					<input type="time" name="toTime" required placeholder="" id="toTime" ngModel>
+					<label for="toTime">End Time</label>
 					<span></span>
 				</div>
 				<div class="styled-input">
-					<input type="number" name="group-size" required="" />
+					<input type="number" name="groupSize" required ngModel />
 					<label>Group Size</label>
 					<span></span>
 				</div>
+
+				<div class="styled-input place-selector">
+					<input type="date" name="expectedResponseWithinDate" required placeholder="" id="expectedResponseWithinDate" ngModel>
+					<label for="expectedResponseWithinDate">Quote Accept Till</label>
+					<span></span>
+				</div>
+
+				<div class="styled-input place-selector">
+					<input type="time" name="expectedResponseWithinTime" required placeholder="" id="expectedResponseWithinTime" ngModel>
+					<label for="expectedResponseWithinTime">Accept Till Time</label>
+					<span></span>
+				</div>
 				<div class="styled-input">
-					<input type="number" name="budget" required="">
+					<input type="number" name="budget" required ngModel>
 					<label>Budget</label>
 					<span></span>
 				</div>

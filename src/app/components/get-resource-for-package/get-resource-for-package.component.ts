@@ -8,11 +8,11 @@ import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';
 
 @Component({
-  selector: 'app-create-itinerary',
-  templateUrl: './create-itinerary.component.html',
-  styleUrls: ['./create-itinerary.component.css']
+  selector: 'app-get-resource-for-package.component',
+  templateUrl: './get-resource-for-package.component.html',
+  styleUrls: ['./get-resource-for-package.component.css']
 })
-export class CreateItineraryComponent implements OnInit {
+export class GetResourceForPackage implements OnInit {
 
   public itinParam: Object;
   public cityList;
@@ -38,7 +38,7 @@ export class CreateItineraryComponent implements OnInit {
 
   getResourcesForPackage(params:any) {
     console.log(params);
-    params.startingDate = params.startingDate + "T12:14:53.094Z"// " + params.startingTime;
+    params.startingDate = params.fromDate + " " + params.fromTime;
 
     params.starttingCityId = parseInt(params.starttingCityId);
     params.travellingCityId = parseInt(params.travellingCityId);
@@ -57,7 +57,7 @@ export class CreateItineraryComponent implements OnInit {
     }
 
     localStorage.setItem("starttingCityId", params.starttingCityId);
-    localStorage.setItem("startingDate", params.startingDate + params.startingTime);
+    localStorage.setItem("startingDate", params.fromDate + params.fromTime);
     localStorage.setItem("travellingCityId", params.travellingCityId);
     localStorage.setItem("noOfNights", params.noOfNights);
     localStorage.setItem("noOfRooms", params.noOfRooms);
@@ -67,9 +67,9 @@ export class CreateItineraryComponent implements OnInit {
     localStorage.setItem("dropIncluded", params.dropIncluded);
     localStorage.setItem("price", params.budget);
 
-    delete params.fromDate;
-    delete params.startingTime;
+    delete params.fromTime;
     delete params.budget;
+    delete params.fromDate;
     
     this.apiSrv.getResourcesForPackage(params).subscribe(
       (data) => {
@@ -78,7 +78,7 @@ export class CreateItineraryComponent implements OnInit {
         console.log(error); 
       },
       () => {
-        console.log("completed changeCurrency");
+        console.log("completed getResourcesForPackage");
       }
     );
   }

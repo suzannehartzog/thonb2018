@@ -10,11 +10,11 @@ declare var jquery:any;
 declare var $ :any;
 
 @Component({
-  selector: 'app-register-itinerary',
-  templateUrl: './register-itinerary.component.html',
-  styleUrls: ['./register-itinerary.component.css']
+  selector: 'app-create-package',
+  templateUrl: './create-package.component.html',
+  styleUrls: ['./create-package.component.css']
 })
-export class RegisterItineraryComponent implements OnInit {
+export class CreatePackage implements OnInit {
 
   public price:number;
   public noOfTravellers:number;

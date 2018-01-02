@@ -15,24 +15,24 @@
 					<label>Starting City</label>
 					<span></span>
 				</div>
-				<div class="styled-input">
-					<input type="date" name="startingDate" required placeholder="" id="fromDate" ngModel>
+				<div class="styled-input place-selector">
+					<input type="date" name="fromDate" required placeholder="" id="fromDate" ngModel>
 					<label for="fromDate">Starting Date</label>
 					<span></span>
 				</div>
 
-				<div class="styled-input">
-					<input type="time" name="startingTime" required placeholder="" id="startingTime" ngModel>
-					<label for="startingTime">Starting Time</label>
+				<div class="styled-input place-selector">
+					<input type="time" name="fromTime" required placeholder="" id="fromTime" ngModel>
+					<label for="fromTime">Starting Time</label>
 					<span></span>
 				</div>
 
 				<div class="styled-input">
 					<select name="travellingCityId" class="form-control" required ngModel>
-						<option value="">Destination</option>
+						<option value="">Destination City</option>
 						<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
 					</select>
-					<label>Starting City</label>
+					<label>Destination City</label>
 					<span></span>
 				</div>
 				<div class="styled-input">
@@ -59,19 +59,6 @@
 					<label>No. of Travellers</label>
 					<span></span>
 				</div>
-
-				<!--<div class="styled-input">
-					<input type="date" name="expectedResponseWithinDate" required placeholder="" id="expectedResponseWithinDate" ngModel>
-					<label for="expectedResponseWithinDate">Accept Quote Till Date</label>
-					<span></span>
-				</div>
-
-				<div class="styled-input">
-					<input type="time" name="expectedResponseWithinTime" required placeholder="" id="expectedResponseWithinTime" ngModel>
-					<label for="expectedResponseWithinTime">Accept Quote Till Time</label>
-					<span></span>
-				</div>-->
-
 				<div class="wthree-text">
 					<div class="register-text">Request For</div>
 					<div class="register-options">

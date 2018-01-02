@@ -39,16 +39,16 @@ export class GetResourcesForPackage implements OnInit {
   getResourcesForPackage(params:any) {
     console.log(params);   
     
-    localStorage.setItem("originCityId", params.originCityId);
-    localStorage.setItem("fromDate", params.fromDate);
-    localStorage.setItem("destinationCityId", params.destinationCityId);
-    localStorage.setItem("nights", params.nights);
-    localStorage.setItem("rooms", params.rooms);
-    localStorage.setItem("groupSize", params.groupSize);    
-    localStorage.setItem("price", params.price);
-    localStorage.setItem("hotel", "true");
-    localStorage.setItem("pickup", params.pickup);
-    localStorage.setItem("guide", params.guide);
+    // localStorage.setItem("originCityId", params.originCityId);
+    // localStorage.setItem("fromDate", params.fromDate);
+    // localStorage.setItem("destinationCityId", params.destinationCityId);
+    // localStorage.setItem("nights", params.nights);
+    // localStorage.setItem("rooms", params.rooms);
+    // localStorage.setItem("groupSize", params.groupSize);    
+    // localStorage.setItem("price", params.price);
+    // localStorage.setItem("hotel", "true");
+    // localStorage.setItem("pickup", params.pickup);
+    // localStorage.setItem("guide", params.guide);
     
     
     this.apiSrv.getResourcesForPackage(params).subscribe(

@@ -14,6 +14,7 @@ export class SharedService {
     localStorage.setItem("createdBy", "tapa");
     localStorage.setItem("description", "tapa");
     localStorage.setItem("ownerUserId", "1");
+    localStorage.setItem("userId", "1");
     localStorage.setItem("name", "tapa");
     localStorage.setItem("itineraryId", "1");
 

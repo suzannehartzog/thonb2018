@@ -96,7 +96,7 @@ p, p strong {
 }
 span.aminities {
     padding: 2px 5px;
-    background: #F0F0F0;
+    background: #DEDEDE;
     margin: 0 3px;
     border-radius: 3px;
     text-transform: capitalize;
@@ -105,4 +105,12 @@ span.aminities {
 .about h4{
     margin-bottom: 0;
     line-height: 1.5;
+    letter-spacing: 0px;
+}
+div#myTabContent{
+    padding-top: 10px;
+}
+.alert.alert-danger {
+    padding: 5px;
+    font-size: .7em;
 }

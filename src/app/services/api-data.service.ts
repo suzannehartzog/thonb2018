@@ -90,15 +90,15 @@ export class ApiDataService {
   }
   public getHotelDtlByHotelId(hotelId) {
     let param = {hotelId: hotelId};
-    return this.http.get(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/getHotelDtlByHotelId?hotelId='+hotelId).map(
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/getHotelDtlByHotelId?hotelId='+hotelId).map(
       (response) => response.json()
     );
   }
-  public roomTypeCapacity(hoteld) {//assets/service-json/hotel-room-type.json
+  public roomTypeCapacity(hotelId) {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify(hoteld);
-    return this.http.post(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/roomTypeCapacity', body, options).map(
+    let body = JSON.stringify(hotelId);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/roomTypeCapacity', body, options).map(
       (response) => response.json()
     );
   }
@@ -106,19 +106,18 @@ export class ApiDataService {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify('');
-    return this.http.post(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/activeAuctions', body, options).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/activeAuctions', body, options).map(
       (response) => response.json()
     );
   }
   public checkValidBidder() {
     return;
   }
-  public getAvailableRoomsForBooking(hotelId, roomTypeName, roomCapacity, roomLockedFrom, roomLockedTill){
-	
-	/*let headers = new Headers({ 'Content-Type': 'application/json'});
+  public getAvailableRoomsForBooking(param){	
+	  let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
-    let body = param;*/
-    return this.http.get(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/getAvailableRoomsForBooking?hotelId='+hotelId+'&roomType='+roomTypeName+'&roomCapacity='+roomCapacity+'&bookingStartDate='+roomLockedFrom+'&bookingEndDate='+roomLockedTill).map(
+    let body = param;
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/getAvailableRoomsForBooking', param, options).map(
       (response) => response.json()
     );
   }
@@ -126,7 +125,7 @@ export class ApiDataService {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(auctionObj);
-    return this.http.post(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/createAuction', body, options).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/createAuction', body, options).map(
       (response) => response.json()
     );
   }
@@ -134,7 +133,7 @@ export class ApiDataService {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(promotionObj);
-    return this.http.post(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/createPromotion', body, options).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/createPromotion', body, options).map(
       (response) => response.json()
     );
   }
@@ -142,7 +141,7 @@ export class ApiDataService {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(flashSaleObj);
-    return this.http.post(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/createFlashSale', body, options).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/createFlashSale', body, options).map(
       (response) => response.json()
     );
   }

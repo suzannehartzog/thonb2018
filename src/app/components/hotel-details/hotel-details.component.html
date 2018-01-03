@@ -72,8 +72,12 @@
 									</li>
 								</ul> 
 								<div id="myTabContent" class="tab-content">
+									<div class="alert alert-danger" *ngIf="hasError">
+										<a href="javascript:void(0);" (click)='hasError=false' class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+										No available room for this period.
+									</div>
 									<div role="tabpanel" *ngIf = "showAuction" class="tab-pane fade active in" id="auction" aria-labelledby="auction-tab">
-										<form [formGroup]="auctionForm" (ngSubmit)="addAuction($event)">
+										<form [formGroup]="auctionForm" (ngSubmit)="getAvailableRoomsForBooking('addAuction')">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">Start From</label>
@@ -131,7 +135,7 @@
 										</form>
 									</div>
 									<div role="tabpanel" *ngIf = "showFlashSale" class="tab-pane fade active in" id="flashsale" aria-labelledby="flashsale-tab">
-										<form [formGroup]="flashSaleForm" (ngSubmit)="addFlashSale($event)">
+										<form [formGroup]="flashSaleForm" (ngSubmit)="getAvailableRoomsForBooking('addFlashSale')">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">Start From</label>

@@ -15,6 +15,7 @@ declare var $: any;
   styleUrls: ['./hotel-details.component.css']
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
+  public hasError : boolean = false;
   public defaultValue = {roomTypeName: null, roomCapacity:1}
   public hotelDetails = {};
   public hotelId: number;
@@ -107,10 +108,25 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  getAvailableRoomsForBooking(hotelId, roomTypeName, roomCapacity, roomLockedFrom, roomLockedTill){
-	this.apiSrv.getAvailableRoomsForBooking(hotelId, roomTypeName, roomCapacity, roomLockedFrom, roomLockedTill).subscribe(
+  getAvailableRoomsForBooking(functionName){
+    let params = {
+      "bookingEndDate": this.auctionForm.value.roomLockedTill,
+      "bookingStartDate": this.auctionForm.value.roomLockedFrom,
+      "hotelId": this.hotelId,
+      "roomCapacity": this.auctionForm.value.roomCapacity,
+      "roomType": this.auctionForm.value.roomTypeName
+    };
+    this.apiSrv.getAvailableRoomsForBooking(params).subscribe(
       (data) => {
-        console.log(data); 
+        if(data>0){
+          if(functionName==='addAuction'){
+            this.addAuction();
+          }else{
+            this.addFlashSale();
+          }
+        } else{
+          this.hasError = true;
+        }
       }, (error) => {
         console.log(error);
       },
@@ -119,11 +135,11 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
       }
     );
   }
-  addAuction(event) {
-	this.getAvailableRoomsForBooking(this.hotelId, this.auctionForm.value.roomTypeName, this.auctionForm.value.roomCapacity,this.auctionForm.value.roomLockedFrom,this.auctionForm.value.roomLockedTill);
+  addAuction() {
+	  this.getAvailableRoomsForBooking(this.auctionForm.value);
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
     this.auctionForm.controls['eventType'].setValue('A');
-    console.log(this.auctionForm.value);
+    //console.log(this.auctionForm.value);
     this.apiSrv.createAuction(this.auctionForm.value).subscribe(
       (data) => {
         console.log(data); 
@@ -135,7 +151,7 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
       }
     );
   }  
-  addFlashSale(event) {
+  addFlashSale() {
     this.flashSaleForm.controls['hotelId'].setValue(this.hotelId);
     this.flashSaleForm.controls['eventType'].setValue('F');
     //console.log(this.flashSaleForm.value);
@@ -171,6 +187,7 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     this.roomCapacity.length = capacity; 
   }
   toggleTab(tabnae){
+    this.hasError = false;
     this.showAuction  = false;
     this.showFlashSale = false;
     this.showPromotions = false;

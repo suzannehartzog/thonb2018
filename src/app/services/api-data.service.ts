@@ -189,6 +189,28 @@ export class ApiDataService {
       (response) => response
     );
   }
+  public flightSearch(params){
+    console.log(params);
+    let diff:any;
+    let days:any;
+    let flightURL = "http://flightfaresearch-smmas-del-cts.us-east-1.elasticbeanstalk.com:8080/cts-th-fltsrch/flight/getFlightFare?Origin=" + params.origin + "&Destination=" + params.destination + "&PointOfSaleCountryCode=US";
+    if (params.returnDate != "" && params.tripType == "round") {
+      flightURL = flightURL + "&ReturneDt=" +  params.returnDate;
+      diff = new Date(params.returnDate - params.startDate);
+      let str = new Date(params.startDate);
+      let ret = new Date(params.returnDate);
+      let timeDiff = Math.abs(ret.getTime() - str.getTime());
+      let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      flightURL = flightURL + "&LengthOfStaty" + diffDays;
+    }
+    if (params.flexiSearch == "1") {
+      flightURL = flightURL + "&DepartureDt=" + params.startDate;
+    }
+    console.log("URL:" + flightURL);
+    return this.http.get(flightURL).map(
+      (response) => response
+    );
+  }
 
   // public dummygetNotificationsPosts(){
   //   let param = {

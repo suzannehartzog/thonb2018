@@ -8,6 +8,10 @@
 						<h3 class="panel-title">Search flight </h3>
 						<form [formGroup]="searchFlightForm" (ngSubmit)="searchFlight($enevt)">
 							<div class="form-row">
+								<div class="form-check col-md-12 no-padding">
+									<label class="form-check-label"><input type="radio" class="form-check-input"  value="round" formControlName="tripType" > Round Trip </label>
+									<label class="form-check-label"><input type="radio" class="form-check-input" value="one" formControlName="tripType" > One Way </label>																				
+								</div>
 								<div class="form-group col-md-12 no-padding">
 									<label for="">Origin</label>
 									<input formControlName="origin" type="text" placeholder="Origin" class="form-control" />
@@ -24,13 +28,20 @@
 									<label for="">Return Date</label>
 									<input formControlName="returnDate" type="date" placeholder="Return Date" class="form-control" />
 								</div>
+								<div class="form-check col-md-12 no-padding">
+									<label class="form-check-label" for="pickup"><input type="checkbox" class="form-check-input" formControlName="flexiSearch" value="1" name="pickUpIncluded" ngModel> Flexi Search </label>
+									<label class="form-check-label" for="drop"><input type="checkbox" class="form-check-input" formControlName="nonstopFlights" value="1" name="dropIncluded" ngModel> Non Stop Flights Only </label>																				
+								</div>
+								<div class="form-group col-md-12 no-padding">
+									<input type="submit" value="Search" class="btn btn-info center-block" />
+								</div>
 							</div>
 						</form>
 						<div class="clear"></div>
 					</div>					
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-9" id="basket">	
-					<h1>Flight result</h1>				
+					<h1>Flight results</h1>				
 					<div class="box">
 						<table class="table table-fixed">
 							<thead>

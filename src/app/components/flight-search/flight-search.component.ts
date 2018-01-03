@@ -16,10 +16,13 @@ declare var $: any;
 })
 export class FlightSearchComponent implements OnInit {
   public searchFlightForm = this.fb.group({
-    startDate: ["", Validators.required],
-    returnDate: ["", Validators.required],
-    origin : ["", Validators.required],    
-    destination : ["", Validators.required]
+    tripType:'',
+    startDate: '',
+    returnDate: '',
+    origin : '',    
+    destination : '',
+    flexiSearch: '',
+    nonstopFlights: ''
   });
   constructor(
     public fb: FormBuilder,
@@ -33,5 +36,16 @@ export class FlightSearchComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Hotel Details:: Yayaati');
   }
-  
+  searchFlight(){
+    this.apiSrv.flightSearch(this.searchFlightForm.value).subscribe(
+      (data) => {
+        console.log(data); 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
+  }
 }

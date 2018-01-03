@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import {ApiDataService} from '../../../services/api-data.service';
+import {SharedService} from '../../../services/shared.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -10,12 +12,31 @@ declare var $ :any;
   styleUrls: ['./navbar.component.css']
 })
 export class NavComponent implements OnInit { 
-  constructor() { 
-   
+
+  public isLoggedIn: boolean;
+  public static updateUserStatus: Subject<boolean> = new Subject();
+  public userName: string;
+
+  constructor(
+    private apiSrv : ApiDataService,
+    private shrSrv : SharedService
+  ) { 
+   NavComponent.updateUserStatus.subscribe(res => {      
+      this.isLoggedIn = ((localStorage.getItem("isloggedIn")==''||localStorage.getItem("isloggedIn")===null)?false:true);
+      if(!this.isLoggedIn) {
+        //console.log(this.isLoggedIn) ;
+      }
+      //console.log(this.isLoggedIn);
+    });
   }
 
   ngOnInit() {
     this.notificationInit();
+    this.isLoggedIn = ((localStorage.getItem("isloggedIn")==''||localStorage.getItem("isloggedIn")===null)?false:true);
+
+    if(this.isLoggedIn) {
+      this.userName = localStorage.getItem("userName");
+    }
   }
 
   togglePanel() {

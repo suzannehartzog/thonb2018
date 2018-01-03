@@ -2,44 +2,38 @@
 	<app-navbar></app-navbar>
 </div>
 <!-- signIn -->
-	<div class="signin">
+	<div class="about">		
 		<div class="container"> 
 			<div class="login-form">
+				<h1>Sign in Here</h1>
+			</div>
+			<div class="login-form box">
 				<div class="alert box-msg" [class]="isloggedIn?'hidden':'alert-danger'">{{loginMessage}}</div>
         		<form novalidate [formGroup]="userLogin" (ngSubmit)="onSubmit()">
-					<div class="styled-input">
-						<input type="text" name="Username" required="" formControlName="email"/>
-						<label>Username</label>
-						<span></span>
-
-						<app-field-error-display 
-							[displayError]="isFieldValid('email')" 
-							errorMsg="Please enter your Username/Email">
-						</app-field-error-display>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label>Username</label>
+							<input type="text" name="Username" required="" formControlName="email" class="form-control"/>
+							<app-field-error-display 
+								[displayError]="isFieldValid('email')" 
+								errorMsg="Please enter your Username/Email">
+							</app-field-error-display>
+						</div>
 					</div>
-					<div class="styled-input">
-						<input type="password" name="Password" required="" formControlName="password"> 
-						<label>Password</label>
-						<span></span>
-
-						<app-field-error-display 
-							[displayError]="isFieldValid('password')" 
-							errorMsg="Please enter your Password">
-						</app-field-error-display>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label>Password</label>
+							<input type="password" name="Password" required="" formControlName="password" class="form-control"> 
+							<app-field-error-display 
+								[displayError]="isFieldValid('password')" 
+								errorMsg="Please enter your Password">
+							</app-field-error-display>
+						</div>
 					</div> 
-					<div class="wthree-text"> 
-						<ul> 
-							<li>
-								<input type="checkbox" id="brand" value="">
-								<label for="brand"><span></span> Remember me ?</label>  
-							</li>
-							<li><a href="javascript:void(0)">Forgot password?</a> </li>
-						</ul>
-						<div class="clear"> </div>
-					</div> 
+					
 					<input type="submit" class="signin" value="Sign In" [disabled]="!userLogin.valid">		
 				</form>
-				<p>Don’t have an account ?<a href="javascript:void(0)" routerLink="/vendor-signup"> Sign Up</a></p>
+				<p><a href="javascript:void(0)">Forgot password</a> | Don’t have an account ?<a href="javascript:void(0)" routerLink="/vendor-signup"> Sign Up</a></p>
 			</div>  
 		</div>
 	</div>

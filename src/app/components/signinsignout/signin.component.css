@@ -1,5 +1,13 @@
-.box{
-    padding: 10px 25px 30px 25px;
+.box {
+    background: #fff;
+    border: solid 1px #e6e6e6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    -webkit-box-shadow: 0 1px 5px rgb(68, 100, 158);
+    box-shadow: 0 1px 5px rgb(68, 100, 158);
+    margin-top: 1em;
 }
 .col-centered{
     float: none;

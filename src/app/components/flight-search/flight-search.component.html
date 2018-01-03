@@ -1,0 +1,60 @@
+<div class="banner notHome">
+		<app-navbar></app-navbar>
+	</div>
+	<div class="about">
+			<div class="container">
+				<div class="col-md-3">
+					<div class="panel panel-default sidebar-menu box">
+						<h3 class="panel-title">Search flight </h3>
+						<form [formGroup]="searchFlightForm" (ngSubmit)="searchFlight($enevt)">
+							<div class="form-row">
+								<div class="form-group col-md-12 no-padding">
+									<label for="">Origin</label>
+									<input formControlName="origin" type="text" placeholder="Origin" class="form-control" />
+								</div>
+								<div class="form-group col-md-12 no-padding">
+									<label for="">Destination</label>
+									<input formControlName="destination" type="text" placeholder="Destination" class="form-control" />
+								</div>
+								<div class="form-group col-md-12 no-padding">
+									<label for="">Start Date</label>
+									<input formControlName="startDate" type="date" placeholder="Start Date" class="form-control" />
+								</div>
+								<div class="form-group col-md-12 no-padding">
+									<label for="">Return Date</label>
+									<input formControlName="returnDate" type="date" placeholder="Return Date" class="form-control" />
+								</div>
+							</div>
+						</form>
+						<div class="clear"></div>
+					</div>					
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-9" id="basket">	
+					<h1>Flight result</h1>				
+					<div class="box">
+						<table class="table table-fixed">
+							<thead>
+								<tr>
+									<th class="col-xs-2">Room Type/Days</th>
+									<th class="col-xs-2">Deluxe</th>
+									<th class="col-xs-2">Super Deluxe</th>
+									<th class="col-xs-2">Type 3</th>
+									<th class="col-xs-2">Type 4</th>
+									<th class="col-xs-2">Type 5</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="col-xs-2">Day 1</td>
+									<td class="col-xs-2">1/2</td>
+									<td class="col-xs-2">2/3</td>
+									<td class="col-xs-2">3/4</td>
+									<td class="col-xs-2">4/5</td>
+									<td class="col-xs-2">5/6</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>	
+			</div>
+	</div>

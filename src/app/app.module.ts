@@ -37,6 +37,7 @@ import { GetResourcesForPackage } from './components/resources-for-package/resou
 import { CreatePackage } from './components/create-package/create-package.component';
 import { HotelListingComponent } from './components/hotel-listing/hotel-listing.component';
 import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
+import { FlightSearchComponent } from './components/flight-search/flight-search.component';
 
 import { SignoutComponent } from './components/signinsignout/signout.component';
 import { FieldErrorDisplayComponent } from './components/display-error/field-error-display.component';
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
   {path: 'hotel-listing', component: HotelListingComponent},
   {path: 'hotel-details/:id', component: HotelDetailsComponent},
   {path:'signout', component: SignoutComponent},
+  {path:'flight-search', component: FlightSearchComponent},
   
   {path: '**', redirectTo: '' }
 ];
@@ -107,7 +109,8 @@ const appRoutes: Routes = [
     HotelListingComponent,
     HotelDetailsComponent,
     SignoutComponent,
-    FieldErrorDisplayComponent
+    FieldErrorDisplayComponent,
+    FlightSearchComponent
 
     // DatePicker,
     // DateTimePicker

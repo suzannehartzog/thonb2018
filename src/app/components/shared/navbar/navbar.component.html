@@ -1,7 +1,7 @@
 <div class="header">
 	<div class="container">
 		<div class="header-w3lsrow"> 
-			<div class="menu"> 
+			<div class="menu" *ngIf="!isLoggedIn;"> 
 				<ul class="w3nav">
 					<li><a routerLink='/search-result' class="btn btn-info" href="javascript:void(0);" title="">Search Hotels</a></li>
 					<li><a routerLink='/my-profile' class="btn btn-info" href="javascript:void(0);" title="">My Profile</a></li>

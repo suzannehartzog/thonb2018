@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-show-quote-response',
-  templateUrl: './show-quote-response.component.html',
-  styleUrls: ['./show-quote-response.component.css']
+  selector: 'app-show-itin-request',
+  templateUrl: './show-itin-request.component.html',
+  styleUrls: ['./show-itin-request.component.css']
 })
-export class ShowQuoteResponseComponent implements OnInit {
+export class ShowItinRequest implements OnInit {
   public isDisplay: boolean = false; 
   public isChildDisplay: boolean = false; 
   constructor(
@@ -16,10 +16,10 @@ export class ShowQuoteResponseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle('Show Quote Respnose:: Yayaati');
+    this.titleService.setTitle('Show Itinerary Requests:: Yayaati');
   }
 
-  toggleDetails() {
+  toggleDisplay() {
     this.isDisplay = !this.isDisplay
   }
   toggleChildDetails() {

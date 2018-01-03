@@ -1,0 +1,72 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="quote-response">
+	<div class="container">
+		<h1>Show Itinerary Requests!</h1>
+		<div class="row">
+			<section>
+				<article class="booking-list card">
+					<div class="panel-heading clickable" (click)="toggleDisplay()">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="text-gray">Budget:</span>
+								<span><b>5000</b></span>
+							</div>
+							<div class="col-md-3">
+								<span class="text-gray">Created On:</span>
+								<span><b>Jan 27</b></span>
+							</div>
+							<div class="col-md-3">
+								<span class="text-gray">Starting City:</span>
+								<span><b>Kolkata</b></span>
+							</div>
+
+							<div class="col-md-3">
+								<span class="text-gray">Desitination:</span>
+								<span><b>Darjeeling</b></span>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+						<div class="flex-row">
+							<div class="col-md-3">
+								<p class="text-gray">Requested By</p>
+								<p><b>Pocha da</b></p>
+							</div>
+							<div class="col-md-3">
+								<p class="text-gray">Starting Date</p>
+								<p><b>Sat, 27th Jan</b></p>
+							</div>
+							<div class="col-md-3">
+								<p class="text-gray">Trip End Date</p>
+								<p><b>Sat, 27th Jan</b></p>
+							</div>
+							<div class="col-md-3">
+								<p class="text-gray">Traveller Count</p>
+								<p><b>2</b></p>
+							</div>
+						</div>
+						<div class="flex-row">
+							<div class="col-md-3">
+								<p class="text-gray">Expected Response By</p>
+								<p><b>Sat, 27th Jan</b></p>
+							</div>
+							<div class="col-md-3">
+								<p class="text-gray">Need Hotel</p>
+								<p><b>Yes</b></p>
+							</div>
+							<div class="col-md-3">
+								<p class="text-gray">Need Guide</p>
+								<p><b>Yes</b></p>
+							</div>
+							<div class="col-md-3">
+								<p class="text-gray">Need Transport</p>
+								<p><b>Yes</b></p>
+							</div>
+						</div>
+					</div>
+				</article>
+			</section>
+		</div>
+	</div>

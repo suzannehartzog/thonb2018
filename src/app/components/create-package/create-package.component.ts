@@ -56,6 +56,8 @@ export class CreatePackage implements OnInit {
   public message: string = "";
   public messageClass: string = "";
 
+  public getMyPackages: {};
+
   constructor(
     private router: Router,
     private titleService: Title,
@@ -72,13 +74,9 @@ export class CreatePackage implements OnInit {
   }
 
   public setLocalData() {
-
-    this.price = parseInt((<HTMLInputElement>document.getElementById("budget")).value);
-    this.description = (<HTMLInputElement>document.getElementById("description")).value;
-
     this.noOfTravellers = parseInt(localStorage.getItem("noOfTravellers"));
     this.userId = parseInt(localStorage.getItem("userId"));
-    this.name = localStorage.getItem("roleName");
+    this.name = localStorage.getItem("userName");
     this.countryId = parseInt(localStorage.getItem("countryId"))
 
     this.allHotels = this.apiSrv.getUniqueHotels(this.textSearchAll.hotels);
@@ -104,10 +102,21 @@ export class CreatePackage implements OnInit {
       "guides": [{}],      
       "price": this.price,
       "travellerCount": this.noOfTravellers,
-      "userId": this.userId,
+      "ownerUserId": this.userId,
       "name": this.name,
-      "description": this.description
+      "description": this.description,
+      "transports": [{}],
+      "pkgId": 0
     }
+
+    this.apiSrv.getMyPackages(this.userId).subscribe(
+      (res:Response) => {
+        console.log(res);
+        this.getMyPackages = res;
+      },
+      (error) => console.log(error),//Error Handler
+      () => console.log("completed getMyPackages")//Complete Handler
+    );
 
     // if(this.pickUpTransports.length) {
     //   this.createPackageJson.pickUpTransports= [{}];
@@ -167,10 +176,10 @@ export class CreatePackage implements OnInit {
     //   );
   }
 
-  showPickup(hotel, roomType) {
+  showPickup(hotel, roomType, hotelLocation) {
     //console.log(hotel);
 
-    let hotelCheckInDate = document.getElementById("checkinDate").innerText;
+    let hotelCheckInDate = $("#checkinDate").text();
     if (!this.isHotelSelected) {
       this.isHotelSelected = !this.isHotelSelected;
       this.hideHotelBodyPanel = true;
@@ -185,11 +194,13 @@ export class CreatePackage implements OnInit {
     }
 
     this.createPackageJson.hotels = [{
-      "checkinDate": "2018-" + hotelCheckInDate.substr(0,2) +"-"+ this.shrSrv.getMon(hotelCheckInDate.substr(2,3)) + this.fromTime,
-      "hotelId": hotel.hotelId,
-      "noOfNights": 3,
-      "noOfRooms": 2,
-      "roomType": roomType
+      "checkinDate": "2018-" + hotelCheckInDate.substr(0,2) +"-"+ this.shrSrv.getMon(hotelCheckInDate.substr(2,3)) + " " + this.fromTime,
+      "hotelId": parseInt(hotel.hotelId),
+      "noOfNights": parseInt(localStorage.getItem("noOfNights")),
+      "noOfRooms": parseInt(localStorage.getItem("noOfRooms")),
+      "roomType": roomType,
+      "hotelName": hotel.hotelName,
+      "hotelAddress": hotelLocation
     }];
     //console.log(this.createPackageJson);
   }
@@ -202,19 +213,20 @@ export class CreatePackage implements OnInit {
     }
 
     if(this.pickUpTransports.length) {
-      this.createPackageJson.pickUpTransports = [{
+      this.createPackageJson.transports.pop();
+      this.createPackageJson.transports.push({
         "transportAssetId": transport.transportAssetId,
-        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + this.fromTime,
+        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + " " + this.fromTime,
         "transportType": "C",
         "vehicleName": transport.vehicalName
-      }];
+      });
     }
 
     if(!this.dropTransports.length) {
       this.isDropSelected = true;
     }
     if(!this.allGuides.length) {
-      this.isGuideSelected = true;
+      this.isDropSelected = true;
     }
   }
 
@@ -226,15 +238,19 @@ export class CreatePackage implements OnInit {
     }
 
     if(this.dropTransports.length) {
-      this.createPackageJson.dropTransports = [{
+      if(this.createPackageJson.transports[0].transportAssetId == undefined) {
+        this.createPackageJson.transports.pop();
+      }
+      this.createPackageJson.transports.push({
         "transportAssetId": transport.transportAssetId,
-        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + this.fromTime,
+        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + " " + this.fromTime,
         "transportType": "C",
         "vehicleName": transport.vehicalName
-      }];
+      });
     }
-    if(this.allGuides.length) {
-      this.isGuideSelected = true;
+    if(!this.allGuides.length) {
+      this.isDropSelected = false;
+      $(".budgetContainer,a.hideMe.form-control").removeClass("hideMe")
     }
     //console.log(this.createPackageJson);
   }
@@ -247,14 +263,22 @@ export class CreatePackage implements OnInit {
 
     if(this.allGuides.length) {
       this.createPackageJson.guides = [{  
-        "guideDate": "2018-"+guideDate.substr(0,2)+"-"+this.shrSrv.getMon(guideDate.substr(2,3))+this.fromTime,
-        "guideId": guide.guideId
+        "guideDate": "2018-"+guideDate.substr(0,2)+"-"+this.shrSrv.getMon(guideDate.substr(2,3)) + " " + this.fromTime,
+        "guideId": guide.guideId,
+        "guideName": guide.userName
       }];
     }
     //console.log(this.createPackageJson);
   }
 
   createPackage() {
+    this.price = parseInt($("#budget").val());
+    this.description = $("#description").val();
+    
+    this.createPackageJson.price = this.price;
+    this.createPackageJson.description= this.description;
+    this.createPackageJson.pkgId = parseInt($("#pkgId").val());
+    
     this.apiSrv.createPackage(this.createPackageJson).subscribe(
       (data) => {
         this.messageClass = "alert alert-success";

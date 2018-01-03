@@ -11,7 +11,7 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./haggling-conversation.component.css']
 })
 export class HagglingConversation implements OnInit {
-  public userType: string = "";
+  public roleName: string = "";
   public user: string = localStorage.getItem("ownerUserId");
   public comments: any;
   constructor(
@@ -24,12 +24,12 @@ export class HagglingConversation implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Haggling Conversation:: Yayaati');
 
-    this.userType = localStorage.getItem("userType");
+    this.roleName = localStorage.getItem("roleName");
 
-    if (this.userType == "user") {
+    if (this.roleName == "Traveler") {
       this.getHotelHagglingDetailForUser(2);
     }
-    if (this.userType == "owner") {
+    if (this.roleName == "owner") {
       this.getHotelHagglingDetailForOwner(3);
     }
   }
@@ -64,21 +64,21 @@ export class HagglingConversation implements OnInit {
       "hagglingId": 1
     };
 
-    if (this.userType == "user") {
+    if (this.roleName == "Traveler") {
       hagglingJson["couponCode"] = "";
       hagglingJson["reqByConsumer"] = true;
     }
-    if (this.userType == "owner") {
+    if (this.roleName == "TravellerAgent") {
       hagglingJson["couponCode"] = params.couponCode;
       hagglingJson["reqByConsumer"] = false;
     }
 
     this.apiSrv.addToHotelHaggling(hagglingJson).subscribe(
       (data) => {
-        if (this.userType == "user") {
+        if (this.roleName == "user") {
           this.getHotelHagglingDetailForUser(2);
         }
-        if (this.userType == "owner") {
+        if (this.roleName == "owner") {
           this.getHotelHagglingDetailForOwner(3);
         }
       }, (error) => {

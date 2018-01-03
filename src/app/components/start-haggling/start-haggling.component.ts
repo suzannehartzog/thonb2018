@@ -30,18 +30,13 @@ export class StartHaggling implements OnInit {
 
   startHaggling(params) {
     let hagglingJson = {};
-    if(this.userType == "user") {
       hagglingJson = {
         "comment": params.message,
-        "consumerUserId": 1,
-        "couponCode": "",
         "firstConversation": true,
-        "hagglingId": 1,
-        "hotelId": params.hotel,
-        "reqByConsumer": true,
-        "roomType": params.roomType
+        "hotelId": parseInt(params.hotel),
+        "roomType": params.roomType,
+        "userId": parseInt(localStorage.getItem("userId"))
       };
-    }
 
     this.apiSrv.addToHotelHaggling(hagglingJson).subscribe(
       (data) => {

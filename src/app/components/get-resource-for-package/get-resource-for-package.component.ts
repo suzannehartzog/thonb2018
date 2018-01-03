@@ -58,6 +58,7 @@ export class GetResourceForPackage implements OnInit {
 
     localStorage.setItem("starttingCityId", params.starttingCityId);
     localStorage.setItem("startingDate", params.fromDate + params.fromTime);
+    localStorage.setItem("fromTime", params.fromTime);
     localStorage.setItem("travellingCityId", params.travellingCityId);
     localStorage.setItem("noOfNights", params.noOfNights);
     localStorage.setItem("noOfRooms", params.noOfRooms);

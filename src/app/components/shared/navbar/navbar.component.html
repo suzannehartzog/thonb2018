@@ -25,11 +25,15 @@
 				<ul>
 					<!-- <li><a href="signin.html">SignIn</a></li>
 					<li><a href="signup.html">SignUp</a></li>  -->
-					<li><a href="javascript:void(0);"><i class="fa fa-user" aria-hidden="true"></i> Hi, Rohit</a></li>
-					
-					<li id="noti_Container">
+
+                    <li *ngIf="!isLoggedIn;">						
+						<a href="javascript:void(0)" routerLink="/signin">Sign In</a>
+					</li>
+                    <li *ngIf="isLoggedIn;"><a href="javascript:void(0);"><i class="fa fa-user" aria-hidden="true"></i> Hi, {{userName}}</a></li>
+
+					<li id="noti_Container" *ngIf="isLoggedIn">
 						<a (click)="toggleNotificationWindow()" href="javascript:void(0);">
-						<i class="fa fa-bell" aria-hidden="true"></i><sup id="noti_Counter">2</sup></a>
+							<i class="fa fa-bell" aria-hidden="true"></i><sup id="noti_Counter">2</sup></a>
 						<!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
 						<!--THE NOTIFICAIONS DROPDOWN BOX.-->
 						<div id="notifications">
@@ -38,13 +42,17 @@
 							<div class="seeAll"><a href="#">See All</a></div>
 						</div>
 					</li>
-					<!-- <li><a href="javascript:void(0);">Help</a></li>-->
-					<li><a href="javascript:void(0);">Sign Out</a></li>
-					<li><div class="toggle" (click)="togglePanel()"></div></li>
-				</ul>
-				<div class="clearfix"> </div> 
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
+                    <!-- <li><a href="javascript:void(0);">Help</a></li>-->
+                    <li>
+                        <div class="toggle" (click)="togglePanel()"></div>
+                    </li>
+					<li *ngIf="isLoggedIn">
+						<a href="javascript:void(0);" routerLink="/signout">Sign Out</a>
+					</li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
 </div>

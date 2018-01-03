@@ -17,8 +17,9 @@ declare var $ :any;
 export class CreatePackage implements OnInit {
 
   public price:number;
+  public description: string;
   public noOfTravellers:number;
-  public ownerUserId: number;
+  public userId: number;
   public name: string;
   public countryId:number;
   
@@ -43,6 +44,7 @@ export class CreatePackage implements OnInit {
   public dropToLoc: string;
   public dropFromLoc: string;
   public guideDate: string;
+  public fromTime: string;
 
 
   public allHotels: any[];
@@ -70,12 +72,13 @@ export class CreatePackage implements OnInit {
   }
 
   public setLocalData() {
-     //console.log(this.textSearchAll.json());
 
-    this.price = parseInt(localStorage.getItem("price"));
+    this.price = parseInt((<HTMLInputElement>document.getElementById("budget")).value);
+    this.description = (<HTMLInputElement>document.getElementById("description")).value;
+
     this.noOfTravellers = parseInt(localStorage.getItem("noOfTravellers"));
-    this.ownerUserId = parseInt(localStorage.getItem("ownerUserId"));
-    this.name = localStorage.getItem("name");
+    this.userId = parseInt(localStorage.getItem("userId"));
+    this.name = localStorage.getItem("roleName");
     this.countryId = parseInt(localStorage.getItem("countryId"))
 
     this.allHotels = this.apiSrv.getUniqueHotels(this.textSearchAll.hotels);
@@ -94,13 +97,16 @@ export class CreatePackage implements OnInit {
     this.dropFromLoc = this.textSearchAll.dropFromLoc;
     this.dropDate = this.textSearchAll.dropDate;
 
+    this.fromTime = localStorage.getItem("fromTime");
+
     this.createPackageJson = {
       "countryId": this.countryId,
       "guides": [{}],      
       "price": this.price,
       "travellerCount": this.noOfTravellers,
-      "ownerUserId": this.ownerUserId,
-      "name": this.name
+      "userId": this.userId,
+      "name": this.name,
+      "description": this.description
     }
 
     // if(this.pickUpTransports.length) {
@@ -179,7 +185,7 @@ export class CreatePackage implements OnInit {
     }
 
     this.createPackageJson.hotels = [{
-      "checkinDate": "2018-" + hotelCheckInDate.substr(0,2) +"-"+ this.shrSrv.getMon(hotelCheckInDate.substr(2,3)) + "T10:00:00.468Z",
+      "checkinDate": "2018-" + hotelCheckInDate.substr(0,2) +"-"+ this.shrSrv.getMon(hotelCheckInDate.substr(2,3)) + this.fromTime,
       "hotelId": hotel.hotelId,
       "noOfNights": 3,
       "noOfRooms": 2,
@@ -198,7 +204,7 @@ export class CreatePackage implements OnInit {
     if(this.pickUpTransports.length) {
       this.createPackageJson.pickUpTransports = [{
         "transportAssetId": transport.transportAssetId,
-        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + "T06:02:07.468Z",
+        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + this.fromTime,
         "transportType": "C",
         "vehicleName": transport.vehicalName
       }];
@@ -222,7 +228,7 @@ export class CreatePackage implements OnInit {
     if(this.dropTransports.length) {
       this.createPackageJson.dropTransports = [{
         "transportAssetId": transport.transportAssetId,
-        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + "T06:02:07.468Z",
+        "transportDate": "2018-" + transportDate.substr(0,2) +"-"+ this.shrSrv.getMon(transportDate.substr(2,3)) + this.fromTime,
         "transportType": "C",
         "vehicleName": transport.vehicalName
       }];
@@ -241,7 +247,7 @@ export class CreatePackage implements OnInit {
 
     if(this.allGuides.length) {
       this.createPackageJson.guides = [{  
-        "guideDate": "2018-"+guideDate.substr(0,2)+"-"+this.shrSrv.getMon(guideDate.substr(2,3))+"T06:02:07.468Z",
+        "guideDate": "2018-"+guideDate.substr(0,2)+"-"+this.shrSrv.getMon(guideDate.substr(2,3))+this.fromTime,
         "guideId": guide.guideId
       }];
     }

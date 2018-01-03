@@ -1,0 +1,7 @@
+.box{
+    padding: 10px 25px 30px 25px;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

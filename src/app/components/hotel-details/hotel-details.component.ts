@@ -15,7 +15,7 @@ declare var $: any;
   styleUrls: ['./hotel-details.component.css']
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
-  public defaultValue = {roomTypeName: null, roomCapacity:null}
+  public defaultValue = {roomTypeName: null, roomCapacity:1}
   public hotelDetails = {};
   public hotelId: number;
   public roomTypeList:any=[];
@@ -107,20 +107,64 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+  getAvailableRoomsForBooking(hotelId, roomTypeName, roomCapacity, roomLockedFrom, roomLockedTill){
+	this.apiSrv.getAvailableRoomsForBooking(hotelId, roomTypeName, roomCapacity, roomLockedFrom, roomLockedTill).subscribe(
+      (data) => {
+        console.log(data); 
+      }, (error) => {
+        console.log(error);
+      },
+      () => {
+        console.log("completed");
+      }
+    );
+  }
   addAuction(event) {
+	this.getAvailableRoomsForBooking(this.hotelId, this.auctionForm.value.roomTypeName, this.auctionForm.value.roomCapacity,this.auctionForm.value.roomLockedFrom,this.auctionForm.value.roomLockedTill);
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
-    this.auctionForm.controls['eventType'].setValue('a');
-    console.log(this.auctionForm);
+    this.auctionForm.controls['eventType'].setValue('A');
+    console.log(this.auctionForm.value);
+    this.apiSrv.createAuction(this.auctionForm.value).subscribe(
+      (data) => {
+        console.log(data); 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }  
   addFlashSale(event) {
     this.flashSaleForm.controls['hotelId'].setValue(this.hotelId);
-    this.flashSaleForm.controls['eventType'].setValue('f');
-    console.log(this.flashSaleForm.value);
+    this.flashSaleForm.controls['eventType'].setValue('F');
+    //console.log(this.flashSaleForm.value);
+	
+    this.apiSrv.createFlashSale(this.flashSaleForm.value).subscribe(
+      (data) => {
+        console.log(data); 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }  
   addPromotion(event) {
     this.promotionForm.controls['hotelId'].setValue(this.hotelId);
-    this.promotionForm.controls['eventType'].setValue('p');
+    this.promotionForm.controls['eventType'].setValue('P');
     console.log(this.promotionForm.value);
+    this.apiSrv.createPromotion(this.promotionForm.value).subscribe(
+      (data) => {
+        console.log(data); 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }
   setRoomCapacity(event){
     const capacity = event.target.options[event.target.selectedIndex].getAttribute('data-capacity');

@@ -13,7 +13,7 @@ import { CollapsibleModule } from 'angular2-collapsible'; // <-- import the modu
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/shared/navbar/navbar.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { SigninComponent } from './components/signinsignout/signin.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
 import { VendorSignupComponent } from './components/vendor-signup/vendor-signup.component';
@@ -37,6 +37,9 @@ import { GetResourcesForPackage } from './components/resources-for-package/resou
 import { CreatePackage } from './components/create-package/create-package.component';
 import { HotelListingComponent } from './components/hotel-listing/hotel-listing.component';
 import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
+
+import { SignoutComponent } from './components/signinsignout/signout.component';
+import { FieldErrorDisplayComponent } from './components/display-error/field-error-display.component';
 
 import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
@@ -69,6 +72,8 @@ const appRoutes: Routes = [
   {path: 'payment', component: PaymentComponent},
   {path: 'hotel-listing', component: HotelListingComponent},
   {path: 'hotel-details/:id', component: HotelDetailsComponent},
+  {path:'signout', component: SignoutComponent},
+  
   {path: '**', redirectTo: '' }
 ];
 
@@ -101,6 +106,8 @@ const appRoutes: Routes = [
     PaymentComponent,
     HotelListingComponent,
     HotelDetailsComponent,
+    SignoutComponent,
+    FieldErrorDisplayComponent
 
     // DatePicker,
     // DateTimePicker
@@ -111,7 +118,6 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true}), 
-    //BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     CollapsibleModule
   ],

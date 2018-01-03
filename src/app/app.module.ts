@@ -26,7 +26,7 @@ import { AssetRegistrationComponent } from './components/asset-registration/asse
 import { DriverRegistrationComponent } from './components/driver-registration/driver-registration.component';
 import { GuideRegistrationComponent } from './components/guide-registration/guide-registration.component';
 import { PackageRegistrationComponent } from './components/package-registration/package-registration.component';
-import { ShowQuoteResponseComponent } from './components/show-quote-response/show-quote-response.component';
+import { ShowItinRequest } from './components/show-itin-request/show-itin-request.component';
 import { TripPlannerComponent } from './components/trip-planner/trip-planner.component';
 import { QuoteRequestComponent } from './components/quote-request/quote-request.component';
 import { GetResourceForPackage } from './components/get-resource-for-package/get-resource-for-package.component';
@@ -62,7 +62,7 @@ const appRoutes: Routes = [
   {path: 'driver-register', component: DriverRegistrationComponent},
   {path: 'guide-register', component: GuideRegistrationComponent},
   {path: 'package-register', component: PackageRegistrationComponent},
-  {path: 'show-quote-response', component: ShowQuoteResponseComponent},
+  {path: 'show-itin-request', component: ShowItinRequest},
   {path: 'trip-planner', component: TripPlannerComponent},
   {path: 'quote-request', component: QuoteRequestComponent},
   {path: 'resources-for-package', component: GetResourcesForPackage},
@@ -97,7 +97,7 @@ const appRoutes: Routes = [
     DriverRegistrationComponent,
     GuideRegistrationComponent,
     PackageRegistrationComponent,
-    ShowQuoteResponseComponent,
+    ShowItinRequest,
     TripPlannerComponent,
     QuoteRequestComponent,
     GetResourcesForPackage,

@@ -26,6 +26,15 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
+
+  public getMyPackages(userId) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(userId);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getMyPackages', body, options).map(
+      (response) => response.json()
+    );
+  }
   public createItinerary(params) {
     //POST /v1/booking/createItinerary    
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/createItinerary', params).map( 
@@ -43,7 +52,7 @@ export class ApiDataService {
   public getResourcesForPackage(product) {
     //POST /v1/booking/getResourcesForPackage
     console.log(product);
-
+a
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getResourcesForPackage', product).map(
       (response) => {
         //return response.json();

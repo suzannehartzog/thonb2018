@@ -3147,3 +3147,8 @@ legend{
 .quote-response p {
     color: #050a10;
 }
+#description {
+    display: inline-block;
+    resize: none;
+    width: 100%;
+}

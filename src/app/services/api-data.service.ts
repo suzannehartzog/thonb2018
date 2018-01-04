@@ -141,14 +141,14 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
-  public auctionCheckout(auction){
-    let headers = new Headers({ 'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify(auction);
-    return this.http.post(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout', body, options).map(
-      (response) => response.json()
-    );
-  }  
+  // public auctionCheckout(auction){
+  //   let headers = new Headers({ 'Content-Type': 'application/json'});
+  //   let options = new RequestOptions({ headers: headers });
+  //   let body = JSON.stringify(auction);
+  //   return this.http.post(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout', body, options).map(
+  //     (response) => response.json()
+  //   );
+  // }  
   public getAvailableRoomsForBooking(param){	
 	  let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
@@ -263,6 +263,12 @@ export class ApiDataService {
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(params);
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getMyPackages', body, options).map(
+      (response) => response.json()
+    );
+  }
+
+  public auctionCheckout(auctionId, ckoUserId){
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout?auctionId='+auctionId+'&ckoUserId='+ckoUserId).map(
       (response) => response.json()
     );
   }

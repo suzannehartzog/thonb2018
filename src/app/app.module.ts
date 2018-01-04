@@ -47,6 +47,8 @@ import { FieldErrorDisplayComponent } from './components/display-error/field-err
 import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
 
+import { AuthGuard } from './services/auth-guard.service';
+
 //import { DatePicker } from './directives/datepicker/datepicker';
 //import { DateTimePicker } from './directives/datetimepicker/datetimepicker';
 
@@ -56,28 +58,28 @@ const appRoutes: Routes = [
   {path: 'customer-signup', component: CustomerSignupComponent},
   {path: 'vendor-signup', component: VendorSignupComponent},
   {path: 'search-result/:query', component: SearchResultComponent},
-  {path: 'my-trips', component: MyTripsComponent},
-  {path: 'haggling-conversation', component: HagglingConversation},
-  {path: 'start-haggle', component: StartHaggling},
-  {path: 'my-hotels', component: MyHotels},
+  {path: 'my-trips', canActivate: [AuthGuard], component: MyTripsComponent},
+  {path: 'haggling-conversation', canActivate: [AuthGuard], component: HagglingConversation},
+  {path: 'start-haggle', canActivate: [AuthGuard], component: StartHaggling},
+  {path: 'my-hotels', canActivate: [AuthGuard], component: MyHotels},
   {path: 'asset-register', component: AssetRegistrationComponent},
   {path: 'driver-register', component: DriverRegistrationComponent},
   {path: 'guide-register', component: GuideRegistrationComponent},
   {path: 'package-register', component: PackageRegistrationComponent},
-  {path: 'show-itin-request', component: ShowItinRequest},
-  {path: 'trip-planner', component: TripPlannerComponent},
-  {path: 'quote-request', component: QuoteRequestComponent},
-  {path: 'resources-for-package', component: GetResourcesForPackage},
-  {path: 'create-package', component: CreatePackage},
-  {path: 'request-package', component: GetResourceForPackage},
-  {path: 'e-auction', component: EAuctionComponent},
-  {path: 'check-out', component: CheckoutComponent},
-  {path: 'payment', component: PaymentComponent},
+  {path: 'show-itin-request', canActivate: [AuthGuard], component: ShowItinRequest},
+  {path: 'trip-planner', canActivate: [AuthGuard], component: TripPlannerComponent},
+  {path: 'quote-request', canActivate: [AuthGuard], component: QuoteRequestComponent},
+  {path: 'resources-for-package', canActivate: [AuthGuard], component: GetResourcesForPackage},
+  {path: 'create-package', canActivate: [AuthGuard], component: CreatePackage},
+  {path: 'request-package', canActivate: [AuthGuard], component: GetResourceForPackage},
+  {path: 'e-auction', canActivate: [AuthGuard], component: EAuctionComponent},
+  {path: 'check-out', canActivate: [AuthGuard], component: CheckoutComponent},
+  {path: 'payment', canActivate: [AuthGuard], component: PaymentComponent},
   {path: 'hotel-listing', component: HotelListingComponent},
   {path: 'hotel-details/:id', component: HotelDetailsComponent},
   {path:'signout', component: SignoutComponent},
-  {path:'flight-search', component: FlightSearchComponent},
-  {path:'create-itinerary', component: CreateItineraryComponent},
+  {path:'flight-search', canActivate: [AuthGuard], component: FlightSearchComponent},
+  {path:'create-itinerary', canActivate: [AuthGuard], component: CreateItineraryComponent},
   {path:'flash-sale', component: FlashSaleComponent},
   
   {path: '**', redirectTo: '' }
@@ -130,7 +132,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     CollapsibleModule
   ],
-  providers: [ApiDataService,SharedService],
+  providers: [ApiDataService,SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

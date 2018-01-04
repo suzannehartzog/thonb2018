@@ -26,42 +26,27 @@ export class HagglingConversation implements OnInit {
 
     this.roleName = localStorage.getItem("roleName");
 
-    if (this.roleName == "Traveler") {
-      this.getHotelHagglingDetailForUser(2);
-    }
-    if (this.roleName == "owner") {
-      this.getHotelHagglingDetailForOwner(3);
-    }
+    this.getHotelHagglingDetail(3);
   }
 
-  getHotelHagglingDetailForUser(hagglingId) {
-    this.apiSrv.getHotelHagglingDetailForUser(hagglingId).subscribe(
+  getHotelHagglingDetail(hagglingId) {
+    this.apiSrv.getHotelHagglingDetail(hagglingId).subscribe(
       (data) => {
         this.comments = data.comments;
       },
       (error) => console.log(error),//Error Handler
-      () => console.log("completed getAllCartProduct")//Complete Handler
-    );
-  }
-
-  getHotelHagglingDetailForOwner(hagglingId) {
-    this.apiSrv.getHotelHagglingDetailForOwner(hagglingId).subscribe(
-      (data) => {
-        this.comments = data.comments;
-      },
-      (error) => console.log(error),//Error Handler
-      () => console.log("completed getAllCartProduct")//Complete Handler
+      () => console.log("completed getHotelHagglingDetail")//Complete Handler
     );
   }
 
   addToHotelHaggling(params: any) {
     let hagglingJson = {
       "comment": params.message,
-      "consumerUserId": parseInt(this.user),
+      "userId": parseInt(this.user),
       "firstConversation": false,
       "roomType": "Deluxe",
       "hotelId": 1,
-      "hagglingId": 1
+      "hagglingId": 3
     };
 
     if (this.roleName == "Traveler") {
@@ -75,12 +60,7 @@ export class HagglingConversation implements OnInit {
 
     this.apiSrv.addToHotelHaggling(hagglingJson).subscribe(
       (data) => {
-        if (this.roleName == "user") {
-          this.getHotelHagglingDetailForUser(2);
-        }
-        if (this.roleName == "owner") {
-          this.getHotelHagglingDetailForOwner(3);
-        }
+        this.getHotelHagglingDetail(3);
       }, (error) => {
         console.log(error);
       },

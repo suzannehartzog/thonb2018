@@ -203,7 +203,7 @@
                 <div class="form-group col-md-5">
                     <textarea name="description" placeholder="" id="description" ngModel required></textarea>
                 </div>
-                <div class="form-group col-md-1">
+                <!--<div class="form-group col-md-1">
                    <label for="pkgId">Select Package</label>
                 </div>
                 <div class="form-group col-md-5">
@@ -211,7 +211,7 @@
 						<option value="0">Select Package</option>
 						<option *ngFor="let pkg of getMyPackages" value="{{pkg.pkgId}}">{{pkg.description}}</option>
 					</select>
-                </div>
+                </div>-->
             </div>
             <a href="javascript:void(0)" class="btn btn-info form-control" (click)="createPackage()" [ngClass]="isDropSelected ? '' : 'hideMe'">Submit</a>
         </div>

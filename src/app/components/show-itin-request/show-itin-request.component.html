@@ -5,26 +5,27 @@
 	<div class="container">
 		<h1>Show Itinerary Requests!</h1>
 		<div class="row">
+			<div [ngClass]="messageClass">{{message}}</div>
 			<section>
-				<article class="booking-list card">
-					<div class="panel-heading clickable" (click)="toggleDisplay()">
+				<article class="booking-list card" *ngFor="let itin of showItineraryRequests">
+					<div class="panel-heading clickable" (click)="toggleDisplay($event)">
 						<div class="row">
 							<div class="col-md-3">
 								<span class="text-gray">Budget:</span>
-								<span><b>5000</b></span>
+								<span><b>{{itin.budget}}</b></span>
 							</div>
 							<div class="col-md-3">
 								<span class="text-gray">Created On:</span>
-								<span><b>Jan 27</b></span>
+								<span><b>{{itin.createdOn}}</b></span>
 							</div>
 							<div class="col-md-3">
 								<span class="text-gray">Starting City:</span>
-								<span><b>Kolkata</b></span>
+								<span><b>{{itin.originCity}}</b></span>
 							</div>
 
 							<div class="col-md-3">
 								<span class="text-gray">Desitination:</span>
-								<span><b>Darjeeling</b></span>
+								<span><b>{{itin.destinationCity}}</b></span>
 							</div>
 						</div>
 					</div>
@@ -32,38 +33,52 @@
 						<div class="flex-row">
 							<div class="col-md-3">
 								<p class="text-gray">Requested By</p>
-								<p><b>Pocha da</b></p>
+								<p><b>{{itin.requestorName}}</b></p>
 							</div>
 							<div class="col-md-3">
 								<p class="text-gray">Starting Date</p>
-								<p><b>Sat, 27th Jan</b></p>
+								<p><b>{{itin.startDate}} 2018</b></p>
 							</div>
 							<div class="col-md-3">
 								<p class="text-gray">Trip End Date</p>
-								<p><b>Sat, 27th Jan</b></p>
+								<p><b>{{itin.endDate}} 2018</b></p>
 							</div>
 							<div class="col-md-3">
 								<p class="text-gray">Traveller Count</p>
-								<p><b>2</b></p>
+								<p><b>{{itin.travellerCount}}</b></p>
 							</div>
 						</div>
 						<div class="flex-row">
 							<div class="col-md-3">
 								<p class="text-gray">Expected Response By</p>
-								<p><b>Sat, 27th Jan</b></p>
+								<p><b>{{itin.expectedResponseWithin}}</b></p>
 							</div>
 							<div class="col-md-3">
 								<p class="text-gray">Need Hotel</p>
-								<p><b>Yes</b></p>
+								<p><b>{{itin.hotelNeeded == true ? 'Yes' : 'No'}}</b></p>
 							</div>
 							<div class="col-md-3">
 								<p class="text-gray">Need Guide</p>
-								<p><b>Yes</b></p>
+								<p><b>{{itin.guideNeeded == true ? 'Yes' : 'No'}}</b></p>
 							</div>
 							<div class="col-md-3">
 								<p class="text-gray">Need Transport</p>
-								<p><b>Yes</b></p>
+								<p><b>{{itin.transportNeeded == true ? 'Yes' : 'No'}}</b></p>
 							</div>
+						</div>
+						<div class="flex-row">
+							<form #itinForm="ngForm" (ngSubmit)="respondToCreateItineraryRequest(itinForm.value)">
+								<div class="col-md-3">
+									<label>Packages</label>
+									<select name="packageId" class="form-control packageId" required ngModel>
+										<option value="">Packages</option>
+										<option *ngFor="let p of myPackages" value="{{itin.requestorId}}-{{p.itineraryReqId}}">{{city.name}}</option>
+									</select>
+								</div>
+								<div class="col-md-3">
+									<input type="submit" class="btn btn-info  center-block" value="Respond">
+								</div>
+							</form>
 						</div>
 					</div>
 				</article>

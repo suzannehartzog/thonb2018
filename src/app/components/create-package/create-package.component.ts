@@ -272,10 +272,10 @@ export class CreatePackage implements OnInit {
   }
 
   createPackage() {
-    this.price = parseInt($("#budget").val());
+    //this.price = parseInt($("#budget").val());
     this.description = $("#description").val();
     
-    this.createPackageJson.price = this.price;
+    //this.createPackageJson.price = this.price;
     this.createPackageJson.description= this.description;
     this.createPackageJson.pkgId = parseInt($("#pkgId").val());
     

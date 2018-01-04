@@ -4,9 +4,9 @@
 <div class="container fill">
     <div class="row chat-wrap">
         <h1>Haggle Your Price!</h1>
-        <div class="col-sm-3 panel-wrap">
+        <div class="col-sm-3 panel-wrap hide">
 
-            <div class="col-sm-12 section-wrap coAndres Elizondollapse" id="Contacts">
+            <div class="col-sm-12 section-wrap coAndres Elizondollapse " id="Contacts">
 
                 <!--Header-->
                 <div class="row header-wrap">
@@ -42,7 +42,7 @@
         <div class="col-sm-12 panel-wrap">
 
             <!--Main Content / Message List-->
-            <div class="col-sm-12 section-wrap" [ngClass]="userType == 'owner' ? 'showCouponHeight' : ''" id="Messages">
+            <div class="col-sm-12 section-wrap" [ngClass]="roleName == 'TravellerAgent' ? 'showCouponHeight' : ''" id="Messages">
 
                 <!--Header-->
                 <div class="row header-wrap">
@@ -66,6 +66,7 @@
                             <h5 class="media-heading">{{comment.commentMadeBy}}</h5>
                             <small class="col-sm-11">
                                 <p>{{comment.comment}}</p>
+                                <p *ngIf="comment.couponCode !==''">Use Coupon Code: <b>{{comment.couponCode}}</b></p>
                             </small>
                         </div>
                     </div>
@@ -75,7 +76,7 @@
                 <div class="row send-wrap">
                     <form #haggleConversation="ngForm" (ngSubmit)="addToHotelHaggling(haggleConversation.value)">
                         <div class="send-message">
-                            <div class="message-text display-table-row" *ngIf="userType == 'owner'">
+                            <div class="message-text display-table-row" *ngIf="roleName == 'TravellerAgent'">
                                 <input type="text" placeholder="Coupon Code" name="couponCode" class="couponCode" ngModel />
                             </div>
                             <div class="display-table-row">

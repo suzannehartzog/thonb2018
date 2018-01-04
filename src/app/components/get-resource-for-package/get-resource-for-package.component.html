@@ -6,73 +6,73 @@
 		<h1>Create Your Package!</h1>
 		<div class="box">
 			<form #itinForm="ngForm" (ngSubmit)="getResourcesForPackage(itinForm.value)">
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label>Starting City</label>
-							<select name="starttingCityId" class="form-control" required ngModel>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label>Starting City</label>
+						<select name="starttingCityId" class="form-control" required ngModel>
 								<option value="">Origin</option>
 								<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
 							</select>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="fromDate">Starting Date</label>
-							<input type="date" name="fromDate" class="form-control" required placeholder="" id="fromDate" ngModel>
-						</div>
 					</div>
+				</div>
 
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="fromTime">Starting Time</label>
-							<input type="time" name="fromTime" class="form-control" required placeholder="" id="fromTime" ngModel>							
-						</div>
-						<div class="form-group col-md-6">
-							<label>Destination City</label>
-							<select name="travellingCityId" class="form-control" required ngModel>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="fromDate">Starting Date</label>
+						<input type="date" name="fromDate" class="form-control" required placeholder="" id="fromDate" ngModel>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="fromTime">Starting Time</label>
+						<input type="time" name="fromTime" class="form-control" required placeholder="" id="fromTime" ngModel>
+					</div>
+				</div>
+
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Destination City</label>
+						<select name="travellingCityId" class="form-control" required ngModel>
 								<option value="">Destination City</option>
 								<option *ngFor="let city of cityList" value="{{city.cityId}}">{{city.cityName}}</option>
-							</select>							
-						</div>
+							</select>
 					</div>
-				
-
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label>No. of Nights</label>
-							<select name="noOfNights" class="form-control" required ngModel>
+					<div class="form-group col-md-6">
+						<label>No. of Nights</label>
+						<select name="noOfNights" class="form-control" required ngModel>
 								<option value="">No. of Nights</option>
 								<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
-							</select>													
-						</div>
-						<div class="form-group col-md-6">
-							<label>No. of Rooms</label>
-							<select name="noOfRooms" class="form-control" required ngModel>
+							</select>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>No. of Rooms</label>
+						<select name="noOfRooms" class="form-control" required ngModel>
 								<option value="">No. of Rooms</option>
 								<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
-							</select>													
-						</div>
+							</select>
 					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label>No. of Travellers</label>
-							<select name="noOfTravellers" class="form-control" required ngModel id="groupSize">
+					<div class="form-group col-md-6">
+						<label>No. of Travellers</label>
+						<select name="noOfTravellers" class="form-control" required ngModel id="groupSize">
 								<option value="">No. of Travellers</option>
 								<option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" value="{{number}}">{{number}}</option>
-							</select>																				
-						</div>
-						<div class="form-group col-md-6">
-							<div class="form-check col-md-6">
-								<label>Request For</label><br/>						
-								<label class="form-check-label" for="pickup"><input type="checkbox" class="form-check-input" id="pickup" value="pickup" name="pickUpIncluded" ngModel> Pick-up </label>
-								<label class="form-check-label" for="drop"><input type="checkbox" class="form-check-input" id="drop" value="drop" name="dropIncluded" ngModel> Drop </label>
-								<label class="form-check-label" for="guide"><input type="checkbox" class="form-check-input" id="guide" value="guide" name="guideIncluded" ngModel> Guide </label>																					
-							</div>																				
-						</div>
+							</select>
 					</div>
-					<div class="form-row">						
-						<div class="form-check col-md-12">
-							<input type="submit" class="btn btn-info  center-block" value="Get Details">
-						</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label>Request For</label><br/>
+						<label class="form-check-label" for="pickup"><input type="checkbox" class="form-check-input" id="pickup" value="pickup" name="pickUpIncluded" ngModel> Pick-up </label>
+						<label class="form-check-label" for="drop"><input type="checkbox" class="form-check-input" id="drop" value="drop" name="dropIncluded" ngModel> Drop </label>
+						<label class="form-check-label" for="guide"><input type="checkbox" class="form-check-input" id="guide" value="guide" name="guideIncluded" ngModel> Guide </label>
 					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-check col-md-12">
+						<input type="submit" class="btn btn-info  center-block" value="Get Details">
+					</div>
+				</div>
 			</form>
 			<div class="clear"></div>
 		</div>

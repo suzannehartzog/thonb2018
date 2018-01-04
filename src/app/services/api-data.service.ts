@@ -52,6 +52,7 @@ export class ApiDataService {
   public getResourcesForPackage(product) {
     //POST /v1/booking/getResourcesForPackage
     console.log(product);
+
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getResourcesForPackage', product).map(
       (response) => {
         //return response.json();
@@ -163,22 +164,12 @@ export class ApiDataService {
     );
   }
 
-  public getHotelHagglingDetailForUser(hagglingId) {
+  public getHotelHagglingDetail(hagglingId) {
     //POST /v1/booking/getHotelHagglingDetailForUser
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(hagglingId);
-    return this.http.post(this.ENV_URL_SEARCH + "v1/booking/getHotelHagglingDetailForUser", body, options).map(
-      (response) => response.json()
-    );
-  }
-
-  public getHotelHagglingDetailForOwner(hagglingId) {
-    //POST /v1/booking/getHotelHagglingDetailForOwner
-    let headers = new Headers({ 'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify(hagglingId);
-    return this.http.post(this.ENV_URL_SEARCH + "v1/booking/getHotelHagglingDetailForOwner", body, options).map(
+    return this.http.post(this.ENV_URL_SEARCH + "v1/booking/getHotelHagglingDetail", body, options).map(
       (response) => response.json()
     );
   }
@@ -217,6 +208,22 @@ export class ApiDataService {
     console.log("URL:" + flightURL);
     return this.http.get(flightURL).map(
       (response) => response
+    );
+  }
+
+  public showItineraryRequests() {
+    return this.http.get(this.ENV_URL_SEARCH + '/v1/booking/showItineraryRequests').map(
+      (response) => response.json()
+    );
+  }
+
+  public respondToCreateItineraryRequest(product) {
+    //POST /v1/booking/respondToCreateItineraryRequest
+    console.log(product);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/respondToCreateItineraryRequest', product).map(
+      (response) => {
+        return response;
+      }
     );
   }
 

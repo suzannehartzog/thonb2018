@@ -52,7 +52,6 @@ export class ApiDataService {
   public getResourcesForPackage(product) {
     //POST /v1/booking/getResourcesForPackage
     console.log(product);
-a
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getResourcesForPackage', product).map(
       (response) => {
         //return response.json();

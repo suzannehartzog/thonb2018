@@ -35,7 +35,7 @@
 
 					<li id="noti_Container" *ngIf="isLoggedIn">
 						<a (click)="toggleNotificationWindow()" href="javascript:void(0);">
-							<i class="fa fa-bell" aria-hidden="true"></i><sup id="noti_Counter">{{unreadCount}}</sup></a>
+							<i class="fa fa-bell" aria-hidden="true"></i><sup id="noti_Counter" *ngIf="unreadCount>0">{{unreadCount}}</sup></a>
 						<!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
 						<!--THE NOTIFICAIONS DROPDOWN BOX.-->
 						<div id="notifications">

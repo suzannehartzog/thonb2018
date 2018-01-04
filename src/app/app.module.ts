@@ -39,6 +39,7 @@ import { HotelListingComponent } from './components/hotel-listing/hotel-listing.
 import { HotelDetailsComponent } from './components/hotel-details/hotel-details.component';
 import { FlightSearchComponent } from './components/flight-search/flight-search.component';
 import { CreateItineraryComponent } from './components/create-itinerary/create-itinerary.component';
+import { FlashSaleComponent } from './components/flash-sale/flash-sale.component';
 
 import { SignoutComponent } from './components/signinsignout/signout.component';
 import { FieldErrorDisplayComponent } from './components/display-error/field-error-display.component';
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
   {path:'signout', component: SignoutComponent},
   {path:'flight-search', component: FlightSearchComponent},
   {path:'create-itinerary', component: CreateItineraryComponent},
+  {path:'flash-sale', component: FlashSaleComponent},
   
   {path: '**', redirectTo: '' }
 ];
@@ -113,7 +115,8 @@ const appRoutes: Routes = [
     SignoutComponent,
     FieldErrorDisplayComponent,
     FlightSearchComponent,
-    CreateItineraryComponent
+    CreateItineraryComponent,
+    FlashSaleComponent
 
     // DatePicker,
     // DateTimePicker

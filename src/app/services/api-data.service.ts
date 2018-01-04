@@ -111,17 +111,44 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
-  public activeAuctions() {//assets/service-json/auction-list.json
+   public activeAuctions() {//assets/service-json/auction-list.json
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify('');
-    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/activeAuctions', body, options).map(
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/activeAuctions').map(
       (response) => response.json()
     );
   }
-  public checkValidBidder() {
-    return;
+  public activeFlashSale() {//assets/service-json/auction-list.json
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/activeFlashSale').map(
+      (response) => response.json()
+    );
   }
+  public checkValidBidder(param) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(param);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/bid/checkValidBidder', body, options).map(
+      (response) => response.json()
+    );
+  }
+  public saveBid(auction) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(auction);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/bid/saveBid', body, options).map(
+      (response) => response.json()
+    );
+  }
+  public auctionCheckout(auction){
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(auction);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout', body, options).map(
+      (response) => response.json()
+    );
+  }  
   public getAvailableRoomsForBooking(param){	
 	  let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
@@ -182,7 +209,11 @@ export class ApiDataService {
 			(response) =>response.json()
 		);
 	}
-
+  public getAllnotification(userId){
+    return this.http.get(this.ENV_URL_SEARCH + '/v1/notification/getAll/'+userId).map(
+      (response) => response.json()
+    );
+  }
   public validateLogin(loginData){
     return this.http.get(this.ENV_URL_SEARCH + 'v1/user/login?userEmail='+ loginData.userEmail + "&userPwd=" + loginData.userPwd).map(
       (response) => response

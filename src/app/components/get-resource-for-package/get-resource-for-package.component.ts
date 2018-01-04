@@ -24,7 +24,7 @@ export class GetResourceForPackage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Create Itinerary:: Yayaati');
+    this.titleService.setTitle('Create Your Package:: Yayaati');
 
     this.apiSrv.getCities().subscribe(
       (res:Response) => {

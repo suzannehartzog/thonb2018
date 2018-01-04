@@ -68,6 +68,18 @@ export class NavComponent implements OnInit {
   }
   
   toggleNotificationWindow(){
+
+    this.apiSrv.markAllNotificationRead(localStorage.getItem("userId")).subscribe(
+      (data) => {
+        //console.log(data);
+      }, (error) => {
+        //console.log(error); 
+      },
+      () => {
+      //console.log("completed markAllNotificationRead");
+      }
+    );
+
     if($('.toggle').hasClass('close')){
       $('.menu').removeClass('open').slideUp();
       $('.w3nav').removeClass('show-w3nav');  

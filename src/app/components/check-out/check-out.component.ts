@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+import { ApiDataService } from '../../services/api-data.service';
+import { SharedService } from '../../services/shared.service';
+
 declare var jquery: any;
 declare var $: any;
 
@@ -11,42 +14,34 @@ declare var $: any;
   styleUrls: ['./check-out.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  public numbers:any=[1,2,3,4,5,6];
+  public checkoutDetails:any;
   public auctionList:any=[];
   constructor(
     private router: Router,
     private titleService: Title,
-    private el: ElementRef
+    private el: ElementRef,
+    private apiSrv: ApiDataService,
+    private shrSrv: SharedService
   ) {}
 
   ngOnInit() {
     this.titleService.setTitle('Check out:: Yayaati');
-    this.auctionList = [
-      {id:1, name:"Auction 1"},
-      {id:2, name:"Auction 2"},
-      {id:3, name:"Auction 3"},
-      {id:4, name:"Auction 4"},
-      {id:5, name:"Auction 5"},
-      {id:6, name:"Auction 6"}
-    ];
-    setTimeout(()=>{    //<<<---    using ()=> syntax
-      this.startSlider();
-    },100);    
+    this.auctionCheckout(localStorage.getItem("checkoutId"), localStorage.getItem("userId"))
   }
-  toggleChild(auction){
-    auction.showdetails = !auction.showdetails;
+  auctionCheckout(auctionId, ckoUserId){
+    this.apiSrv.auctionCheckout(auctionId, ckoUserId).subscribe(
+      (data) => {
+        this.checkoutDetails = data;
+        console.log(this.checkoutDetails);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );
   }
-  startSlider() {
-      $('.flexslider').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        itemWidth: $(".flexslider").outerWidth()/3,
-        itemMargin: 0,
-        slideshow:false,
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-      });
-  }
+
+
+  
 }

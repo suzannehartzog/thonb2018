@@ -14,6 +14,8 @@ declare var $: any;
   styleUrls: ['./e-auction.component.css']
 })
 export class EAuctionComponent implements OnInit {
+  public hasError :boolean;
+  public errorMsg: string;
   public currentBid : number = 1500;
   public loggedInUser :any;
   public bids:any=[
@@ -81,7 +83,14 @@ export class EAuctionComponent implements OnInit {
     }
     this.apiSrv.checkValidBidder(param).subscribe(
       (data) => {
-        this.saveBid(auction);
+        if(data.validBidder){
+          console.log("Valid");
+          this.saveBid(auction);
+        }else{
+          console.log("Invalid");
+          this.hasError = true;
+          this.errorMsg = data.errorDesc;
+        }        
       }, (error) => {
         console.log(error); 
       },
@@ -91,15 +100,25 @@ export class EAuctionComponent implements OnInit {
     );    
   }
   saveBid(auction){
-    this.apiSrv.activeAuctions().subscribe(
+    let param = {
+      "assetType": "H",
+      "auctionId": auction.auctionId,
+      "bidDate": "",
+      "bidId": auction.bidId==undefined?0:auction.bidId,
+      "bidPrice": 5000,
+      "bidWin": "",
+      "bidderId": localStorage.getItem("userId"),
+      "eventType": "A"
+    }
+    this.apiSrv.saveBid(param).subscribe(
       (data) => {
-    this.bids.unshift(auction);
-    let index = this.auctionList.indexOf(auction);
-    this.auctionList.splice(index, 1);
-    setTimeout(()=>{   
-      $('.flexslider').data('flexslider').addSlide();
-      this.startSlider();
-    },100);
+        this.bids.unshift(auction);
+        let index = this.auctionList.indexOf(auction);
+        this.auctionList.splice(index, 1);
+        setTimeout(()=>{   
+          $('.flexslider').data('flexslider').addSlide();
+          this.startSlider();
+        },100);
       }, (error) => {
         console.log(error); 
       },
@@ -109,16 +128,8 @@ export class EAuctionComponent implements OnInit {
     );   
   }
   auctionCheckout(auction){
-    this.apiSrv.activeAuctions().subscribe(
-      (data) => {
-        console.log(data);
-      }, (error) => {
-        console.log(error); 
-      },
-      () => {
-        console.log("completed changeCurrency");
-  }
-    );  
+    localStorage.setItem("checkoutId", auction.auctionId);
+    this.router.navigate(['/check-out']);
   }  
   startSlider() {
     $('.flex-upcoming-auction').flexslider({

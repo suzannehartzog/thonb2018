@@ -258,17 +258,13 @@ export class ApiDataService {
     );
   }
 
-  // public dummygetNotificationsPosts(){
-  //   let param = {
-  //     title: 'foo',
-  //     body: 'bar',
-  //     userId: 1
-  //   };
-  //   let headers = new Headers();
-  //   this.createAuthorizationHeader(headers);     
-  //   let options = new RequestOptions({headers: headers});
-  //   return this.http.post('https://jsonplaceholder.typicode.com/posts', param, options).map(
-  //     (response) =>response.json()
-  //   );
-  // }
+  public retrievePackageDetails(params) {
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(params);
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getMyPackages', body, options).map(
+      (response) => response.json()
+    );
+  }
+  
 }

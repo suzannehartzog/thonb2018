@@ -72,7 +72,7 @@
 									<label>Packages</label>
 									<select name="packageId" class="form-control packageId" required ngModel>
 										<option value="">Packages</option>
-										<option *ngFor="let p of myPackages" value="{{itin.requestorId}}-{{p.itineraryReqId}}">{{city.name}}</option>
+										<option *ngFor="let p of myPackages" value="{{itin.requestorId}}-{{itin.itineraryReqId}}-{{p.pkgId}}">{{p.description}}</option>
 									</select>
 								</div>
 								<div class="col-md-3">

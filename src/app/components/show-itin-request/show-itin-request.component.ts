@@ -35,33 +35,31 @@ export class ShowItinRequest implements OnInit {
       () => console.log("completed cityList")//Complete Handler
     );
 
-    this.apiSrv.getMyPackages(localStorage.getItem("userId")).subscribe(
+    this.apiSrv.retrievePackageDetails(localStorage.getItem("userId")).subscribe(
       (res:Response) => {
         console.log(res);
         this.myPackages = res;
       },
       (error) => console.log(error),//Error Handler
-      () => console.log("completed getMyPackages")//Complete Handler
+      () => console.log("completed retrievePackageDetails")//Complete Handler
     );
   }
 
   toggleDisplay(e) {
     $(e.target).closest(".panel-heading.clickable").next(".panel-body").toggleClass("hideMe");
   }
-  toggleChildDetails() {
-    this.isChildDisplay = !this.isChildDisplay;
-  }
+  
   respondToCreateItineraryRequest(params) {
     let product = params;
-    product.itineraryRequestorId = localStorage.getItem("userId");
-    product.itineraryId = params.itineraryId.split("-")[0];
-    product.packageId = params.itineraryId.split("-")[1];
+    product.itineraryRequestorId = params.packageId.split("-")[0];
+    product.itineraryId = params.packageId.split("-")[1];
+    product.packageId = params.packageId.split("-")[2];
     this.apiSrv.respondToCreateItineraryRequest(product).subscribe(
       (data) => {
         this.messageClass = "alert alert-success";
-        this.message = "Package successfully created!";
+        this.message = "Thanks for responding to traveller!";
 
-        $('.btn.btn-info').addClass('disabled');
+        //$('.btn.btn-info').addClass('disabled');
       }, (error) => {
         this.messageClass = "alert alert-danger";
         this.message = "Package registration failed!";

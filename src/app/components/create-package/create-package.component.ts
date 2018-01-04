@@ -32,6 +32,7 @@ export class CreatePackage implements OnInit {
   public hidePickupBodyPanel: boolean = false;
   public hideDropBodyPanel: boolean = false;
   public hideGuideBodyPanel: boolean = false;
+  public showBtnContainer: boolean = false;
 
   public textSearchAll: any;
   public hotelInDate: string;
@@ -117,18 +118,6 @@ export class CreatePackage implements OnInit {
       (error) => console.log(error),//Error Handler
       () => console.log("completed getMyPackages")//Complete Handler
     );
-
-    // if(this.pickUpTransports.length) {
-    //   this.createPackageJson.pickUpTransports= [{}];
-    // }
-
-    // if(this.dropTransports.length) {
-    //   this.createPackageJson.dropTransports= [{}];
-    // }
-
-    // if(this.allGuides.length) {
-    //   this.createPackageJson.guides= [{}];
-    // }
   }
 
   toggleDisplay(param) {
@@ -153,43 +142,23 @@ export class CreatePackage implements OnInit {
     } 
   } 
 
-  public getTextSearchAll() {
-    //console.log(this.apiSrv.ENV_URL_SEARCH); 
-    // let body = JSON.stringify({ 'text': 'visit to darjeeling from 4jan to 9jan' });
-    // let headers = new Headers({ 'Content-Type': 'application/json' });
-    // let options = new RequestOptions({ headers: headers });
-
-    // this.http.post(this.apiSrv.ENV_URL_SEARCH+'v1/search/textSearch',body, options).map(
-    // //this.http.get("../../assets/service-json/register-itin.json").map(
-    //   (response) => response
-    // ).subscribe(
-    //   res => {
-    //     console.log(res.json());
-    //     this.allHotels = this.apiSrv.getUniqueHotels(res.json().hotels);
-    //     this.allGuides = res.json().guides;
-    //     this.transports = res.json().transports;
-    //   },
-    //   (error) => console.log(error),
-    //   () => {
-
-    //   }
-    //   );
-  }
-
   showPickup(hotel, roomType, hotelLocation) {
     //console.log(hotel);
 
-    let hotelCheckInDate = $("#checkinDate").text();
+    let hotelCheckInDate = document.getElementById("checkinDate").innerText;
     if (!this.isHotelSelected) {
       this.isHotelSelected = !this.isHotelSelected;
       this.hideHotelBodyPanel = true;
     } 
     
-    if(!this.pickUpTransports.length) {
-      this.isPickupSelected = true;
-    } else if(this.dropTransports.length) {
+    debugger;
+    if(this.pickUpTransports.length) {
+      this.isHotelSelected = true;
+    }
+    if(this.dropTransports.length) {
       this.isDropSelected = true;
-    } else if(this.allGuides.length) {
+    }
+     if(this.allGuides.length) {
       this.isGuideSelected = true;
     }
 
@@ -256,11 +225,13 @@ export class CreatePackage implements OnInit {
   }
 
   addGuide(guide) {
+    debugger;
     let guideDate= document.getElementById("guideDate").innerText;
 
-    this.isGuideSelected = !this.isGuideSelected;
+    //this.isGuideSelected = !this.isGuideSelected;
     this.hideGuideBodyPanel = true;
-
+    this.showBtnContainer = true;
+    
     if(this.allGuides.length) {
       this.createPackageJson.guides = [{  
         "guideDate": "2018-"+guideDate.substr(0,2)+"-"+this.shrSrv.getMon(guideDate.substr(2,3)) + " " + this.fromTime,
@@ -272,12 +243,17 @@ export class CreatePackage implements OnInit {
   }
 
   createPackage() {
-    //this.price = parseInt($("#budget").val());
-    this.description = $("#description").val();
+    this.description = (<HTMLInputElement>document.getElementById("description")).value;
     
-    //this.createPackageJson.price = this.price;
     this.createPackageJson.description= this.description;
-    this.createPackageJson.pkgId = parseInt($("#pkgId").val());
+
+    if(this.createPackageJson.transports[0].transportAssetId == undefined) {
+      this.createPackageJson.transports.pop();
+    }
+
+    if(this.createPackageJson.guides.guideId == undefined) {
+      this.createPackageJson.guides.pop();
+    }
     
     this.apiSrv.createPackage(this.createPackageJson).subscribe(
       (data) => {

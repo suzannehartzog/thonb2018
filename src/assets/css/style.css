@@ -3096,7 +3096,9 @@ legend{
 .bottom-dashed-border {
     border-bottom: 1px dashed #ccc;
 }
-.trasnpsort-name {
+.trasnpsort-name,
+.guide-name {
+    text-transform: capitalize;
     line-height: 1.42857143;
 }
 .no-bottom-margin {
@@ -3151,4 +3153,8 @@ legend{
     display: inline-block;
     resize: none;
     width: 100%;
+}
+.packageId {
+    width: 67%;
+    display: inline; 
 }

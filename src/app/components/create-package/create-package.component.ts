@@ -151,12 +151,11 @@ export class CreatePackage implements OnInit {
       this.hideHotelBodyPanel = true;
     } 
     
-    debugger;
     if(this.pickUpTransports.length) {
       this.isHotelSelected = true;
     }
     if(this.dropTransports.length) {
-      this.isDropSelected = true;
+      this.isPickupSelected = true;
     }
      if(this.allGuides.length) {
       this.isGuideSelected = true;
@@ -225,7 +224,6 @@ export class CreatePackage implements OnInit {
   }
 
   addGuide(guide) {
-    debugger;
     let guideDate= document.getElementById("guideDate").innerText;
 
     //this.isGuideSelected = !this.isGuideSelected;

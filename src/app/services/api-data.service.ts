@@ -214,6 +214,11 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
+  public markAllNotificationRead(userId){
+    return this.http.get(this.ENV_URL_SEARCH + '/v1/notification/markAllNotificationRead/'+userId).map(
+      (response) => response.json()
+    );
+  }
   public validateLogin(loginData){
     return this.http.get(this.ENV_URL_SEARCH + 'v1/user/login?userEmail='+ loginData.userEmail + "&userPwd=" + loginData.userPwd).map(
       (response) => response
@@ -267,10 +272,10 @@ export class ApiDataService {
     );
   }
 
-  public auctionCheckout(auctionId, ckoUserId){
-    return this.http.get(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout?auctionId='+auctionId+'&ckoUserId='+ckoUserId).map(
-      (response) => response.json()
-    );
-  }
+   public auctionCheckout(auctionId, ckoUserId){
+     return this.http.get(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout?auctionId='+auctionId+'&ckoUserId='+ckoUserId).map(
+       (response) => response.json()
+     );
+   }
   
 }

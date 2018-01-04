@@ -16,7 +16,8 @@ export class NavComponent implements OnInit {
   public isLoggedIn: boolean;
   public static updateUserStatus: Subject<boolean> = new Subject();
   public userName: string;
-
+  public notificationList:any;
+  public unreadCount:any;  
   constructor(
     private apiSrv : ApiDataService,
     private shrSrv : SharedService
@@ -36,9 +37,22 @@ export class NavComponent implements OnInit {
 
     if(this.isLoggedIn) {
       this.userName = localStorage.getItem("userName");
-    }
+      this.getAllnotification();
+    }    
   }
-
+  getAllnotification(){
+    this.apiSrv.getAllnotification(localStorage.getItem("userId")).subscribe(
+      (data) => {        
+        this.notificationList = data.notifications; 
+        this.unreadCount = data.unreadCount; 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+    }
+    );
+  }
   togglePanel() {
       $('#notifications').fadeOut('fast');
 			$('.menu').toggleClass('open').slideToggle();  

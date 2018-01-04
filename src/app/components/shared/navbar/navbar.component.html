@@ -1,7 +1,7 @@
 <div class="header">
 	<div class="container">
 		<div class="header-w3lsrow"> 
-			<div class="menu" *ngIf="!isLoggedIn;"> 
+			<div class="menu"> 
 				<ul class="w3nav">
 					<li><a routerLink='/search-result' class="btn btn-info" href="javascript:void(0);" title="">Search Hotels</a></li>
 					<li><a routerLink='/my-profile' class="btn btn-info" href="javascript:void(0);" title="">My Profile</a></li>
@@ -15,6 +15,8 @@
 					<li><a routerLink='/travell-experience' class="btn btn-info" href="javascript:void(0);" title="">Travel Experience</a></li>
 					<li><a routerLink='/deal-of-day' class="btn btn-info" href="javascript:void(0);" title="">Deals of the Day</a></li>
 					<li><a routerLink='/contact-us' class="btn btn-info" href="javascript:void(0);" title="">Contact Us</a></li>						
+					<li><a routerLink='/flight-search' class="btn btn-info" href="javascript:void(0);" title="">Flight Search</a></li>						
+					<!--<li><a routerLink='/contact-us' class="btn btn-info" href="javascript:void(0);" title="">Search Train</a></li>						-->
 				</ul>
 				<div class="clearfix"> </div>
 			</div> 
@@ -33,12 +35,18 @@
 
 					<li id="noti_Container" *ngIf="isLoggedIn">
 						<a (click)="toggleNotificationWindow()" href="javascript:void(0);">
-							<i class="fa fa-bell" aria-hidden="true"></i><sup id="noti_Counter">2</sup></a>
+							<i class="fa fa-bell" aria-hidden="true"></i><sup id="noti_Counter">{{unreadCount}}</sup></a>
 						<!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
 						<!--THE NOTIFICAIONS DROPDOWN BOX.-->
 						<div id="notifications">
 							<h3>Notifications</h3>
-							<div style="height:300px;"></div>
+							<div style="height:300px;">
+								<ul>
+									<li *ngFor="let notification of notificationList">
+										<a style="color:#000; line-height: 17px;" href="#">{{notification.description}}</a>
+									</li>
+								</ul>
+							</div>
 							<div class="seeAll"><a href="#">See All</a></div>
 						</div>
 					</li>

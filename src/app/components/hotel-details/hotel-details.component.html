@@ -77,7 +77,7 @@
 										No available room for this period.
 									</div>
 									<div role="tabpanel" *ngIf = "showAuction" class="tab-pane fade active in" id="auction" aria-labelledby="auction-tab">
-										<form [formGroup]="auctionForm" (ngSubmit)="getAvailableRoomsForBooking('addAuction')">
+										<form [formGroup]="auctionForm" (ngSubmit)="addAuction('addAuction')">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">Start From</label>
@@ -135,7 +135,7 @@
 										</form>
 									</div>
 									<div role="tabpanel" *ngIf = "showFlashSale" class="tab-pane fade active in" id="flashsale" aria-labelledby="flashsale-tab">
-										<form [formGroup]="flashSaleForm" (ngSubmit)="getAvailableRoomsForBooking('addFlashSale')">
+										<form [formGroup]="flashSaleForm" (ngSubmit)="addFlashSale('addFlashSale')">
 											<div class="form-row">
 												<div class="form-group col-md-6">
 													<label for="inputEmail4">Start From</label>

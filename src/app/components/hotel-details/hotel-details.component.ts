@@ -108,40 +108,45 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  getAvailableRoomsForBooking(functionName){
-    let params = {
-      "bookingEndDate": this.auctionForm.value.roomLockedTill,
-      "bookingStartDate": this.auctionForm.value.roomLockedFrom,
-      "hotelId": this.hotelId,
-      "roomCapacity": this.auctionForm.value.roomCapacity,
-      "roomType": this.auctionForm.value.roomTypeName
-    };
-    this.apiSrv.getAvailableRoomsForBooking(params).subscribe(
-      (data) => {
-        if(data>0){
-          if(functionName==='addAuction'){
-            this.addAuction();
-          }else{
-            this.addFlashSale();
-          }
-        } else{
-          this.hasError = true;
-        }
-      }, (error) => {
-        console.log(error);
-      },
-      () => {
-        console.log("completed");
-      }
-    );
-  }
+  // getAvailableRoomsForBooking(functionName){
+  //   let params = {
+  //     "bookingEndDate": this.auctionForm.value.roomLockedTill,
+  //     "bookingStartDate": this.auctionForm.value.roomLockedFrom,
+  //     "hotelId": this.hotelId,
+  //     "roomCapacity": this.auctionForm.value.roomCapacity,
+  //     "roomType": this.auctionForm.value.roomTypeName
+  //   };
+  //   this.apiSrv.getAvailableRoomsForBooking(params).subscribe(
+  //     (data) => {
+  //       if(data>0){
+  //         if(functionName==='addAuction'){
+  //           this.addAuction();
+  //         }else{
+  //           this.addFlashSale();
+  //         }
+  //       } else{
+  //         this.hasError = true;
+  //       }
+  //     }, (error) => {
+  //       console.log(error);
+  //     },
+  //     () => {
+  //       console.log("completed");
+  //     }
+  //   );
+  // }
   addAuction() {
-	  this.getAvailableRoomsForBooking(this.auctionForm.value);
+	  //this.getAvailableRoomsForBooking(this.auctionForm.value);
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
     this.auctionForm.controls['eventType'].setValue('A');
     //console.log(this.auctionForm.value);
     this.apiSrv.createAuction(this.auctionForm.value).subscribe(
       (data) => {
+        if(data>0){
+          console.log(data);
+        } else{
+          this.hasError = true;
+        }
         console.log(data); 
       }, (error) => {
         console.log(error); 
@@ -158,7 +163,11 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
 	
     this.apiSrv.createFlashSale(this.flashSaleForm.value).subscribe(
       (data) => {
-        console.log(data); 
+        if(data>0){
+          console.log(data);
+        } else{
+          this.hasError = true;
+        }
       }, (error) => {
         console.log(error); 
       },

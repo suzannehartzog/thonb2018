@@ -64,7 +64,7 @@ export class SigninComponent implements OnInit {
 
               localStorage.setItem("userId", tempVar.userId);
               localStorage.setItem("roleId", tempVar.roleId);
-              localStorage.setItem("roleName", "TravellerAgent");
+              localStorage.setItem("roleName", tempVar.roleName);
               localStorage.setItem("participateBuddy", tempVar.participateBuddy);
               localStorage.setItem("userName", tempVar.userName);
               localStorage.setItem("userAddress", tempVar.userAddress);

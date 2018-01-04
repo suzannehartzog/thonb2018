@@ -14,6 +14,8 @@ declare var $: any;
   styleUrls: ['./e-auction.component.css']
 })
 export class EAuctionComponent implements OnInit {
+  public currentBid : number = 1500;
+  public loggedInUser :any;
   public bids:any=[
     {id:1, name:"Auction 1"},
     {id:2, name:"Auction 2"},
@@ -49,7 +51,9 @@ export class EAuctionComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('E Auction:: Yayaati');
+    this.loggedInUser = localStorage.getItem("userId");
     this.getActiveAuctions();        
+
   }
   getActiveAuctions(){
     this.apiSrv.activeAuctions().subscribe(
@@ -69,7 +73,26 @@ export class EAuctionComponent implements OnInit {
   toggleChild(auction){
     auction.showdetails = !auction.showdetails;
   }
-  addToMyBids(auction){
+  checkValidBidder(auction, currentBid){
+    let param ={
+      "auctionId": auction.auctionId,
+      "biddingPrice": currentBid,
+      "userId": this.loggedInUser
+    }
+    this.apiSrv.checkValidBidder(param).subscribe(
+      (data) => {
+        this.saveBid(auction);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );    
+  }
+  saveBid(auction){
+    this.apiSrv.activeAuctions().subscribe(
+      (data) => {
     this.bids.unshift(auction);
     let index = this.auctionList.indexOf(auction);
     this.auctionList.splice(index, 1);
@@ -77,7 +100,26 @@ export class EAuctionComponent implements OnInit {
       $('.flexslider').data('flexslider').addSlide();
       this.startSlider();
     },100);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );   
   }
+  auctionCheckout(auction){
+    this.apiSrv.activeAuctions().subscribe(
+      (data) => {
+        console.log(data);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+  }
+    );  
+  }  
   startSlider() {
     $('.flex-upcoming-auction').flexslider({
       animation: "slide",

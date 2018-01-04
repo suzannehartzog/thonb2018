@@ -1774,7 +1774,7 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
 .search-result ul li i { padding-right: 5px; }
 .search-result .col-md-7 { position: relative; }
-.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 1px !important; }
 .search-result h3 > a, .search-result i { color: #001d4e !important; }
 .search-result p { font: normal normal 1em "Roboto",Arial,Verdana,sans-serif; color: #001947;} 
 .search-result span.plus a { background-color: #001d4e; padding: 5px 5px 3px 5px; }

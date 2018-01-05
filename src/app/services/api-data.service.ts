@@ -111,10 +111,8 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
-   public activeAuctions() {//assets/service-json/auction-list.json
-    let headers = new Headers({ 'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/activeAuctions').map(
+   public activeAuctions(userId) {//assets/service-json/auction-list.json
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/activeAuctions?bidderId='+userId).map(
       (response) => response.json()
     );
   }

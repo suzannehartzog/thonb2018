@@ -54,11 +54,11 @@ export class EAuctionComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('E Auction:: Yayaati');
     this.loggedInUser = localStorage.getItem("userId");
-    this.getActiveAuctions();        
+    this.getActiveAuctions(localStorage.getItem("userId"));        
 
   }
-  getActiveAuctions(){
-    this.apiSrv.activeAuctions().subscribe(
+  getActiveAuctions(userId){
+    this.apiSrv.activeAuctions(userId).subscribe(
       (data) => {
         this.auctionList = data; 
         setTimeout(()=>{ 

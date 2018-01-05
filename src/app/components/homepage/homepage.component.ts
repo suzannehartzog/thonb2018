@@ -27,11 +27,19 @@ export class HomepageComponent implements OnInit {
   }
 
   startSlider() {
+      let itemWidth:number;
+      if($(window).width() < 768){
+        itemWidth = $(".flexslider").width()/1;
+      }else if($(window).width() < 1024){
+        itemWidth = $(".flexslider").width()/3;
+      }else{
+        itemWidth = $(".flexslider").width()/4;
+      }
       $('.flexslider').flexslider({
         animation: "slide",
         controlNav: false,
         animationLoop: false,
-        itemWidth: $(".flexslider").width()/4,
+        itemWidth: itemWidth,
         itemMargin: 5,
         start: function(slider){
           $('body').removeClass('loading');

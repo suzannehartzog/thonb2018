@@ -2348,7 +2348,7 @@ h3.w3agileits-title {
     font-size: 1.5em;
 }
 .header-right ul li{
-    margin-left: 1em;
+    margin-left: .8em;
 }
 .banner-w3lstext h2, .banner-w3lstext h3 {
     font-size: 2em;
@@ -2547,7 +2547,7 @@ p {
 }
 @media(max-width:414px){
 .header-right ul li { 
-    margin-left: 1em;
+    margin-left: .5em;
 } 
 .banner-w3lstext p { 
     width: 91%;
@@ -2681,7 +2681,7 @@ p {
     font-size: 0.9em; 
 }
 .header-right ul li {
-    margin-left: 0.5em;
+    margin-left: 0.2em;
 }
 .logo {
     width: 59%;

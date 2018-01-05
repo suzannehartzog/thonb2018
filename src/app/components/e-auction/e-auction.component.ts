@@ -160,11 +160,19 @@ export class EAuctionComponent implements OnInit {
         $('body').removeClass('loading');
       }
     });
+    let itemWidth:number;
+    if($(window).width() < 768){
+      itemWidth = $(".flexslider").width()/1;
+    }else if($(window).width() < 1024){
+      itemWidth = $(".flexslider").width()/2;
+    }else{
+      itemWidth = $(".flexslider").width()/3;
+    }
     $('.flexslider').flexslider({
       animation: "slide",
       controlNav: false,
       animationLoop: false,
-      itemWidth: $(".flexslider").outerWidth()/3,
+      itemWidth: itemWidth,
       itemMargin: 0,
       slideshow:false,
       touch: true,

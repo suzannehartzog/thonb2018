@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-//import { BsDatepickerModule } from 'ngx-bootstrap';
+
 
 // Import your library
 import { CollapsibleModule } from 'angular2-collapsible'; // <-- import the module
@@ -16,6 +16,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { SigninComponent } from './components/signinsignout/signin.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CustomerSignupComponent } from './components/customer-signup/customer-signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { VendorSignupComponent } from './components/vendor-signup/vendor-signup.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { MyTripsComponent } from './components/my-trips/my-trips.component';
@@ -40,17 +41,22 @@ import { HotelDetailsComponent } from './components/hotel-details/hotel-details.
 import { FlightSearchComponent } from './components/flight-search/flight-search.component';
 import { CreateItineraryComponent } from './components/create-itinerary/create-itinerary.component';
 import { FlashSaleComponent } from './components/flash-sale/flash-sale.component';
+import { MyPackages } from './components/my-packages/my-packages.component';
+import { GetMyPackageComponent } from './components/get-my-package/get-my-package.component';
+
 
 import { SignoutComponent } from './components/signinsignout/signout.component';
+import { ViewDetailsComponent } from './components/view-details/view-details.component';
 import { FieldErrorDisplayComponent } from './components/display-error/field-error-display.component';
+import { UpcomingAuctionsComponent } from './components/upcoming-auctions/upcoming-auctions.component';
+import { TravelBuddy } from './components/travel-buddy/travel-buddy.component';
+import { AuctionListComponent } from './components/auction-list/auction-list.component';
+import { ShowQuoteResponseComponent } from './components/show-quote-response/show-quote-response.component';
 
 import { ApiDataService } from './services/api-data.service';
 import { SharedService } from './services/shared.service';
 
 import { AuthGuard } from './services/auth-guard.service';
-
-//import { DatePicker } from './directives/datepicker/datepicker';
-//import { DateTimePicker } from './directives/datetimepicker/datetimepicker';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -60,7 +66,7 @@ const appRoutes: Routes = [
   {path: 'search-result/:query', component: SearchResultComponent},
   {path: 'my-trips', canActivate: [AuthGuard], component: MyTripsComponent},
   {path: 'haggling-conversation', canActivate: [AuthGuard], component: HagglingConversation},
-  {path: 'start-haggle', canActivate: [AuthGuard], component: StartHaggling},
+  {path: 'start-haggle/:hotelId/:roomType', canActivate: [AuthGuard], component: StartHaggling},
   {path: 'my-hotels', canActivate: [AuthGuard], component: MyHotels},
   {path: 'asset-register', component: AssetRegistrationComponent},
   {path: 'driver-register', component: DriverRegistrationComponent},
@@ -81,6 +87,14 @@ const appRoutes: Routes = [
   {path:'flight-search', canActivate: [AuthGuard], component: FlightSearchComponent},
   {path:'create-itinerary', canActivate: [AuthGuard], component: CreateItineraryComponent},
   {path:'flash-sale', component: FlashSaleComponent},
+  {path:'view-details/:assetstype/:id', component: ViewDetailsComponent},
+  {path: 'upcoming-auctions', component: UpcomingAuctionsComponent},
+  {path: 'my-pacakges', component: MyPackages},  
+  {path: 'signup', component: SignupComponent},  
+  {path: 'travel-buddy', component: TravelBuddy},  
+  {path: 'auction-list', component: AuctionListComponent},
+  {path: 'show-quote-response', component: ShowQuoteResponseComponent},
+  {path: 'get-my-package', component: GetMyPackageComponent},
   
   {path: '**', redirectTo: '' }
 ];
@@ -118,10 +132,16 @@ const appRoutes: Routes = [
     FieldErrorDisplayComponent,
     FlightSearchComponent,
     CreateItineraryComponent,
-    FlashSaleComponent
+    FlashSaleComponent,
+    ViewDetailsComponent,
+    UpcomingAuctionsComponent,
+    MyPackages,
+    SignupComponent,
+    TravelBuddy,
+    AuctionListComponent,
+    ShowQuoteResponseComponent,
+    GetMyPackageComponent
 
-    // DatePicker,
-    // DateTimePicker
   ],
   imports: [
     HttpModule,

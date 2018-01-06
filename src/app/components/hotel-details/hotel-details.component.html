@@ -3,7 +3,7 @@
 	</div>
 	<div class="about">
 			<div class="container">
-				<div class="col-md-3">
+				<!--<div class="col-md-3">
 					<div class="panel panel-default sidebar-menu">
 						<div class="panel-heading">
 							<h3 class="panel-title">Pages</h3>
@@ -23,8 +23,8 @@
 						</div>
 					</div>
 					
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-9" id="basket">
+				</div>-->
+				<div class="col-xs-12 col-sm-12 col-md-12" id="basket">
 					<h1>Hotel Details</h1>
 					<div class="box">
 						<article class="search-result row">
@@ -51,7 +51,6 @@
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-4">
 									<p><strong>Price:</strong> Rs.{{hotelRoom.roomBasePrice}} per Night</p>
-									<p><strong>Booked:</strong> {{hotelRoom.totalBooked}}</p>
 								</div>
 							</div>
 						</div>								
@@ -91,14 +90,18 @@
 											<div class="form-group">												
 												<div class="form-group col-md-6">
 													<label for="inputPassword4">Room Type</label>
-													<select [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
+													<!--<select [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
 														<option [value]="null">Choose Room Type</option>
 														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+													</select>-->
+													<select (change)= "setRoomCapacity($event)" [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
+														<option [value]="null">Choose Room Type</option>
+														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType" [attr.data-capacity] = "roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
 													</select>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputAddress2">Room Quantity</label>
-													<input  [(ngModel)]="defaultValue.roomCapacity" formControlName="roomCapacity" type="text" readonly value="1" placeholder="" class="form-control" />														
+													<input  [(ngModel)]="defaultValue.roomQuantity" formControlName="roomQuantity" type="text" readonly value="1" placeholder="" class="form-control" />														
 												</div>
 											</div>
 											<div class="form-group">
@@ -122,6 +125,10 @@
 												</div>
 											</div>
 											<div class="form-group">
+												<div class="form-group col-md-12">
+													<label for="inputAddress">Auction Title</label>
+													<input type="text"  formControlName="auctionTitle" class="form-control"  placeholder="">
+												</div>
 												<div class="form-group col-md-12">
 													<label for="inputAddress">Auction Description</label>
 													<textarea  formControlName="auctionComment" class="form-control"></textarea>
@@ -148,15 +155,15 @@
 											</div>
 											<div class="form-group">												
 												<div class="form-group col-md-6">
-													<label for="inputPassword4">Room Type</label>
-													<select [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
+													<label for="inputPassword4">Room Type</label>													
+													<select (change)= "setRoomCapacity($event)" [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
 														<option [value]="null">Choose Room Type</option>
-														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType" [attr.data-capacity] = "roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
 													</select>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputAddress2">Room Quantity</label>
-													<input  [(ngModel)]="defaultValue.roomCapacity" formControlName="roomCapacity" type="text" readonly value="1" placeholder="" class="form-control" />
+													<input  [(ngModel)]="defaultValue.roomQuantity" formControlName="roomQuantity" type="text" readonly value="1" placeholder="" class="form-control" />
 												</div>
 											</div>
 											<div class="form-group">
@@ -172,11 +179,17 @@
 											<div class="form-group">
 												<div class="form-group col-md-6">
 													<label for="inputAddress">Price</label>
-													<input type="number"  formControlName="flashsalePrice" class="form-control"  placeholder="">
+													<input type="number"  formControlName="buyNowPrice" class="form-control"  placeholder="">
 												</div>
 												<div class="form-group col-md-6">
+													<label for="inputAddress">Flash Sale Title</label>
+													<input type="text"  formControlName="auctionTitle" class="form-control"  placeholder="">
+												</div>
+											</div>
+											<div>
+												<div class="form-group col-md-6">
 													<label for="inputAddress">Flash Sale Description</label>
-													<textarea  formControlName="flashSaleComment" class="form-control"></textarea>
+													<textarea  formControlName="auctionComment" class="form-control"></textarea>
 												</div>
 											</div>
 											<div class="form-group">
@@ -191,20 +204,20 @@
 											<div class="form-group">												
 												<div class="form-group col-md-6">
 													<label for="inputPassword4">Room Type</label>
-													<select [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
+													<select (change)= "setRoomCapacity($event)" [(ngModel)]="defaultValue.roomTypeName" formControlName="roomTypeName" class="form-control">
 														<option [value]="null">Choose Room Type</option>
-														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
+														<option *ngFor="let roomtype of roomTypeList" [ngValue]="roomtype.roomType" [attr.data-capacity] = "roomtype.capacity">{{roomtype.roomType}} Capacity -{{roomtype.capacity}}</option>
 													</select>
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputAddress2">Room Quantity</label>
-													<input [(ngModel)]="defaultValue.roomCapacity" formControlName="roomCapacity" type="text" readonly value="1" placeholder="" class="form-control" />
+													<input [(ngModel)]="defaultValue.roomQuantity" formControlName="roomQuantity" type="text" readonly value="1" placeholder="" class="form-control" />
 												</div>
 											</div>
 											<div class="form-group">
 												<div class="form-group col-md-6">
 													<label for="inputAddress">Discount</label>
-													<input type="number"  formControlName="discountAmount" class="form-control"  placeholder="">
+													<input type="number"  formControlName="discAmt" class="form-control"  placeholder="">
 												</div>
 												<div class="form-group col-md-6">
 													<label for="inputAddress">Promotion Description</label>
@@ -223,8 +236,8 @@
 											<div class="form-row">										
 												<div class="form-group col-md-12  top-margin-1em clear">
 													<select id="inputState" class="form-control">
-														<option selected>Dec</option>
-														<option>Jan</option>
+														<option >Dec</option>
+														<option selected>Jan</option>
 													</select>
 												</div>
 											</div>
@@ -233,61 +246,16 @@
 											<thead>
 												<tr>
 													<th class="col-xs-2">Room Type/Days</th>
-													<th class="col-xs-2">Deluxe</th>
-													<th class="col-xs-2">Super Deluxe</th>
-													<th class="col-xs-2">Type 3</th>
-													<th class="col-xs-2">Type 4</th>
-													<th class="col-xs-2">Type 5</th>
+													<th class="col-xs-{{10/bookingCalendar[0].roomTypes.length}}" *ngFor="let roomTypes of bookingCalendar[0].roomTypes"><strong>{{roomTypes.type}}</strong></th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td class="col-xs-2">Day 1</td>
-													<td class="col-xs-2">1/2</td>
-													<td class="col-xs-2">2/3</td>
-													<td class="col-xs-2">3/4</td>
-													<td class="col-xs-2">4/5</td>
-													<td class="col-xs-2">5/6</td>
-												</tr>
-												<tr>
-													<td class="col-xs-2">Day 2</td>
-													<td class="col-xs-2">1/2</td>
-													<td class="col-xs-2">2/3</td>
-													<td class="col-xs-2">3/4</td>
-													<td class="col-xs-2">4/5</td>
-													<td class="col-xs-2">5/6</td>
-												</tr>
-												<tr>
-													<td class="col-xs-2">Day 3</td>
-													<td class="col-xs-2">1/2</td>
-													<td class="col-xs-2">2/3</td>
-													<td class="col-xs-2">3/4</td>
-													<td class="col-xs-2">4/5</td>
-													<td class="col-xs-2">5/6</td>
-												</tr>
-												<tr>
-													<td class="col-xs-2">Day 4</td>
-													<td class="col-xs-2">1/2</td>
-													<td class="col-xs-2">2/3</td>
-													<td class="col-xs-2">3/4</td>
-													<td class="col-xs-2">4/5</td>
-													<td class="col-xs-2">5/6</td>
-												</tr>
-												<tr>
-													<td class="col-xs-2">Day 5</td>
-													<td class="col-xs-2">1/2</td>
-													<td class="col-xs-2">2/3</td>
-													<td class="col-xs-2">3/4</td>
-													<td class="col-xs-2">4/5</td>
-													<td class="col-xs-2">5/6</td>
-												</tr>
-												<tr>
-													<td class="col-xs-2">Day 30</td>
-													<td class="col-xs-2">1/2</td>
-													<td class="col-xs-2">2/3</td>
-													<td class="col-xs-2">3/4</td>
-													<td class="col-xs-2">4/5</td>
-													<td class="col-xs-2">5/6</td>
+												<tr *ngFor="let day of bookingCalendar ; let i = index">
+													<td class="col-xs-2">{{day.date}}</td>
+													<td class="col-xs-{{10/bookingCalendar[0].roomTypes.length}}" *ngFor="let roomTypes of bookingCalendar[0].roomTypes">
+														<div><strong>Booked :</strong>{{roomTypes.bookedRoomCount}}</div>
+														<div><strong>Total :</strong>{{roomTypes.totalRoomCount}}</div>
+													</td>
 												</tr>
 											</tbody>
 										</table>

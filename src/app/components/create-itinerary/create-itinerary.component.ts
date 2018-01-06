@@ -1,11 +1,13 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-//import { DatePicker } from '../../directives/datepicker/datepicker';
 import { FormsModule } from '@angular/forms';
 
 import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-create-itinerary',
@@ -70,7 +72,7 @@ export class CreateItineraryComponent implements OnInit {
       (data) => {
         this.messageClass = "alert alert-success";
         this.message = "Your request has been placed. Agents will contact you soon.";
-        $('.btn.btn-info').addClass('disabled');        
+        //$('.btn.btn-info').addClass('disabled');        
       }, (error) => {
         this.messageClass = "alert alert-danger";
         this.message = "Package registration failed!";

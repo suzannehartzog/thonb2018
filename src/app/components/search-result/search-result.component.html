@@ -21,18 +21,12 @@
 								<li role="presentation" class=""><a (click)="filterResult('transport')"  href="javascript:void(0)"> Transports</a></li>
 								<li role="presentation" class=""><a (click)="filterResult('guide')"  href="javascript:void(0)"> Guides</a></li>
 							</ul>
-							<div id="myTabContent" class="tab-content">								
+							<div id="myTabContent" class="tab-content" *ngIf="showContent">								
 								<div id="hotel" class="hide">
 									<h3>Near by Attractions</h3>
-									<div class="checkbox-inline "><label><input type="checkbox"> Jagannath Temple</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Puri Beach</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Konark Beach</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Raghurajpur Village</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Chilika Lake</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Swargadwar Beach</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Vimala Temple</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Lakshmi Temple</label></div>
-									<div class="checkbox-inline"><label><input type="checkbox"> Sakshi Gopal Temple</label></div>
+									<div class="checkbox-inline" *ngFor="let attraction of searchResults.attractions">
+										<label><input type="checkbox" name="attractions" value="{{attraction}}" [checked]="false" (change)="updateCheckedOptions($event.target.getAttribute('value'), $event.target.checked)">{{attraction}}</label>
+									</div>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
@@ -44,21 +38,26 @@
 		</div>
 	</div>
 </div>
-<div class="about">
-	<div class="container">
+<div class="about" *ngIf="showContent">
+	<div class="container" *ngIf="searchResults.noResult">
 		<div class="mb20">
-			<h3 class="lead"><!--<strong class="text-danger">4</strong>--> Relevant results were found for the <strong class="text-danger">Puri</strong></h3>
+			<h3 class="lead">No result found for <strong class="text-danger">{{searchResults.place}}</strong></h3>
+		</div>
+	</div>
+	<div class="container" *ngIf="!searchResults.noResult">
+		<div class="mb20">
+			<h3 class="lead"><!--<strong class="text-danger">4</strong>--> Relevant results were found for the <strong class="text-danger">{{searchResults.place}}</strong></h3>
 		</div>
 		<section class="col-xs-12 col-sm-7 col-md-12" *ngIf="showAll || showHotels">
 			<article *ngFor="let hotel of searchResults.hotels" class="search-result row">
 				<div class="col-xs-12 col-sm-12 col-md-8 excerpet">
 					<h3>
-						<a href="javascript:void(0);" title="">{{hotel.hotelName}}</a>
+						<a routerLink='/view-details/hotel/{{hotel.hotelId}}' href="javascript:void(0);" title="">{{hotel.hotelName}}</a>
 					</h3>
 					<i class="fa fa-tags"></i> <span>Hotel</span>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-2 excerpet">
-					<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">VIEW</a>
+					<a routerLink='/view-details/hotel/{{hotel.hotelId}}' class="btn btn-info" href="javascript:void(0);" title="View Hotel Details">VIEW</a>
 				</div>
 				<span class="clearfix borda"></span>
 			</article>

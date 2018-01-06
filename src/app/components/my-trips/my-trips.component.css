@@ -1,0 +1,6 @@
+.tab-pane.fade.active.in {
+    margin-top: 2em;
+}
+.booking-list *, .quote-response * {
+    font-size: 0.9em;
+}

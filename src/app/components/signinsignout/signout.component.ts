@@ -15,6 +15,8 @@ export class SignoutComponent implements OnInit {
   constructor(
     private router : Router
   ){    
+    localStorage.removeItem("userId");
+    window.localStorage.clear(); //try this to clear all local storage
     localStorage.clear();
     NavComponent.updateUserStatus.next(true); // here!
     console.log(localStorage.getItem('isLoggedIn'));

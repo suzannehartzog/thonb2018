@@ -19,10 +19,10 @@ export class ShowQuoteResponseComponent implements OnInit {
     this.titleService.setTitle('Show Quote Respnose:: Yayaati');
   }
 
-  toggleDetails() {
+  toggleDetails(evnt) {
     this.isDisplay = !this.isDisplay
   }
-  toggleChildDetails() {
+  toggleChildDetails(evnt) {
 this.isChildDisplay = !this.isChildDisplay;
   }
 }

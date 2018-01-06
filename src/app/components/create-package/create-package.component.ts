@@ -177,9 +177,11 @@ export class CreatePackage implements OnInit {
     let transportDate= document.getElementById("pickupDate").innerText;
     if (!this.isPickupSelected) {
       this.isPickupSelected = !this.isPickupSelected;
-      this.hidePickupBodyPanel = true;
+      this.isHotelSelected = true;
+      
     }
-
+$(".pickup-card .panel-body").hide()
+      $(".drop-card, .drop-card .panel-body").show();
     if(this.pickUpTransports.length) {
       this.createPackageJson.transports.pop();
       this.createPackageJson.transports.push({
@@ -258,7 +260,7 @@ export class CreatePackage implements OnInit {
         this.messageClass = "alert alert-success";
         this.message = "Package successfully created!";
 
-        $('.btn.btn-info').addClass('disabled');
+       // $('.btn.btn-info').addClass('disabled');
         this.createPackageJson = {};
       }, (error) => {
         this.messageClass = "alert alert-danger";

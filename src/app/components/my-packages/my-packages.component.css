@@ -1,0 +1,16 @@
+.tab-pane.fade.active.in {
+    margin-top: 2em;
+}
+.booking-list *, .quote-response * {
+    font-size: 1em;
+}
+h5 {
+    font-size: 1.4em !important;
+    font-weight: 800;
+}
+.no-top-margin {
+    margin-top: 0 !important;
+}
+.col-md-3 b {
+    text-transform: capitalize;
+}

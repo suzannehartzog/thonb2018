@@ -1,0 +1,181 @@
+<div class="banner notHome">
+    <app-navbar></app-navbar>
+</div>
+<div class="about">
+    <div class="container">
+        <div class="row">
+            <h1>My Package Requests! </h1>
+            <div  *ngIf="" class="alert alert-danger">Sorry! No messages present!</div>
+            <section>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in">
+                        <article class="booking-list card" *ngFor="let myItn of getMyItnResponses; let i = index">
+                            <div class="panel-heading clickable" (click)="toggleDisplay($event)">
+                                <div class="col-md-12">
+                                    <h5><i class="fa fa-users fa-2x" aria-hidden="true"></i>Request Details</h5>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Starting City:</span>
+                                    <span><b>{{myItn.originCity}}</b></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="text-gray">Destination City:</span>
+                                    <span><b>{{myItn.destinationCity}}</b></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="text-gray">Trip Start Date:</span>
+                                    <span><b>{{myItn.startDate}} 2018</b></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="text-gray">Trip End Date:</span>
+                                    <span><b>{{myItn.endDate}} 2018</b></span>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Number of Guests:</span>
+                                    <span><b>{{myItn.travellerCount}}</b></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="text-gray">Budget:</span>
+                                    <span><b>{{myItn.budget}} INR</b></span>
+                                </div>
+
+                                <div class="clearfix"> </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Need Guide:</span>
+                                    <span><b>{{myItn.guideNeeded == true ? "Yes" : "No"}}</b></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="text-gray">Need Hotel:</span>
+                                    <span><b>{{myItn.hotelNeeded == true ? "Yes" : "No"}}</b></span>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Need Transport:</span>
+                                    <span><b>{{myItn.transportNeeded == true ? "Yes" : "No"}}</b></span>
+                                </div>
+
+                                <div class="clearfix"> </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Requested By:</span>
+                                    <span><b>{{myItn.createdBy}}</b></span>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Request Created On:</span>
+                                    <span><b>{{myItn.createdOn}}</b></span>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <span class="text-gray">Expected Response within:</span>
+                                    <span><b>{{myItn.expectedResponseWithin}}</b></span>
+                                </div>
+                            </div>
+                            <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                <div class="flex-row no-top-margin">
+                                    <div class="col-md-11">
+                                        <h5>Pacakge Details</h5>             
+                                    </div>
+                                    <div class="col-md-1">
+                                        <!--<a class="btn btn-info" href="javascript:void(0);" title="Book">BOOK</a>-->
+                                    </div>                       
+                                </div>
+                                <div class="flex-row no-top-margin">
+                                    <div class="col-md-12">
+                                        <span class="text-gray">Package Description:</span>
+                                        <span><b>{{myItn.packageDetail.description}}</b></span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Details submitted by:</span>
+                                        <span><b>{{myItn.packageDetail.name}}</b></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Country:</span>
+                                        <span><b>{{myItn.packageDetail.countryId == 1 ? "India" : ""}}</b></span>
+                                    </div>                                   
+                                </div>
+
+                                <div class="flex-row no-top-margin" *ngIf="myItn.packageDetail.hotels.length > 0">
+                                    <h5>Hotel Details</h5>
+                                </div>
+
+                                <div class="flex-row no-top-margin" *ngFor="let hotel of myItn.packageDetail.hotels; let j = index;">
+                                    <div class="col-md-6">
+                                        <span class="text-gray">Hotel Name:</span>
+                                        <span><b>{{hotel.hotelName}}, {{hotel.hotelAddress}}</b></span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Hotel Checkin Date:</span>
+                                        <span><b>{{hotel.checkinDate}}</b></span>
+                                    </div>
+
+                                    <div class="clearfix"> </div>
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Need Room For:</span>
+                                        <span><b>{{hotel.noOfNights}} nights</b></span>
+                                    </div>              
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Need Room Type:</span>
+                                        <span><b>{{hotel.roomType}}</b></span>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Number of Rooms:</span>
+                                        <span><b>{{hotel.noOfRooms}}</b></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Need Room For:</span>
+                                        <span><b>{{hotel.noOfNights}} nights</b></span>
+                                    </div>                        
+                                </div>
+
+                                <div class="flex-row no-top-margin" *ngIf="myItn.packageDetail.guides.length > 0">
+                                    <h5>Guide Details</h5>
+                                </div>
+
+                                <div class="flex-row no-top-margin" *ngFor="let guide of myItn.packageDetail.guides; let j = index;">
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Guide Name:</span>
+                                        <span><b>{{guide.guideName}}</b></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Need Guide On :</span>
+                                        <span><b>{{guide.guideDate}}</b></span>
+                                    </div>
+                                </div>
+
+                                <div class="flex-row no-top-margin" *ngIf="myItn.packageDetail.transports.length > 0">
+                                    <h5>Transport Details</h5>
+                                </div>
+
+                                <div class="flex-row no-top-margin" *ngFor="let transport of myItn.packageDetail.transports; let j = index;">
+
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Type of Transport:</span>
+                                        <span><b>{{transport.transportType}}</b></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Needed Vehicle:</span>
+                                        <span><b>{{transport.vehicleName}}</b></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Needed Transport On:</span>
+                                        <span><b>{{transport.transportDate}}</b></span>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

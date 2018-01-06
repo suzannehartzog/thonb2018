@@ -15,7 +15,7 @@ declare var $: any;
 })
 export class CheckoutComponent implements OnInit {
   public checkoutDetails:any;
-  public auctionList:any=[];
+  public showContent:boolean=false;
   constructor(
     private router: Router,
     private titleService: Title,
@@ -32,6 +32,7 @@ export class CheckoutComponent implements OnInit {
     this.apiSrv.auctionCheckout(auctionId, ckoUserId).subscribe(
       (data) => {
         this.checkoutDetails = data;
+        this.showContent=true;
         console.log(this.checkoutDetails);
       }, (error) => {
         console.log(error); 
@@ -42,6 +43,9 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  makePayment(){
+    this.router.navigate(['/payment']);
+  }
 
   
 }

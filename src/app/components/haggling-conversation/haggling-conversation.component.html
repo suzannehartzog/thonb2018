@@ -3,8 +3,8 @@
 </div>
 <div class="container fill">
     <div class="row chat-wrap">
-        <h1>Haggle Your Price!</h1>
-        <div class="col-sm-3 panel-wrap hide">
+        <h1>Haggle Your Hotel Price!</h1>
+        <div class="col-sm-3 panel-wrap">
 
             <div class="col-sm-12 section-wrap coAndres Elizondollapse " id="Contacts">
 
@@ -14,19 +14,19 @@
                         <h4>Conversations</h4>
                         <div class="header-button">
                             <a class="btn pull-right hide" href="javascript:void(0)" data-toggle="collapse" title="Hide panel">
-                                    <i class="fa fa-close"></i>
-                                </a>
+                                <i class="fa fa-close"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!--Contacts-->
                 <div class="row content-wrap">
-                    <div class="contact btn selected">
+                    <div class="contact btn" *ngFor="let haggle of haggleData" (click)="getHotelHagglingDetail(haggle.id)" [ngClass]="{'selected': haggle.id === haggleSelectedId}">
                         <div class="contact-body">
                             <div class="contact-text">
-                                <h5 class="contact-person-name">Arijit Singh</h5>
-                                <p class="contact-company">Gogo Travels</p>
+                                <h5 class="contact-person-name">{{haggle.hagglingSummary}} {{haggle.id}}</h5>
+                                <!--<p class="contact-company"></p>-->
                             </div>
                             <div class="image">
                                 <img src="./assets/images/seller1.png" />
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Messages & Info -->
-        <div class="col-sm-12 panel-wrap">
+        <div class="col-sm-9 panel-wrap">
 
             <!--Main Content / Message List-->
             <div class="col-sm-12 section-wrap" [ngClass]="roleName == 'TravellerAgent' ? 'showCouponHeight' : ''" id="Messages">
@@ -59,7 +59,7 @@
 
                 <!--Messages-->
                 <div class="row content-wrap messages">
-                    <div class="msg" *ngFor="let comment of comments; let i = index;">
+                    <div class="msg" *ngFor="let comment of comments;">
                         <div class="media-body">
                             <small class="pull-right time"><i class="fa fa-clock-o"></i> {{comment.commentMadeOn}}</small>
 
@@ -76,7 +76,7 @@
                 <div class="row send-wrap">
                     <form #haggleConversation="ngForm" (ngSubmit)="addToHotelHaggling(haggleConversation.value)">
                         <div class="send-message">
-                            <div class="message-text display-table-row" *ngIf="roleName == 'TravellerAgent'">
+                            <div class="message-text display-table-row" *ngIf="roleName == 'Hotel'">
                                 <input type="text" placeholder="Coupon Code" name="couponCode" class="couponCode" ngModel />
                             </div>
                             <div class="display-table-row">

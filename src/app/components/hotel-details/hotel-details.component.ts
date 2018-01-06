@@ -16,17 +16,23 @@ declare var $: any;
 })
 export class HotelDetailsComponent implements OnInit, OnDestroy {
   public hasError : boolean = false;
-  public defaultValue = {roomTypeName: null, roomCapacity:1}
-  public hotelDetails = {};
+  public defaultValue = {roomTypeName: null, roomQuantity:1}
+  public hotelDetails = {
+    'hotelName':'',
+    'hotelDescription':'',
+    'hotelRooms':''
+  };
   public hotelId: number;
   public roomTypeList:any=[];
-  public roomCapacity:any=[];
+  public roomCapacity:string;
   private sub: any;
   public showAuction: boolean = true;
   public showFlashSale: boolean = false;
   public showPromotions: boolean = false;
   public showHotelDetails: boolean = false;
+  public bookingCalendar:any=[];
   public auctionForm = this.fb.group({
+    auctionTitle: ["", Validators.required],
     startDate: ["", Validators.required],
     endDate: ["", Validators.required],
     buyNowPrice : ["", Validators.required],    
@@ -37,27 +43,30 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     startingPrice: ["", Validators.required],
     eventType: ["", Validators.required],
     hotelId: ["", Validators.required],
-    auctionComment: ["", Validators.required]
+    auctionComment: ["", Validators.required],
+    roomQuantity:["", Validators.required]
   });
   public flashSaleForm = this.fb.group({
     startDate: ["", Validators.required],
     endDate: ["", Validators.required],
-    flashsalePrice : ["", Validators.required],    
+    buyNowPrice : ["", Validators.required],    
     roomCapacity : ["", Validators.required],
     roomLockedFrom: ["", Validators.required],
     roomLockedTill: ["", Validators.required],
     roomTypeName : ["", Validators.required],
     eventType: ["", Validators.required],
     hotelId: ["", Validators.required],
-    flashSaleComment: ["", Validators.required]
+    auctionComment: ["", Validators.required],
+    auctionTitle: ["", Validators.required],
+    roomQuantity:["", Validators.required]
   });
   public promotionForm = this.fb.group({
-    discountAmount : ["", Validators.required],    
+    discAmt : ["", Validators.required],    
     roomCapacity : ["", Validators.required],
     roomTypeName : ["", Validators.required],
-    eventType: ["", Validators.required],
     hotelId: ["", Validators.required],
-    promotionComment: ["", Validators.required]
+    promotionComment: ["", Validators.required],
+    roomQuantity: ["", Validators.required]
   });
   constructor(
     public fb: FormBuilder,
@@ -69,12 +78,29 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
     private shrSrv: SharedService
   ) {}
   ngOnInit() {
-    this.titleService.setTitle('Hotel Details:: Yayaati');
+    this.titleService.setTitle('Hotel Details :: Yayaati');
     this.sub = this.activeroute.params.subscribe(params => {
       this.hotelId = +params['id'];
       this.getHotelDetails(this.hotelId);
       this.getAllroomTypeCapacity(this.hotelId);
+      this.getHotelBookingCalander(this.hotelId);
    });   
+  }
+  getHotelBookingCalander(hotelId) {
+    let param ={
+        "fromDate": "2017-12-5T21:32:57.546Z",
+        "hotelId": hotelId
+      }
+    this.apiSrv.getHotelBookingCalander(param).subscribe(
+      (data) => {
+        this.bookingCalendar = data; 
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
+      }
+    );
   }
   getHotelDetails(hotelId) {
     //console.log(params);   
@@ -108,38 +134,13 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  // getAvailableRoomsForBooking(functionName){
-  //   let params = {
-  //     "bookingEndDate": this.auctionForm.value.roomLockedTill,
-  //     "bookingStartDate": this.auctionForm.value.roomLockedFrom,
-  //     "hotelId": this.hotelId,
-  //     "roomCapacity": this.auctionForm.value.roomCapacity,
-  //     "roomType": this.auctionForm.value.roomTypeName
-  //   };
-  //   this.apiSrv.getAvailableRoomsForBooking(params).subscribe(
-  //     (data) => {
-  //       if(data>0){
-  //         if(functionName==='addAuction'){
-  //           this.addAuction();
-  //         }else{
-  //           this.addFlashSale();
-  //         }
-  //       } else{
-  //         this.hasError = true;
-  //       }
-  //     }, (error) => {
-  //       console.log(error);
-  //     },
-  //     () => {
-  //       console.log("completed");
-  //     }
-  //   );
-  // }
   addAuction() {
 	  //this.getAvailableRoomsForBooking(this.auctionForm.value);
     this.auctionForm.controls['hotelId'].setValue(this.hotelId);
     this.auctionForm.controls['eventType'].setValue('A');
-    //console.log(this.auctionForm.value);
+    this.auctionForm.controls['roomQuantity'].setValue(1);
+    this.auctionForm.controls['roomCapacity'].setValue(this.roomCapacity);
+    console.log(this.auctionForm.value);
     this.apiSrv.createAuction(this.auctionForm.value).subscribe(
       (data) => {
         if(data>0){
@@ -159,6 +160,8 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   addFlashSale() {
     this.flashSaleForm.controls['hotelId'].setValue(this.hotelId);
     this.flashSaleForm.controls['eventType'].setValue('F');
+    this.flashSaleForm.controls['roomQuantity'].setValue(1);
+    this.flashSaleForm.controls['roomCapacity'].setValue(this.roomCapacity);
     //console.log(this.flashSaleForm.value);
 	
     this.apiSrv.createFlashSale(this.flashSaleForm.value).subscribe(
@@ -178,10 +181,16 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
   }  
   addPromotion(event) {
     this.promotionForm.controls['hotelId'].setValue(this.hotelId);
-    this.promotionForm.controls['eventType'].setValue('P');
-    console.log(this.promotionForm.value);
+    this.promotionForm.controls['roomCapacity'].setValue(this.roomCapacity);
+    //this.promotionForm.controls['eventType'].setValue('P');
+    //console.log(this.promotionForm.value);
     this.apiSrv.createPromotion(this.promotionForm.value).subscribe(
       (data) => {
+        if(data>0){
+          console.log(data);
+        } else{
+          this.hasError = true;
+        }
         console.log(data); 
       }, (error) => {
         console.log(error); 
@@ -191,9 +200,10 @@ export class HotelDetailsComponent implements OnInit, OnDestroy {
       }
     );
   }
-  setRoomCapacity(event){
+  setRoomCapacity(event){    
     const capacity = event.target.options[event.target.selectedIndex].getAttribute('data-capacity');
-    this.roomCapacity.length = capacity; 
+    console.log(capacity);    
+    this.roomCapacity = capacity; 
   }
   toggleTab(tabnae){
     this.hasError = false;

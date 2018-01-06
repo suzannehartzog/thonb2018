@@ -4,6 +4,9 @@ import { Title } from '@angular/platform-browser';
 import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';
 
+declare var jquery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-show-itin-request',
   templateUrl: './show-itin-request.component.html',

@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { SlicePipe } from '@angular/common';
 
 import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';
@@ -16,32 +17,10 @@ declare var $: any;
 export class EAuctionComponent implements OnInit {
   public hasError :boolean;
   public errorMsg: string;
-  public currentBid : number = 1500;
   public loggedInUser :any;
-  public bids:any=[
-    {id:1, name:"Auction 1"},
-    {id:2, name:"Auction 2"},
-    {id:3, name:"Auction 3"},
-    {id:4, name:"Auction 4"},
-    {id:5, name:"Auction 5"},
-    {id:6, name:"Auction 6"}
-  ];
-  public upcomingAuctions:any=[
-    {id:1, name:"Auction 1"},
-    {id:2, name:"Auction 2"},
-    {id:3, name:"Auction 3"},
-    {id:4, name:"Auction 4"},
-    {id:5, name:"Auction 5"},
-    {id:6, name:"Auction 6"}
-  ];
-  public flashSells:any=[
-    {id:1, name:"Auction 1"},
-    {id:2, name:"Auction 2"},
-    {id:3, name:"Auction 3"},
-    {id:4, name:"Auction 4"},
-    {id:5, name:"Auction 5"},
-    {id:6, name:"Auction 6"}
-  ];
+  public bidList:any=[];
+  public upcomingAuctions:any=[];
+  public flashSale:any=[];
   public auctionList:any=[];
   constructor(
     private router: Router,
@@ -54,16 +33,61 @@ export class EAuctionComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('E Auction:: Yayaati');
     this.loggedInUser = localStorage.getItem("userId");
-    this.getActiveAuctions(localStorage.getItem("userId"));        
-
+    this.getActiveAuctions(localStorage.getItem("userId"));
+    this.getmyActiveAuctions(localStorage.getItem("userId"));
+    this.getactiveFlashSale();
+    this.getupcomingAuctions();
   }
   getActiveAuctions(userId){
     this.apiSrv.activeAuctions(userId).subscribe(
       (data) => {
-        this.auctionList = data; 
+        this.auctionList = data;         
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );
+  }
+  getmyActiveAuctions(userId){
+    this.apiSrv.myActiveAuctions(userId).subscribe(
+      (data) => {
+        this.bidList = data; 
+        setTimeout(()=>{ 
+          $('.flexslider').data('flexslider').addSlide();
+          this.startSlider();
+        },300);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );
+  }
+  getactiveFlashSale(){
+    this.apiSrv.activeFlashSale().subscribe(
+      (data) => {
+        this.flashSale = data; 
         setTimeout(()=>{ 
           this.startSlider();
-        },100);
+        },500);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+      }
+    );
+  }
+  getupcomingAuctions(){
+    this.apiSrv.upcomingAuctions().subscribe(
+      (data) => {
+        this.upcomingAuctions = data; 
+        setTimeout(()=>{ 
+          this.startSlider();
+        },500);
       }, (error) => {
         console.log(error); 
       },
@@ -78,13 +102,12 @@ export class EAuctionComponent implements OnInit {
   checkValidBidder(auction, currentBid){
     let param ={
       "auctionId": auction.auctionId,
-      "biddingPrice": currentBid,
+      "biddingPrice": auction.bidNowAt,
       "userId": this.loggedInUser
-    }
+    }    
     this.apiSrv.checkValidBidder(param).subscribe(
       (data) => {
         if(data.validBidder){
-          console.log("Valid");
           this.saveBid(auction);
         }else{
           console.log("Invalid");
@@ -105,20 +128,17 @@ export class EAuctionComponent implements OnInit {
       "auctionId": auction.auctionId,
       "bidDate": "",
       "bidId": auction.bidId==undefined?0:auction.bidId,
-      "bidPrice": 5000,
+      "bidPrice": auction.bidNowAt,
       "bidWin": "",
       "bidderId": localStorage.getItem("userId"),
       "eventType": "A"
     }
     this.apiSrv.saveBid(param).subscribe(
       (data) => {
-        this.bids.unshift(auction);
-        let index = this.auctionList.indexOf(auction);
-        this.auctionList.splice(index, 1);
-        setTimeout(()=>{   
-          $('.flexslider').data('flexslider').addSlide();
-          this.startSlider();
-        },100);
+        // this.bidList.unshift(auction);
+        // let index = this.auctionList.indexOf(auction);
+        // this.auctionList.splice(index, 1);
+        this.getmyActiveAuctions(localStorage.getItem("userId"));        
       }, (error) => {
         console.log(error); 
       },
@@ -131,6 +151,16 @@ export class EAuctionComponent implements OnInit {
     localStorage.setItem("checkoutId", auction.auctionId);
     this.router.navigate(['/check-out']);
   }  
+  increasePrice(auction){
+    if(auction.bidNowAt<auction.buyNowPrice){
+      auction.bidNowAt = auction.bidNowAt+10;
+    }    
+  }
+  decreasePrice(auction){
+    if(auction.bidNowAt>auction.currentBidPrice){
+      auction.bidNowAt = auction.bidNowAt-10;
+    }
+  }
   startSlider() {
     $('.flex-upcoming-auction').flexslider({
       animation: "slide",

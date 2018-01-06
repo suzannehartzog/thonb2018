@@ -2,22 +2,44 @@
 	<app-navbar></app-navbar>
 </div>
 <div class="about">
+		
 		<div class="container">
-			<h1>Make Payment</h1>
-			<div class="col-md-8" id="basket">
+			<div class="col-md-8" id="basket" *ngIf="showPaymentSuccessContent">
+				<div class="alert alert-success" *ngIf="showPaymentContent.auctionBookingStatus=='success'">
+					<strong>Your booking is confirmed.</strong>
+				</div>
+				<div class="alert alert-success" *ngIf="showPaymentContent.auctionBookingStatus=='failure'">
+					Booking failed.
+				</div>
 				<div class="box">
 					<form method="post" action="#">
-						<h3>Use my Wallet</h3>
+						<h3>Booking Details</h3>
 						<div class="table-responsive">
 							<div class="form-group">
-								
-							</div>				
+								<label><strong>Name</strong> : showPaymentContent.auctionBidderDtl.bidderName</label>
+								<label><strong>Booking Id</strong> : showPaymentContent.bookingTransactionId</label>
+							</div>
 						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-8" id="basket" *ngIf="showPaymentContent">
+			<h1>Make Payment</h1>
+				<div class="box">
+					<form method="post" action="#">
 						<h3>Payment Options</h3>
 						<div class="table-responsive">
 							<div class="form-group">
-									<a href="javascript:void(0);" class="btn save-bid-btn width-100"><i class="fa fa-money"></i> PAY NOW</a>
-							</div>				
+								<label>Name on Card</label>
+								<input type="text" value="{{checkoutDetails.user.userName}}" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label>Card Number</label>
+								<input type="text" maxlength="16" value="123456789654123" class="form-control" />
+							</div>
+							<div class="form-group">
+								<a href="javascript:void(0);" (click)="payNow()" class="btn save-bid-btn width-100"><i class="fa fa-money"></i> PAY NOW <i class="fa fa-inr"></i> {{checkoutDetails.auction.buyNowPrice}}</a>
+							</div>							
 						</div>
 						<!-- /.table-responsive -->	
 					</form>
@@ -26,14 +48,14 @@
 			</div>
 			<!-- /.col-md-9 -->
 
-			<div class="col-md-4">
+			<div class="col-md-4" *ngIf="showPaymentSuccessContent || showPaymentContent">
 				<div class="box" id="order-summary">
 					<div class="box-header">
 						<h3>Booking summary</h3>
 						<div class="image-holder">
 							<img alt="Hotel Name" src="assets/images/i3.jpg">
 						</div>
-					<h6>Hotel Red fort
+					<h6>{{checkoutDetails.auction.auctionTitle}}
 						<span class="pull-right">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -45,40 +67,43 @@
 							<tbody>
 								<tr>
 									<td>
-										<strong>No of Rooms: </strong><br>1 room
+										<strong>No of Rooms: </strong><br>{{checkoutDetails.auction.roomQuantity}} room
 									</td>
 									<td>
-										<strong>No of Guests : </strong><br>2 adults 1 child
+										<strong>No of Guests : </strong><br>{{checkoutDetails.auction.roomCapacity}} adults
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<strong>Check In @10:00 AM</strong><br>
-										1-Jan-2018 Mon day
+										{{checkoutDetails.auction.roomLockedFrom}}
+										<!--1-Jan-2018 Mon day-->
 									</td>
 									<td>
 										<strong>Check Out @9:00 AM</strong><br>
-										3-Jan-2018 Wed day
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<strong>Deluxe Room</strong><br>
-										<strong>1 Room | 3 Guest </strong><em>(2 Adults 1 Child)</em>
+										{{checkoutDetails.auction.roomLockedTill}}
+										<!--5-Jan-2018 Fri day-->
 									</td>
 								</tr>
 								<tr class="dash-border">
 									<td colspan="2">
-										<strong>Total</strong><em>(1 Room x 2 Nights)</em>
-										<span class="pull-right"><i class="fa fa-inr"></i> <strong>7,000</strong></span>										
+										<strong>Room</strong><em>({{checkoutDetails.auction.roomQuantity}} Room & {{checkoutDetails.auction.roomCapacity}} Guest)</em>
+										<span class="pull-right"><i class="fa fa-inr"></i> {{checkoutDetails.auction.buyNowPrice}}</span>
+									</td>
+								</tr>
+								<tr class="dash-border">
+									<td colspan="2">
+										<h6>
+											Total <span class="pull-right"><i class="fa fa-inr"></i> {{checkoutDetails.auction.buyNowPrice}}</span>
+										</h6>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-				</div>	
+				</div>
 			</div>
 			<!-- /.col-md-3 -->
-
 		</div>
+	</div>
 </div>

@@ -1,0 +1,56 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="about">
+	<div class="container" *ngIf="showContent">
+		<div class="col-xs-12 col-sm-12 col-md-12" id="basket">
+			<h1>Auction List</h1>
+			<div class="box">
+				<table class="table table-fixed">
+					<thead>
+						<tr>
+							<th class="col-xs-1">Id</th>
+							<th class="col-xs-2">Auction Details</th>
+							<th class="col-xs-2">Auction start & end date</th>
+							<th class="col-xs-2">Booking start & end date</th>							
+							<th class="col-xs-1">Base price</th>
+							<th class="col-xs-1">Highest price</th>
+							<th class="col-xs-2">Bidder Name</th>
+							<th class="col-xs-1">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let auction of auctionList">
+							<td class="col-xs-1">{{auction.auctionId}}</td>
+							<td class="col-xs-2">
+								{{auction.auctionTitle}}
+							</td>
+							<td class="col-xs-2">
+								{{auction.startDate}}
+								<br/>
+								{{auction.endDate}}
+							</td>
+							<td class="col-xs-2">
+								{{auction.roomLockedFrom}}
+								<br/>
+								{{auction.roomLockedTill}}
+							</td>							
+							<td class="col-xs-1">
+								<i class="fa fa-inr"></i> {{auction.startingPrice}}								
+							</td>
+							<td class="col-xs-1">
+								<i class='fa fa-inr'></i> {{auction.auctionBidderDtl.bidPrice}}
+							</td>
+							<td class="col-xs-2">
+								{{auction.auctionBidderDtl.bidderName==null?"--":auction.auctionBidderDtl.bidderName}}
+							</td>
+							<td class="col-xs-1">
+								{{auction.auctionStatus==null?"--":auction.auctionStatus}}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>	
+		</div>					
+	</div>
+</div>

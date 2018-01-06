@@ -1,10 +1,12 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { DatePicker } from '../../directives/datepicker/datepicker';
 
 import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-quote-request',
@@ -27,7 +29,7 @@ export class QuoteRequestComponent implements OnInit {
     this.titleService.setTitle('Quote Request:: Yayaati');
 
     this.apiSrv.getCities().subscribe(
-      (res:Response) => {
+      (res) => {
         console.log(res);
         this.cityList = res;
       },
@@ -71,7 +73,7 @@ export class QuoteRequestComponent implements OnInit {
         this.messageClass = "alert alert-success";
         this.message = "Itinerary successfully created!";
 
-        $('.btn.btn-info').addClass('disabled');
+       // $('.btn.btn-info').addClass('disabled');
       }, (error) => {
         console.log(error); 
       },

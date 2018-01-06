@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import {ApiDataService} from '../../../services/api-data.service';
 import {SharedService} from '../../../services/shared.service';
+import { Router, ActivatedRoute  } from '@angular/router';
 
 declare var jquery:any;
 declare var $ :any;
@@ -18,9 +19,11 @@ export class NavComponent implements OnInit {
   public userName: string;
   public notificationList:any;
   public unreadCount:any;  
+  public roleName: string;
   constructor(
     private apiSrv : ApiDataService,
-    private shrSrv : SharedService
+    private shrSrv : SharedService,
+    private router: Router
   ) { 
    NavComponent.updateUserStatus.subscribe(res => {      
       this.isLoggedIn = ((localStorage.getItem("isloggedIn")==''||localStorage.getItem("isloggedIn")===null)?false:true);
@@ -34,6 +37,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.notificationInit();
     this.isLoggedIn = ((localStorage.getItem("isloggedIn")==''||localStorage.getItem("isloggedIn")===null)?false:true);
+    this.roleName = localStorage.getItem("roleName");
 
     if(this.isLoggedIn) {
       this.userName = localStorage.getItem("userName");
@@ -94,6 +98,24 @@ export class NavComponent implements OnInit {
     });
     $('#noti_Counter').css({ visibility: 'hidden' })                  // HIDE THE COUNTER.
     return false;
+  }
+
+  selectRoute(typeNoti) {
+    switch(typeNoti) {
+      case "Q": //Request for quote/ Response of Quote (traveller)
+        this.roleName == "Traveler" ?  this.router.navigate(["quote-request"]) : this.router.navigate(["show-itin-request"]);
+      break;
+      case "A": //Auction notification (traveller)
+        this.roleName == "Traveler" ?  this.router.navigate(["e-auction"]) : this.router.navigate([""]);
+      break;
+      case "B": //BID
+      break;
+      case "H": // Hagling (traveller/TA/Owner)
+        this.router.navigate(["haggling-conversation"]);
+      break;
+      default:
+        this.router.navigate([""]);
+    }
   }
 
       // // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.

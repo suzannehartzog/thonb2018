@@ -1,0 +1,159 @@
+<div class="banner notHome">
+    <app-navbar></app-navbar>
+</div>
+<div class="about">
+    <div class="container">
+        <div class="about nopadding clear">
+            <h1>Signup!</h1>
+            <div class="box">
+                <div class="hotel-details" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav-tabs" role="tablist">
+                        <li role="presentation" [ngClass]="{'active':showAuction}">
+                            <a href="javascript:void(0);" (click)="toggleTab('auction')" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true"
+                                class="btn btn-info">Customer Signup</a>
+                        </li>
+                        <li role="presentation" [ngClass]="{'active':showFlashSale}">
+                            <a href="javascript:void(0);" (click)="toggleTab('flashsale')" role="tab" data-toggle="tab" aria-controls="flashsale" aria-expanded="true"
+                                class="btn btn-info">Vendor Signup</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" *ngIf="showAuction" class="tab-pane fade active in" id="auction" aria-labelledby="auction-tab">
+                            <form (ngSubmit)="signup('customer')">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Email (Will be your username)</label>
+                                        <input name="email" type="text" placeholder="Username" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Phone Number</label>
+                                        <input name="startDate" type="text" placeholder="Phone Number" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Password</label>
+                                        <input name="endDate" type="passxword" placeholder="Password" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Confirm Password</label>
+                                        <input name="endDate" type="passxword" placeholder="Confirm Password" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-check-label"><input type="checkbox" class="form-check-input" ngModel name="travelWithBuddy"> Want to Travel with Buddies <i class="fa fa-users" aria-hidden="true"></i></label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <div role="tabpanel" *ngIf="showFlashSale" class="tab-pane fade active in" id="flashsale" aria-labelledby="flashsale-tab">
+                            <form (ngSubmit)="signup('vendor')">                            
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <h5>Contact Information</h5>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Email (Will be your username)</label>
+                                        <input type="text" placeholder="Username" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">First Name</label>
+                                        <input type="text" placeholder="First Name" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Last Name</label>
+                                        <input type="text" placeholder="Last Name" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <h5>Business Information</h5>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Business Type</label>
+                                        <select name="businessType" class="form-control" required="">
+                                            <option value="">Type of Business</option>
+                                            <option value="hotel">Hotel Chain</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Phone Number</label>
+                                        <input name="email" type="number" placeholder="Phone Number" class="form-control" />
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Property Name</label>
+                                        <input name="email" type="text" placeholder="Phone Number" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Property Rating</label>
+                                        <select name="businessType" class="form-control" required="">
+                                        <option value="">Rating	</option>
+                                            <option value="5">5</option>
+                                            <option value="4">4</option>
+                                            <option value="3">3</option>
+                                            <option value="2">2</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">Number of Rooms</label>
+                                        <input name="email" type="num" placeholder="Number of Rooms" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <h5>Property Location</h5>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">Street Address</label>
+                                        <input name="email" type="num" placeholder="Street Adderss" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">City</label>
+                                        <input name="email" type="num" placeholder="City Adderss" class="form-control" />
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">Select State</label>
+                                        <select name="state" class="form-control" required="">                                        
+                                            <option value="">Select State</option>
+                                            <option value="7">West Bengal</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">Select Country</label>
+                                        <select name="state" class="form-control" required="">                                        
+                                            <option value="">Select State</option>
+                                            <option value="1">India</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

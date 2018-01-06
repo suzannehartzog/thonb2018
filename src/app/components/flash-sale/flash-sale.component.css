@@ -91,3 +91,22 @@ h3{
 .upcoming-slider h3{
     color: #001d4e !important;
 }
+.margin-top-10{
+    margin-top: 10px;
+}
+
+.image-holder h4{
+    letter-spacing: 0;
+    text-align: center;
+    background-color: #ccc;
+    line-height: 25px;
+    margin-bottom: 0;
+}
+span.aminities {
+    padding: 2px 5px;
+    background: #DEDEDE;
+    margin: 0 3px;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 0.9em;
+}

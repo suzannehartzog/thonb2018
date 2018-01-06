@@ -2,7 +2,7 @@
 	<app-navbar></app-navbar>
 </div>
 <div class="about">
-		<div class="container">
+		<div class="container" *ngIf="showContent">
 			<h1>Checkout</h1>
 			<div class="col-md-8" id="basket">
 				<div class="box">
@@ -13,17 +13,11 @@
 								<label>Title</label>
 								<select name="initials" id="" class="form-control">
 									<option>Mr.</option>
-									<option>Miss.</option>
-									<option>Mrs.</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label>First Name</label>
-								<input type="text" value="" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Last Name</label>
-								<input type="text" value="" class="form-control">
+								<label>User Name</label>
+								<input type="text" value="{{checkoutDetails.user.userName}}" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Email</label>
@@ -48,7 +42,7 @@
 						<div class="image-holder">
 							<img alt="Hotel Name" src="assets/images/i3.jpg">
 						</div>
-					<h6>Hotel Red fort
+					<h6>{{checkoutDetails.auction.auctionTitle}}
 						<span class="pull-right">
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
@@ -60,74 +54,55 @@
 							<tbody>
 								<tr>
 									<td>
-										<strong>No of Rooms: </strong><br>1 room
+										<strong>No of Rooms: </strong><br>{{checkoutDetails.auction.roomQuantity}} room
 									</td>
 									<td>
-										<strong>No of Guests : </strong><br>2 adults 1 child
+										<strong>No of Guests : </strong><br>{{checkoutDetails.auction.roomCapacity}} adults
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<strong>Check In @10:00 AM</strong><br>
-										1-Jan-2018 Mon day
+										{{checkoutDetails.auction.roomLockedFrom}}
+										<!--1-Jan-2018 Mon day-->
 									</td>
 									<td>
 										<strong>Check Out @9:00 AM</strong><br>
-										5-Jan-2018 Fri day
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<strong>Room</strong><em>(1 Room & 3 Guest)</em>
-										<span class="pull-right"><i class="fa fa-inr"></i> 5,000</span>
+										{{checkoutDetails.auction.roomLockedTill}}
+										<!--5-Jan-2018 Fri day-->
 									</td>
 								</tr>
 								<tr class="dash-border">
+									<td colspan="2">
+										<strong>Room</strong><em>({{checkoutDetails.auction.roomQuantity}} Room & {{checkoutDetails.auction.roomCapacity}} Guest)</em>
+										<span class="pull-right"><i class="fa fa-inr"></i> {{checkoutDetails.auction.buyNowPrice}}</span>
+									</td>
+								</tr>
+								<!--<tr class="dash-border">
 									<td colspan="2">
 										<strong>Additional Changes</strong><em>(If any)</em>
 										<span class="pull-right"><i class="fa fa-inr"></i> -----</span>
 									</td>
-								</tr>
+								</tr>-->
 								<tr class="dash-border">
 									<td colspan="2">
 										<h6>
-											Total<em>(1 Room x 2 Days)</em>
-											<span class="pull-right"><i class="fa fa-inr"></i> 7,000</span>
+											Total
+											<span class="pull-right"><i class="fa fa-inr"></i> {{checkoutDetails.auction.buyNowPrice}}</span>
 										</h6>
 										
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<a href="javascript:void(0);" class="btn save-bid-btn width-100"><i class="fa fa-money"></i> PAY NOW</a>
+										<a href="javascript:void(0);" (click)="makePayment()" class="btn save-bid-btn width-100"><i class="fa fa-money"></i> Make Payment</a>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-
 				</div>
-
-
-				
-					<div class="box-header">
-						<h3>Coupon code</h3>
-					</div>
-					<p class="text-muted">If you have a coupon code, please enter it in the box below.</p>
-					
-					<div class="input-group">
-
-						<input type="text" class="form-control">
-
-						<span class="input-group-btn">
-
-							<button class="btn save-bid-btn" type="button"><i class="fa fa-gift"></i></button>
-
-						</span>
-					</div>
-
 			</div>
-			<!-- /.col-md-3 -->
-
 		</div>
+	</div>
 </div>

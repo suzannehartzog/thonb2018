@@ -1,0 +1,107 @@
+<div class="banner notHome">
+	<app-navbar></app-navbar>
+</div>
+<div class="quote-response">
+	<div class="container">
+		<h1>My Package List!</h1>
+		<div class="row">
+			<section>
+				<article class="booking-list card" *ngFor="let pkg of getMyPackages">
+					<div class="panel-heading clickable" (click)="toggleDisplay($event)">
+						<div class="row">
+							<div class="col-md-3">
+								<span class="text-gray">Created By:</span>
+								<span><b>{{pkg.createdBy}}</b></span>
+							</div>
+							<div class="col-md-3">
+								<span class="text-gray">Package Description:</span>
+								<span><b>{{pkg.description}}</b></span>
+							</div>
+							<div class="col-md-3">
+								<span class="text-gray">Pacakge Price:</span>
+								<span><b>{{pkg.price}}</b></span>
+							</div>
+
+							<div class="col-md-3">
+								<span class="text-gray">No. of Passenger:</span>
+								<span><b>{{pkg.travellerCount}}</b></span>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+						<div class="flex-row" *ngIf="hotel != null">
+							<div class="flex-row">
+								<div class="col-md-12">
+									Hotels
+								</div>
+							</div>
+							<div class="flex-row" *ngFor="let hotel of pkg">
+								<div class="col-md-3">
+									<p class="text-gray">Hotel name</p>
+									<p><b>{{hotel.hotelName}}, {{hotel.hotelAddress}}</b></p>
+								</div>
+								<div class="col-md-3">
+									<p class="text-gray">Check-in Date</p>
+									<p><b>{{hotel.checkinDate}} 2018</b></p>
+								</div>
+								<div class="col-md-2">
+									<p class="text-gray">Number of nights</p>
+									<p><b>{{hotel.noOfNights}}</b></p>
+								</div>
+								<div class="col-md-2">
+									<p class="text-gray">Number of rooms</p>
+									<p><b>{{hotel.noOfRooms}}</b></p>
+								</div>
+								<div class="col-md-2">
+									<p class="text-gray">Number of rooms</p>
+									<p><b>{{hotel.noOfRooms}}</b></p>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex-row" *ngIf="transports != null">
+							<div class="flex-row">
+								<div class="col-md-12">
+									Transports
+								</div>
+							</div>
+							<div class="flex-row" *ngFor="let transport of pkg">
+								<div class="col-md-3">
+									<p class="text-gray">Transport type</p>
+									<p><b>{{transport.transportType}}</b></p>
+								</div>
+								<div class="col-md-3">
+									<p class="text-gray">Transport Date</p>
+									<p><b>{{hotel.transportDate}} 2018</b></p>
+								</div>
+								<div class="col-md-2">
+									<p class="text-gray">Vehicle Name</p>
+									<p><b>{{hotel.vehicleName}}</b></p>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="flex-row" *ngIf="guides != null">
+							<div class="flex-row">
+								<div class="col-md-12">
+									Guides
+								</div>
+							</div>
+							<div class="flex-row" *ngFor="let guide of pkg">
+								<div class="col-md-3">
+									<p class="text-gray">Guide Name</p>
+									<p><b>{{guide.guideName}}</b></p>
+								</div>
+								<div class="col-md-3">
+									<p class="text-gray">Guide Date</p>
+									<p><b>{{guide.guideDate}} 2018</b></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</article>
+			</section>
+		</div>
+	</div>

@@ -5,6 +5,9 @@ import { Title } from '@angular/platform-browser';
 import { ApiDataService } from '../../services/api-data.service';
 import { SharedService } from '../../services/shared.service';
 
+declare var jquery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-haggling-conversation',
   templateUrl: './haggling-conversation.component.html',
@@ -14,6 +17,12 @@ export class HagglingConversation implements OnInit {
   public roleName: string = "";
   public user: string = localStorage.getItem("ownerUserId");
   public comments: any;
+  public userId: string = localStorage.getItem("userId");
+  public haggleData: {};
+  public runningHaggleId: number = null;
+  public haggleSelectedId: number = 0;  
+  public conversationDetails: string;
+  public conversations: string;
   constructor(
     private router: Router,
     private titleService: Title,
@@ -26,13 +35,33 @@ export class HagglingConversation implements OnInit {
 
     this.roleName = localStorage.getItem("roleName");
 
-    this.getHotelHagglingDetail(3);
+    this.getMyHagglings(this.userId);
+
+    $(".row.content-wrap.messages").css("height", "75.9%");
+  }
+
+  getMyHagglings(userId) {
+     this.apiSrv.getMyHagglings(userId).subscribe(
+      (data) => {
+        this.haggleData = data;
+        //console.log(this.haggleData);
+        if(this.haggleData !== null) {
+          this.getHotelHagglingDetail(this.haggleData[0].id);        
+        } else {
+          alert("No haggling data available!")  ;
+        }
+      },
+      (error) => console.log(error),//Error Handler
+      () => console.log("completed getMyHagglings")//Complete Handler
+    );
   }
 
   getHotelHagglingDetail(hagglingId) {
     this.apiSrv.getHotelHagglingDetail(hagglingId).subscribe(
       (data) => {
-        this.comments = data.comments;
+        this.runningHaggleId = hagglingId;
+        this.comments = data.comments;    
+        this.haggleSelectedId = hagglingId;
       },
       (error) => console.log(error),//Error Handler
       () => console.log("completed getHotelHagglingDetail")//Complete Handler
@@ -40,31 +69,32 @@ export class HagglingConversation implements OnInit {
   }
 
   addToHotelHaggling(params: any) {
+    console.log(params);
     let hagglingJson = {
       "comment": params.message,
-      "userId": parseInt(this.user),
+      "userId": parseInt(this.userId),
       "firstConversation": false,
-      "roomType": "Deluxe",
-      "hotelId": 1,
-      "hagglingId": 3
+      "hagglingId": this.runningHaggleId
     };
 
     if (this.roleName == "Traveler") {
       hagglingJson["couponCode"] = "";
-      hagglingJson["reqByConsumer"] = true;
+      hagglingJson["reqByConsumer"] = true;      
     }
-    if (this.roleName == "TravellerAgent") {
+    if (this.roleName == "Hotel") {
       hagglingJson["couponCode"] = params.couponCode;
-      hagglingJson["reqByConsumer"] = false;
+      hagglingJson["reqByConsumer"] = false;      
     }
 
     this.apiSrv.addToHotelHaggling(hagglingJson).subscribe(
       (data) => {
-        this.getHotelHagglingDetail(3);
+        this.getHotelHagglingDetail(this.runningHaggleId);
       }, (error) => {
         console.log(error);
       },
       () => {
+        this.runningHaggleId = null;  
+        this.haggleSelectedId  = null;
         console.log("completed addToHotelHaggling");
       }
     );

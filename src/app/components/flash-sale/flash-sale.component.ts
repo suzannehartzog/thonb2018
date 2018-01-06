@@ -15,14 +15,7 @@ declare var $: any;
 })
 export class FlashSaleComponent implements OnInit {  
   public flashSaleList:any=[];
-  public upcomingAuctions:any=[
-    {id:1, name:"Auction 1"},
-    {id:2, name:"Auction 2"},
-    {id:3, name:"Auction 3"},
-    {id:4, name:"Auction 4"},
-    {id:5, name:"Auction 5"},
-    {id:6, name:"Auction 6"}
-  ];
+  public upcomingAuctions:any=[];
   constructor(
     private router: Router,
     private titleService: Title,
@@ -32,21 +25,42 @@ export class FlashSaleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle('E Auction:: Yayaati');
-    this.getActiveFlashSale();        
+    this.titleService.setTitle('Flash Sale :: Yayaati');
+    this.getActiveFlashSale();  
+    this.getupcomingAuctions();        
   }
+  
   getActiveFlashSale(){
     this.apiSrv.activeFlashSale().subscribe(
       (data) => {
         this.flashSaleList = data; 
         setTimeout(()=>{ 
           this.startSlider();
-        },100);
+        },500);
       }, (error) => {
         console.log(error); 
       },
       () => {
-        console.log("completed changeCurrency");
+        console.log("completed");
+      }
+    );
+  }
+  auctionCheckout(auction){
+    localStorage.setItem("checkoutId", auction.auctionId);
+    this.router.navigate(['/check-out']);
+  }
+  getupcomingAuctions(){
+    this.apiSrv.upcomingAuctions().subscribe(
+      (data) => {
+        this.upcomingAuctions = data; 
+        setTimeout(()=>{ 
+          this.startSlider();
+        },500);
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed");
       }
     );
   }

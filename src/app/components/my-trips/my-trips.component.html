@@ -1,221 +1,450 @@
 <div class="banner notHome">
     <app-navbar></app-navbar>
-    <h3 class="w3agileits-title">My Trips</h3>
 </div>
-<div class="my-trips nopadding">
-    <div class="container">
-        <div class="my-trips-w3ls-row">
-            <div class="col-md-7 about-right">
-                <div class="about-agile-row">
-                    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-                        <ul id="myTab" class=" nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#upcoming" id="upcoming-tab" role="tab" data-toggle="tab" aria-controls="upcoming" aria-expanded="true">Upcoming</a></li>
-                            <li role="presentation" class=""><a href="#previous" role="tab" id="hotel-tab" data-toggle="tab" aria-controls="previous" aria-expanded="false"> Previous</a></li>
-                            <li role="presentation" class=""><a href="#cancelled" role="tab" id="car-cancelled" data-toggle="tab" aria-controls="cancelled"
-                                    aria-expanded="false"> Cancelled</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-</div>
-<div class="my-trips">
+<div class="about">
     <div class="container">
         <div class="row">
+            <h1>My Trips!</h1>
             <section>
-                <article class="booking-list card">
-                    <div class="panel-heading clickable" (click)="toggleDisplay()">
-                        <div class="col-md-9">
-                            <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <span class="text-gray">Booking Id:</span>
-                            <span><b>123456</b></span>
-                        </div>
+                <div class="hotel-details" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav-tabs" role="tablist">
+                        <li role="presentation" [ngClass]="{'active':showAuction}">
+                            <a href="javascript:void(0);" (click)="toggleTab('auction')" role="tab" data-toggle="tab" aria-controls="showAuction"
+                                aria-expanded="true" class="btn btn-info">Upcoming</a>
+                        </li>
+                        <li role="presentation" [ngClass]="{'active':showPromotions}">
+                            <a href="javascript:void(0);" (click)="toggleTab('promotions')" role="tab" data-toggle="tab" aria-controls="showPromotions"
+                                aria-expanded="true" class="btn btn-info">Completed</a>
+                        </li>
+                        <li role="presentation" [ngClass]="{'active':showFlashSale}">
+                            <a href="javascript:void(0);" (click)="toggleTab('flashsale')" role="tab" data-toggle="tab" aria-controls="showFlashSale"
+                                aria-expanded="true" class="btn btn-info">Cancelled</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" *ngIf="showAuction" class="tab-pane fade active in" id="auction" aria-labelledby="auction-tab">
+                            <article class="booking-list card">
+                                <div class="panel-heading clickable" (click)="toggleDisplay()">
+                                    <div class="col-md-9">
+                                        <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Id:</span>
+                                        <span><b>123456</b></span>
+                                    </div>
 
-                        <div class="col-md-12">
-                            <h5 class="hotel-heading">Hotel Sonar Bangla, Mandarmani</h5>
+                                    <div class="col-md-9">
+                                        <h5 class="hotel-heading">Hotel Sonar Bangla, Mandarmani</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Date:</span>
+                                        <span><b>25th Mar 2018</b></span>
+                                    </div>
+                                </div>
+                                <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                    <div class="flex-row">
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK IN</p>
+                                            <p><b>Sat, 25th Jan</b></p>
+                                            <p><b>10 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK OUT</p>
+                                            <p><b>Sat, 27th Jan</b></p>
+                                            <p><b>09 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">DURATION</p>
+                                            <p><b>2 Nights</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">NUMBER OF GUESTS</p>
+                                            <p><b>2 Guests</b></p>
+                                            <p class="text-gray">(Adults-02, Child-00)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Room Type: </span>
+                                            <span><b>Non AC Deluxe</b></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Meal Type: </span>
+                                            <span><b>Non veg</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <p class="text-gray">Guest Details: </p>
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>&nbsp;</p>
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="booking-list card">
+                                <div class="panel-heading clickable" (click)="toggleDisplay()">
+                                    <div class="col-md-9">
+                                        <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Id:</span>
+                                        <span><b>123456</b></span>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <h5 class="hotel-heading">Hotel May Fair, Darjeeling</h5>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <span class="text-gray">Booking Date:</span>
+                                        <span><b>25th Apr 2018</b></span>
+                                    </div>
+                                </div>
+                                <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                    <div class="flex-row">
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK IN</p>
+                                            <p><b>Sat, 20th Jan</b></p>
+                                            <p><b>10 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK OUT</p>
+                                            <p><b>Sat, 22th Jan</b></p>
+                                            <p><b>09 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">DURATION</p>
+                                            <p><b>2 Nights</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">NUMBER OF GUESTS</p>
+                                            <p><b>2 Guests</b></p>
+                                            <p class="text-gray">(Adults-02, Child-00)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Room Type: </span>
+                                            <span><b>Non AC Deluxe</b></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Meal Type: </span>
+                                            <span><b>Non veg</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <p class="text-gray">Guest Details: </p>
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>&nbsp;</p>
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div role="tabpanel" *ngIf="showPromotions" class="tab-pane fade active in" id="promotions" aria-labelledby="auction-tab">
+                            <article class="booking-list card">
+                                <div class="panel-heading clickable" (click)="toggleDisplay()">
+                                    <div class="col-md-9">
+                                        <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Id:</span>
+                                        <span><b>123456</b></span>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <h5 class="hotel-heading">Hotel Sonar Bangla, Darjeeling</h5>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <span class="text-gray">Booking Date:</span>
+                                        <span><b>25th Sep 2017</b></span>
+                                    </div>
+                                </div>
+                                <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                    <div class="flex-row">
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK IN</p>
+                                            <p><b>Sat, 25th Dec</b></p>
+                                            <p><b>10 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK OUT</p>
+                                            <p><b>Sat, 27th Dec</b></p>
+                                            <p><b>09 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">DURATION</p>
+                                            <p><b>2 Nights</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">NUMBER OF GUESTS</p>
+                                            <p><b>2 Guests</b></p>
+                                            <p class="text-gray">(Adults-02, Child-00)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Room Type: </span>
+                                            <span><b>Non AC Deluxe</b></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Meal Type: </span>
+                                            <span><b>Non veg</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <p class="text-gray">Guest Details: </p>
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>&nbsp;</p>
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="booking-list card">
+                                <div class="panel-heading clickable" (click)="toggleDisplay()">
+                                    <div class="col-md-9">
+                                        <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Id:</span>
+                                        <span><b>123456</b></span>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <h5 class="hotel-heading">Hotel Sonamati, Behala</h5>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <span class="text-gray">Booking Date:</span>
+                                        <span><b>30th Mar 2017</b></span>
+                                    </div>
+                                </div>
+                                <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                    <div class="flex-row">
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK IN</p>
+                                            <p><b>Sat, 30th Jun</b></p>
+                                            <p><b>10 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK OUT</p>
+                                            <p><b>Mon, 1st Jul</b></p>
+                                            <p><b>09 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">DURATION</p>
+                                            <p><b>2 Nights</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">NUMBER OF GUESTS</p>
+                                            <p><b>2 Guests</b></p>
+                                            <p class="text-gray">(Adults-02, Child-00)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Room Type: </span>
+                                            <span><b>Non AC Deluxe</b></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Meal Type: </span>
+                                            <span><b>Non veg</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <p class="text-gray">Guest Details: </p>
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>&nbsp;</p>
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div role="tabpanel" *ngIf="showFlashSale" class="tab-pane fade active in" id="flashsale" aria-labelledby="auction-tab">
+                            <article class="booking-list card">
+                                <div class="panel-heading clickable" (click)="toggleDisplay()">
+                                    <div class="col-md-9">
+                                        <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Id:</span>
+                                        <span><b>123456</b></span>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <h5 class="hotel-heading">Hotel Sonar Bangla, Mandarmani</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Date:</span>
+                                        <span><b>4th Jan 2018</b></span>
+                                    </div>
+                                </div>
+                                <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                    <div class="flex-row">
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK IN</p>
+                                            <p><b>Sat, 25th Mar</b></p>
+                                            <p><b>10 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK OUT</p>
+                                            <p><b>Sat, 27th Mar</b></p>
+                                            <p><b>09 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">DURATION</p>
+                                            <p><b>2 Nights</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">NUMBER OF GUESTS</p>
+                                            <p><b>2 Guests</b></p>
+                                            <p class="text-gray">(Adults-02, Child-00)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Room Type: </span>
+                                            <span><b>Non AC Deluxe</b></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Meal Type: </span>
+                                            <span><b>Non veg</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <p class="text-gray">Guest Details: </p>
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>&nbsp;</p>
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="booking-list card">
+                                <div class="panel-heading clickable" (click)="toggleDisplay()">
+                                    <div class="col-md-9">
+                                        <h5><i class="fa fa-bed fa-2x" aria-hidden="true"></i>Hotel Details</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Id:</span>
+                                        <span><b>123456</b></span>
+                                    </div>
+
+                                    <div class="col-md-9">
+                                        <h5 class="hotel-heading">Hotel Sonar Bangla, Mandarmani</h5>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="text-gray">Booking Date:</span>
+                                        <span><b>4th Jun 2017</b></span>
+                                    </div>
+                                </div>
+                                <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
+                                    <div class="flex-row">
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK IN</p>
+                                            <p><b>Sat, 25th Nov</b></p>
+                                            <p><b>10 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">CHECK OUT</p>
+                                            <p><b>Sat, 27th Nov</b></p>
+                                            <p><b>09 AM</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">DURATION</p>
+                                            <p><b>2 Nights</b></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-gray">NUMBER OF GUESTS</p>
+                                            <p><b>2 Guests</b></p>
+                                            <p class="text-gray">(Adults-02, Child-00)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Room Type: </span>
+                                            <span><b>Non AC Deluxe</b></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="text-gray">Meal Type: </span>
+                                            <span><b>Non veg</b></span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="col-md-6">
+                                            <p class="text-gray">Guest Details: </p>
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>&nbsp;</p>
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>Souvik</b></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><b>9674964703</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
                     </div>
-                    <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
-                        <div class="flex-row">
-                            <div class="col-md-3">
-                                <p class="text-gray">CHECK IN</p>
-                                <p><b>Sat, 25th Jan</b></p>
-                                <p><b>10 AM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">CHECK OUT</p>
-                                <p><b>Sat, 27th Jan</b></p>
-                                <p><b>09 AM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">DURATION</p>
-                                <p><b>2 Nights</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">NUMBER OF GUESTS</p>
-                                <p><b>2 Guests</b></p>
-                                <p class="text-gray">(Adults-02, Child-00)</p>
-                            </div>
-                        </div>
-
-                        <div class="flex-row">
-                            <div class="col-md-6">
-                                <span class="text-gray">Room Type: </span>
-                                <span><b>Non AC Deluxe</b></span>
-                            </div>
-                            <div class="col-md-6">
-                                <span class="text-gray">Meal Type: </span>
-                                <span><b>Non veg</b></span>
-                            </div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="col-md-6">
-                                <p class="text-gray">Guest Details: </p>
-                                <p><b>Souvik</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>&nbsp;</p>
-                                <p><b>9674964703</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><b>Souvik</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><b>9674964703</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="booking-list card">
-                    <div class="panel-heading clickable" (click)="toggleDisplay()">
-                        <div class="col-md-9">
-                            <h5><i class="fa fa-taxi fa-2x" aria-hidden="true"></i>Cab Details</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <span class="text-gray">Booking Id:</span>
-                            <span><b>123456</b></span>
-                        </div>
-
-                        <div class="col-md-12">
-                            <h5 class="cab-heading">Sedan</h5>
-                        </div>
-                    </div>
-                    <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
-                        <div class="flex-row">
-                            <div class="col-md-3">
-                                <p class="text-gray">PICKUP TIME</p>
-                                <p><b>Sat, 25th Jan</b></p>
-                                <p><b>08 AM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">DROP OFF TIME</p>
-                                <p><b>Sat, 27th Jan</b></p>
-                                <p><b>12 PM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">DURATION</p>
-                                <p><b>2 Nights</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">LUGGAGE</p>
-                                <p><b>2 Bags</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="booking-list card">
-                    <div class="panel-heading clickable" (click)="toggleDisplay()">
-                        <div class="col-md-9">
-                            <h5><i class="fa fa-users fa-2x" aria-hidden="true"></i>Package Details</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <span class="text-gray">Booking Id:</span>
-                            <span><b>123456</b></span>
-                        </div>
-                    </div>
-                    <div class="panel-body" [ngClass]="isDisplay ? '' : 'hideMe'">
-                        <div class="flex-row">
-                            <div class="col-md-12">
-                                <h5 class="cab-heading"><i class="fa fa-taxi fa-lg" aria-hidden="true"></i>Sedan</h5>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">PICKUP TIME</p>
-                                <p><b>Sat, 25th Jan</b></p>
-                                <p><b>08 AM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">DROP OFF TIME</p>
-                                <p><b>Sat, 27th Jan</b></p>
-                                <p><b>12 PM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">DURATION</p>
-                                <p><b>2 Nights</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">LUGGAGE</p>
-                                <p><b>2 Bags</b></p>
-                            </div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="col-md-12">
-                                <h5 class="hotel-heading"><i class="fa fa-bed fa-lg" aria-hidden="true"></i>Hotel Sonar Bangla, Mandarmani</h5>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">CHECK IN</p>
-                                <p><b>Sat, 25th Jan</b></p>
-                                <p><b>10 AM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">CHECK OUT</p>
-                                <p><b>Sat, 27th Jan</b></p>
-                                <p><b>09 AM</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">DURATION</p>
-                                <p><b>2 Nights</b></p>
-                            </div>
-                            <div class="col-md-3">
-                                <p class="text-gray">NUMBER OF GUESTS</p>
-                                <p><b>2 Guests</b></p>
-                                <p class="text-gray">(Adults-02, Child-00)</p>
-                            </div>
-                        </div>
-
-                        <div class="flex-row">
-                            <div class="col-md-6">
-                                <span class="text-gray">Room Type: </span>
-                                <span><b>Non AC Deluxe</b></span>
-                            </div>
-                            <div class="col-md-6">
-                                <span class="text-gray">Meal Type: </span>
-                                <span><b>Non veg</b></span>
-                            </div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="col-md-6">
-                                <p class="text-gray">Guest Details: </p>
-                                <p><b>Souvik</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p>&nbsp;</p>
-                                <p><b>9674964703</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><b>Souvik</b></p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><b>9674964703</b></p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                </div>
             </section>
         </div>
     </div>

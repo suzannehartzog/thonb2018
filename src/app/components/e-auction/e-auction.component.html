@@ -8,55 +8,54 @@
 			<h3>My Bids</h3>
 			<div class="flexslider">
 				<ul class="slides">
-					<li *ngFor="let bid of bids">
+					<li *ngFor="let bid of bidList">
 						<div class="row box">
 							<div class="col-xs-12 col-sm-12 col-md-12 no-padding">
-								<h5>Lorem Ipsum is simply dummy text {{bid.id}}</h5>
+								<h5>{{bid.auctionTitle}}</h5>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-4 no-padding">
 								<div class="image-holder">
-									<img src="assets/images/i{{bid.id}}.jpg" alt=""/>
+									<img src="assets/images/i1.jpg" alt=""/>
 								</div>                                                                           
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-8 no-padding">
 								<div class="col-xs-12 col-sm-12 col-md-6">
 									<strong>Start Price</strong>
-									<div>Rs 100</div>
+									<div>Rs {{bid.startingPrice}}</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6">
 									<strong>Current Bid</strong>
-									<div>Rs 500</div>
+									<div>Rs {{bid.currentBidPrice}}</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 top-margin-1em">
 									<strong>Start Date</strong>
-									<div>12-Jan-2018</div>
+									<div>{{bid.startDate}}</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-6 top-margin-1em">
 									<strong>End Date</strong>
-									<div>12-Jan-2018</div>
+									<div>{{bid.endDate}}</div>
 								</div>               
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 no-padding">								
-								<div class="col-xs-12 col-sm-12 col-md-12 no-padding">
-									Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the ....
+								<div class="col-xs-12 col-sm-12 col-md-12 no-padding" [innerHtml]="bid.auctionComment | slice:0:45">									
 								</div>  
 								<div class="col-xs-12 col-sm-12 col-md-12 no-padding">
 									<div class="col-xs-12 col-sm-12 col-md-6 no-padding">
 										<strong>Bid Now at </strong>
 										<span>
-											<a href="javascript:void(0);"><i class="fa fa-minus-square"></i></a>
-											<span class="bid-now"> Rs 110</span> 
-											<a href="javascript:void(0);"><i class="fa fa-plus-square"></i></a>
+											<a href="javascript:void(0);" (click)="decreasePrice(bid)"><i class="fa fa-minus-square"></i></a>
+											<span class="bid-now"> Rs {{bid.bidNowAt}}</span>
+											<a href="javascript:void(0);" (click)="increasePrice(bid)"><i class="fa fa-plus-square"></i></a>
 										</span>
 										<div>
-											<a href="javascript:void(0);" class="save-bid-btn pull-left" title="Save"><i class="fa fa-heart"></i> Save</a>
+											<a href="javascript:void(0);" (click) = "checkValidBidder(bid)" class="save-bid-btn pull-left" title="Save"><i class="fa fa-heart"></i> Save</a>
 										</div>
 										
 									</div>
 									<div class="col-xs-12 col-sm-12 col-md-6 text-right no-padding">
-										<strong>Buy now at </strong><span>Rs 500</span>
+										<strong>Buy now at </strong><span>Rs {{bid.buyNowPrice}}</span>
 										<div>
-											<a href="javascript:void(0);" class="save-bid-btn pull-right" title="Save"><i class="fa fa-shopping-cart"></i> Check out</a>
+											<a href="javascript:void(0);" (click) = "auctionCheckout(bid)" class="save-bid-btn pull-right" title="Check out"><i class="fa fa-shopping-cart"></i> Check out</a>
 										</div>										
 									</div>									
 								</div>                              
@@ -78,7 +77,8 @@
 							<a (click)="toggleChild(auction)" href="javascript:void(0);" title="">
 								<i *ngIf="!auction.showdetails" class="fa fa-angle-down"></i>
 								<i *ngIf="auction.showdetails" class="fa fa-angle-up"></i>
-								Auction Name : {{auction.auctionTitle}}</a>
+								{{auction.auctionTitle}}
+							</a>
 							<a (click)="toggleChild(auction)" class="save-bid-btn pull-right" href="javascript:void(0);" title="View the Auction Details">
 								<i *ngIf="!auction.showdetails" class="fa fa-angle-down"></i>
 								<i *ngIf="auction.showdetails" class="fa fa-angle-up"></i>
@@ -110,20 +110,20 @@
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 no-padding">
 								<strong>Current Bid</strong>
-								<p>{{currentBid}}</p>
+								<p>{{auction.currentBidPrice}}</p>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 no-padding">
 								<strong>Bid Now at </strong>
 								<span>
-									<a href="javascript:void(0);"  (click)="currentBid=currentBid-10"><i class="fa fa-minus-square"></i></a>
-									<span class="bid-now"> Rs {{currentBid+10}}</span> 
-									<a href="javascript:void(0);"  (click)="currentBid=currentBid+10"><i class="fa fa-plus-square"></i></a>
+									<a href="javascript:void(0);"  (click)="decreasePrice(auction)"><i class="fa fa-minus-square"></i></a>
+									<span class="bid-now"> Rs {{auction.bidNowAt}}</span> 
+									<a href="javascript:void(0);"  (click)="increasePrice(auction)"><i class="fa fa-plus-square"></i></a>
 								</span>
-								<a href="javascript:void(0);" (click) = "checkValidBidder(auction, currentBid)" class="save-bid-btn" title="Save"><i class="fa fa-heart"></i> Save</a>							
+								<a href="javascript:void(0);" (click) = "checkValidBidder(auction)" class="save-bid-btn" title="Save"><i class="fa fa-heart"></i> Save</a>							
 							</div>							
 							<div class="col-xs-12 col-sm-12 col-md-6 no-padding">
 								<strong>Buy now at </strong><span>Rs {{auction.buyNowPrice}}</span>
-								<a href="javascript:void(0);" (click) = "auctionCheckout(auction)" class="save-bid-btn " title="checkOut"><i class="fa fa-shopping-cart"></i> Check out</a>
+								<a href="javascript:void(0);" (click) = "auctionCheckout(auction)" class="save-bid-btn " title="Check out"><i class="fa fa-shopping-cart"></i> Check out</a>
 							</div>
 						</div>
 					</div>
@@ -138,23 +138,26 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">								
 								<div class="image-holder">
-									<h3>Upcoming Auction {{uaction.id}}</h3>
-									<img src="assets/images/i{{uaction.id}}.jpg" alt=""/>
+									<h3><a routerLink='/upcoming-auctions'>{{uaction.auctionTitle}}</a></h3>
+									<h4>Days left: {{uaction.daysLeftForAuctionStart}} days</h4>
+									<a routerLink='/upcoming-auctions'><img src="assets/images/i3.jpg" alt=""/></a>
+									<h4>Base Price : <i class="fa fa-inr"></i> {{uaction.startingPrice}}</h4>
 								</div> 
 							</div>
 						</div>
 					</li>                 
 				</ul> 
 			</div>
-			<h3>Flash Sell</h3>
+			<h3>Flash Sale</h3>
 			<div class="flex-flash-sell box">
 				<ul class="slides">
-					<li *ngFor="let fSell of flashSells">
+					<li *ngFor="let fSale of flashSale">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">								
 								<div class="image-holder">
-									<h3>Flash Sell {{fSell.id}}</h3>
-									<img src="assets/images/i{{fSell.id}}.jpg" alt=""/>
+									<h3><a routerLink='/flash-sale'>{{fSale.auctionTitle}}</a></h3>									
+									<a routerLink='/flash-sale'><img src="assets/images/i4.jpg" alt=""/></a>
+									<h4>Base Price : <i class="fa fa-inr"></i> {{fSale.buyNowPrice}}</h4>
 								</div> 
 							</div>
 						</div>

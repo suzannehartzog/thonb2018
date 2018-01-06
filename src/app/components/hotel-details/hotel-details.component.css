@@ -114,3 +114,6 @@ div#myTabContent{
     padding: 5px;
     font-size: .7em;
 }
+td.col-xs-2.lineheifght-10 {
+    line-height: 50px;
+}

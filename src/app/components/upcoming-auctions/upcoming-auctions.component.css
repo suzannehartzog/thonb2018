@@ -1,0 +1,111 @@
+.flexslider{
+    font-size: 12px;
+}                    
+.flexslider .slides h5{
+    line-height: 1.5em;
+    margin-bottom: .3em;
+    border-bottom: 1px dashed #ccc;
+}
+.save-bid-btn{
+    background: #001947;
+    color: #fff!important;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px!important;
+}
+.search-result a.save-bid-btn i{
+    color: #fff!important;
+}
+.flexslider .text-center{
+    text-align: center;
+}
+.flexslider .slides .image-holder{
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.flexslider .slides .image-holder img{
+    width: 100%;
+    height: auto;
+}
+.flexslider .slides .banner-w3lstext{
+    padding: 5px;
+    min-height: 220px;
+    border: 1px solid rgb(204, 204, 204);
+}
+.no-margin{
+    margin: 0;
+}
+h3{
+    padding: 5px 0;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+}
+.no-padding{
+    padding: 0;
+}
+.top-margin-1em{
+    margin-top: 1em;
+}
+.dash-border{
+    border-bottom: 1px dashed #ccc;
+    padding: 5px;
+}
+.table-fixed {
+    width: 100%;
+    background-color: #f3f3f3;
+    font-size: .6em;
+}
+.image-holder{
+    width: 100%;
+}
+.image-holder img{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 1px;
+}
+.bidding .bid-now{
+    background: #ccc;
+    display: inline-block;
+    padding: 0px 5px;
+    margin: 0 2px;
+    border-radius: 2px;                    
+}
+.bidding p{
+    line-height: 2em;
+}
+.margin-top-32{
+    margin-top:35px;
+}
+.box {
+    background: #fff;
+    margin: 10px 5px 10px;
+    border: solid 1px #e6e6e6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    -webkit-box-shadow: 0 1px 5px rgb(68, 100, 158);
+    box-shadow: 0 1px 5px rgb(68, 100, 158);
+}
+.upcoming-slider h3{
+    color: #001d4e !important;
+}
+.margin-top-10{
+    margin-top: 10px;
+}
+.image-holder h4{
+    letter-spacing: 0;
+    text-align: center;
+    background-color: #ccc;
+    line-height: 25px;
+    margin-bottom: 0;
+}
+span.aminities{
+    padding: 2px 5px;
+    background: #DEDEDE;
+    margin: 0 3px;
+    border-radius: 3px;
+    text-transform: capitalize;
+    font-size: 0.9em;
+}

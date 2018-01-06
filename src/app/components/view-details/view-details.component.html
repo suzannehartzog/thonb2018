@@ -1,0 +1,43 @@
+<div class="banner notHome">
+		<app-navbar></app-navbar>
+	</div>
+	<div class="about">
+			<div class="container">
+				<div class="col-xs-12 col-sm-12 col-md-12" id="basket" *ngIf="assetsType=='hotel'">
+					<h1>Hotel Details</h1>
+					<div class="box">
+						<article class="search-result row">
+							<div class="col-xs-12 col-sm-12 col-md-12 excerpet">
+								<h3>
+									<a href="#" title="">{{hotelDetails.hotelName}}</a>							
+								</h3>
+								<p [innerHtml] = "hotelDetails.hotelDescription"></p>						
+							</div>
+						</article>
+						<div class="about nopadding top-margin-1em clear">
+							<div *ngFor = "let hotelRoom of hotelDetails.hotelRooms" class="row dash-border">
+								<div class="col-xs-12 col-sm-12 col-md-3">
+									<h4>{{hotelRoom.roomType}} - Capacity - {{hotelRoom.capacity}}</h4>
+									<p><strong>No. of Rooms:</strong> {{hotelRoom.totalRoomCount}}</p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-3">
+									<p>{{hotelRoom.roomComment}}</p>
+									<p><strong>Aminities:</strong>
+										<span class="aminities" *ngFor = "let aminity of hotelRoom.allAmenities">
+											{{aminity.amenityName}}
+										</span>
+									</p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-3">
+									<p><strong>Price:</strong> Rs.{{hotelRoom.roomBasePrice}} per Night</p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-3" *ngIf="roleName=='Agency' || roleName=='Traveler'">
+									<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum" routerLink='/start-haggle/{{hotelDetails.hotelId}}/{{hotelRoom.roomType}}'>START HAGGLE</a>
+									<a class="btn btn-info" href="javascript:void(0);" title="Lorem ipsum">BOOK</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+	</div>

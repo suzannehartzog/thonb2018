@@ -16,6 +16,9 @@ export class GetResourceForPackage implements OnInit {
 
   public itinParam: Object;
   public cityList;
+  public message: string = "";
+  public messageClass: string = "";
+
   constructor(
     private router: Router,
     private titleService: Title,
@@ -75,8 +78,10 @@ export class GetResourceForPackage implements OnInit {
     this.apiSrv.getResourcesForPackage(params).subscribe(
       (data) => {
         console.log(data);
-      }, (error) => {
-        console.log(error); 
+        this.messageClass = "alert alert-danger";
+        this.message = "Sorry! No hotel found for this location.";
+      }, (error) => {        
+        //console.log(error); 
       },
       () => {
         console.log("completed getResourcesForPackage");

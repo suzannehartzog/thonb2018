@@ -53,35 +53,36 @@ export class SigninComponent implements OnInit {
       this.apiSrv.validateLogin(loginData).subscribe(
         (data) => {
           if (data.status == 200) {
+            //debugger;
             let tempVar = JSON.parse(data["_body"]);
             if (tempVar.userId === "") {
               this.isloggedIn = false;
               this.loginMessage = "Login failed";
             } else {
               this.isloggedIn = true;
-              localStorage.setItem('isloggedIn', 'true');
+              window.localStorage.setItem('isloggedIn', 'true');
               NavComponent.updateUserStatus.next(true);
 
-              localStorage.setItem("userId", tempVar.userId);
-              localStorage.setItem("roleId", tempVar.roleId);
-              localStorage.setItem("roleName", tempVar.roleName);
-              localStorage.setItem("participateBuddy", tempVar.participateBuddy);
-              localStorage.setItem("userName", tempVar.userName);
-              localStorage.setItem("userAddress", tempVar.userAddress);
-              localStorage.setItem("userDob", tempVar.userDob);
-              localStorage.setItem("userKey", tempVar.userKey);
-              localStorage.setItem("userMobile", tempVar.userMobile);
-              localStorage.setItem("userAltMobile", tempVar.userAltMobile);
-              localStorage.setItem("userEmail", tempVar.userEmail);
-              localStorage.setItem("userZipcode", tempVar.userZipcode);
-              localStorage.setItem("userActive", tempVar.userActive);
-              localStorage.setItem("countryId", tempVar.countryId);
-              localStorage.setItem("stateId", tempVar.stateId);
-              localStorage.setItem("cityId", tempVar.cityId);
+              window.localStorage.setItem("userId", tempVar.userId);
+              window.localStorage.setItem("roleId", tempVar.roleId);
+              window.localStorage.setItem("roleName", tempVar.roleName);
+              window.localStorage.setItem("participateBuddy", tempVar.participateBuddy);
+              window.localStorage.setItem("userName", tempVar.userName);
+              window.localStorage.setItem("userAddress", tempVar.userAddress);
+              window.localStorage.setItem("userDob", tempVar.userDob);
+              window.localStorage.setItem("userKey", tempVar.userKey);
+              window.localStorage.setItem("userMobile", tempVar.userMobile);
+              window.localStorage.setItem("userAltMobile", tempVar.userAltMobile);
+              window.localStorage.setItem("userEmail", tempVar.userEmail);
+              window.localStorage.setItem("userZipcode", tempVar.userZipcode);
+              window.localStorage.setItem("userActive", tempVar.userActive);
+              window.localStorage.setItem("countryId", tempVar.countryId);
+              window.localStorage.setItem("stateId", tempVar.stateId);
+              window.localStorage.setItem("cityId", tempVar.cityId);
 
-              localStorage.setItem("countryName", "india");
+              window.localStorage.setItem("countryName", "india");
 
-              localStorage.setItem("itineraryId", "1");    
+              window.localStorage.setItem("itineraryId", "1");    
 
               this.router.navigate(['']);
             }

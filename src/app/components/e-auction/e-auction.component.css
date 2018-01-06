@@ -91,3 +91,10 @@ h3{
 .upcoming-slider h3{
     color: #001d4e !important;
 }
+.image-holder h4{
+    letter-spacing: 0;
+    text-align: center;
+    background-color: #ccc;
+    line-height: 25px;
+    margin-bottom: 0;
+}

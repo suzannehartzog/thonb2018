@@ -15,10 +15,10 @@ export class ApiDataService {
     private http: Http,
     private router: Router
   ) { }
-
+  //'https://yayaati.herokuapp.com/';
   public ENV_URL_SEARCH = 'https://yayaati.herokuapp.com/';
 
-   public LOCAL_ENV_URL_SEARCH = 'http://pc326759:9999/';
+   //public LOCAL_ENV_URL_SEARCH = 'http://pc326759:9999/';
 
 
   public getCities() {
@@ -55,8 +55,11 @@ export class ApiDataService {
 
     return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getResourcesForPackage', product).map(
       (response) => {
-        //return response.json();
-        this.apiData.next(response);
+        if(response.json().hotels.length === 0) {          
+          return response.json();
+        } else {
+          this.apiData.next(response);
+        }
         this.router.navigate(['create-package']);
       }
     );
@@ -93,7 +96,7 @@ export class ApiDataService {
     let headers = new Headers({ 'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(ownerId);
-    return this.http.post(this.LOCAL_ENV_URL_SEARCH + 'v1/hotel/getAllHotelsByOnwer', body, options).map(
+    return this.http.post(this.ENV_URL_SEARCH + 'v1/hotel/getAllHotelsByOnwer', body, options).map(
       (response) =>response.json()
     );    
   }
@@ -116,10 +119,18 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
+  public myActiveAuctions(userId) {//assets/service-json/auction-list.json
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/myActiveAuctions?bidderId='+userId).map(
+      (response) => response.json()
+    );
+  }
   public activeFlashSale() {//assets/service-json/auction-list.json
-    let headers = new Headers({ 'Content-Type': 'application/json'});
-    let options = new RequestOptions({ headers: headers });
     return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/activeFlashSale').map(
+      (response) => response.json()
+    );
+  }
+  public upcomingAuctions() {//assets/service-json/auction-list.json
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/hotel/upcomingAuctions').map(
       (response) => response.json()
     );
   }
@@ -208,12 +219,12 @@ export class ApiDataService {
 		);
 	}
   public getAllnotification(userId){
-    return this.http.get(this.ENV_URL_SEARCH + '/v1/notification/getAll/'+userId).map(
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/notification/getAll/'+userId).map(
       (response) => response.json()
     );
   }
   public markAllNotificationRead(userId){
-    return this.http.get(this.ENV_URL_SEARCH + '/v1/notification/markAllNotificationRead/'+userId).map(
+    return this.http.get(this.ENV_URL_SEARCH + 'v1/notification/markAllNotificationRead/'+userId).map(
       (response) => response.json()
     );
   }
@@ -241,7 +252,7 @@ export class ApiDataService {
     }
     console.log("URL:" + flightURL);
     return this.http.get(flightURL).map(
-      (response) => response
+      (response) => response.json()
     );
   }
 
@@ -269,6 +280,22 @@ export class ApiDataService {
       (response) => response.json()
     );
   }
+  public doAuctionCheckOutBooking(bookingRequestVo) {
+      let headers = new Headers({ 'Content-Type': 'application/json'});
+      let options = new RequestOptions({ headers: headers });
+      let body = JSON.stringify(bookingRequestVo);
+      return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/doAuctionCheckOutBooking', body, options).map(
+        (response) => response.json()
+      );
+    }
+    public getHotelBookingCalander(param) {
+      let headers = new Headers({ 'Content-Type': 'application/json'});
+      let options = new RequestOptions({ headers: headers });
+      let body = JSON.stringify(param);
+      return this.http.post(this.ENV_URL_SEARCH + 'v1/booking/getHotelBookingCalander', body, options).map(
+        (response) => response.json()
+      );
+    }
 
    public auctionCheckout(auctionId, ckoUserId){
      return this.http.get(this.ENV_URL_SEARCH + 'v1/bid/auctionCheckout?auctionId='+auctionId+'&ckoUserId='+ckoUserId).map(
@@ -276,4 +303,33 @@ export class ApiDataService {
      );
    }
   
+  public getMyHagglings(userId){
+     return this.http.get(this.ENV_URL_SEARCH + 'v1/booking/getMyHagglings/'+userId).map(
+       (response) => response.json()
+     );
+   }
+
+   public getMyItnResponses(userId) {
+     return this.http.get(this.ENV_URL_SEARCH + 'v1/booking/getMyItnResponses/'+userId).map(
+       (response) => response.json()
+     );
+   }
+
+   public getHotelAuctionsCreatedByHotelOwner(userId){
+     return this.http.get(this.ENV_URL_SEARCH + '/v1/hotel/getHotelAuctionsCreatedByHotelOwner?hotelOwnerId='+userId).map(
+       (response) => response.json()
+     );
+   }
+
+   public filterHotels(params) {
+     return this.http.post(this.ENV_URL_SEARCH + 'v1/search/filterHotels', params).map(
+       (response) => response.json()
+     );
+   }
+
+   public getWalletBalance(userId) {
+     return this.http.get(this.ENV_URL_SEARCH + 'v1/user/getWalletBalance?userId='+userId).map(
+       (response) => response.json()
+     );
+   }
 }

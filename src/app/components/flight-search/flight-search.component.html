@@ -1,16 +1,16 @@
 <div class="banner notHome">
 		<app-navbar></app-navbar>
 	</div>
-	<div class="about">
+	<div class="about">		
 			<div class="container">
 				<div class="col-md-3">
 					<div class="panel panel-default sidebar-menu box">
-						<h3 class="panel-title">Search flight </h3>
-						<form [formGroup]="searchFlightForm" (ngSubmit)="searchFlight($enevt)">
+						<h3 class="panel-title">Search Flight</h3>
+						<form [formGroup]="searchFlightForm" (ngSubmit)="searchFlight()">
 							<div class="form-row">
-								<div class="form-check col-md-12 no-padding">
-									<label class="form-check-label"><input type="radio" class="form-check-input"  value="round" formControlName="tripType" > Round Trip </label>
-									<label class="form-check-label"><input type="radio" class="form-check-input" value="one" formControlName="tripType" > One Way </label>																				
+								<div class="form-group col-md-12 no-padding">
+									<label class="form-check-label"><input type="radio" class="form-check-input" value="one" formControlName="tripType" [checked]="isOneWay" (change)="isOneWay = !isOneWay"> One Way </label>																				
+									<label class="form-check-label"><input type="radio" class="form-check-input"  value="round" formControlName="tripType" [checked]="!isOneWay" (change)="isOneWay = !isOneWay"> Round Trip </label>
 								</div>
 								<div class="form-group col-md-12 no-padding">
 									<label for="">Origin</label>
@@ -24,7 +24,7 @@
 									<label for="">Start Date</label>
 									<input formControlName="startDate" type="date" placeholder="Start Date" class="form-control" />
 								</div>
-								<div class="form-group col-md-12 no-padding">
+								<div *ngIf="!isOneWay" class="form-group col-md-12 no-padding">
 									<label for="">Return Date</label>
 									<input formControlName="returnDate" type="date" placeholder="Return Date" class="form-control" />
 								</div>
@@ -46,22 +46,18 @@
 						<table class="table table-fixed">
 							<thead>
 								<tr>
-									<th class="col-xs-2">Room Type/Days</th>
-									<th class="col-xs-2">Deluxe</th>
-									<th class="col-xs-2">Super Deluxe</th>
-									<th class="col-xs-2">Type 3</th>
-									<th class="col-xs-2">Type 4</th>
-									<th class="col-xs-2">Type 5</th>
+									<th class="col-xs-2">Flight</th>
+									<th class="col-xs-4">Dept. Date</th>
+									<th class="col-xs-4">Arrival Date</th>
+									<th class="col-xs-2">Price</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td class="col-xs-2">Day 1</td>
-									<td class="col-xs-2">1/2</td>
-									<td class="col-xs-2">2/3</td>
-									<td class="col-xs-2">3/4</td>
-									<td class="col-xs-2">4/5</td>
-									<td class="col-xs-2">5/6</td>
+							<tbody *ngIf = "showResult">
+								<tr *ngFor="let flight of flightList.FareInfo">
+									<td class="col-xs-2"><i class="fa fa-plane"></i></td>
+									<td class="col-xs-4">{{flight.DepartureDateTime}}</td>
+									<td class="col-xs-4">{{flight.ReturnDateTime}}</td>
+									<td class="col-xs-2">{{flight.LowestFare.Fare}} {{flight.CurrencyCode}}</td>
 								</tr>
 							</tbody>
 						</table>

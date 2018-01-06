@@ -39,7 +39,7 @@
 }
 /* Messages Wrapper */
 .content-wrap.messages {
-    height: 75%;
+    height: 70%;
 }
 /* Message Text Wrapper */
 .send-wrap {
@@ -103,6 +103,7 @@
 .contact {
     padding: 8px 20px 7px;
     border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
     width: 100%;
     display: inline-block;
 
@@ -123,6 +124,7 @@
 {
     padding: 15px 9px 19px;
     border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 }
 /* Message Sender */
 .message-wrap .media-heading

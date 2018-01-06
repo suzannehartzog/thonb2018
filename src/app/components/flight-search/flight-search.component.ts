@@ -24,6 +24,9 @@ export class FlightSearchComponent implements OnInit {
     flexiSearch: '',
     nonstopFlights: ''
   });
+  public flightList:any;
+  public showResult:boolean=false;
+  public isOneWay:boolean=true;
   constructor(
     public fb: FormBuilder,
     private router: Router,
@@ -34,12 +37,14 @@ export class FlightSearchComponent implements OnInit {
     private shrSrv: SharedService
   ) {}
   ngOnInit() {
-    this.titleService.setTitle('Hotel Details:: Yayaati');
+    this.titleService.setTitle('Flight Search Result :: Yayaati');
   }
   searchFlight(){
     this.apiSrv.flightSearch(this.searchFlightForm.value).subscribe(
       (data) => {
-        console.log(data); 
+        this.flightList = data;
+        this.showResult = true;
+        console.log(this.flightList); 
       }, (error) => {
         console.log(error); 
       },

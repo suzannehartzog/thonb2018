@@ -20,6 +20,8 @@ export class NavComponent implements OnInit {
   public notificationList:any;
   public unreadCount:any;  
   public roleName: string;
+  public myWalletValue: string = "My Wallet";
+  public walletBalance : string;
   constructor(
     private apiSrv : ApiDataService,
     private shrSrv : SharedService,
@@ -42,7 +44,23 @@ export class NavComponent implements OnInit {
     if(this.isLoggedIn) {
       this.userName = localStorage.getItem("userName");
       this.getAllnotification();
+      this.getWalletBalance();
     }    
+  }
+  getWalletBalance(){
+    this.apiSrv.getWalletBalance(localStorage.getItem("userId")).subscribe(
+      (data) => {     
+        this.walletBalance = data.walletBalance;
+      }, (error) => {
+        console.log(error); 
+      },
+      () => {
+        console.log("completed changeCurrency");
+    }
+    );
+  }
+  toggleWalletMoney(val){
+    this.myWalletValue = val;    
   }
   getAllnotification(){
     this.apiSrv.getAllnotification(localStorage.getItem("userId")).subscribe(

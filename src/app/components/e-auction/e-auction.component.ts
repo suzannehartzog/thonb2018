@@ -55,8 +55,10 @@ export class EAuctionComponent implements OnInit {
       (data) => {
         this.bidList = data; 
         setTimeout(()=>{ 
-          $('.flexslider').data('flexslider').addSlide();
-          this.startSlider();
+          if($('.flexslider').data('flexslider')!==undefined){
+            $('.flexslider').data('flexslider').addSlide();
+            this.startSlider();
+          }          
         },300);
       }, (error) => {
         console.log(error); 

@@ -22,7 +22,7 @@
 								<li role="presentation" class=""><a (click)="filterResult('guide')"  href="javascript:void(0)"> Guides</a></li>
 							</ul>
 							<div id="myTabContent" class="tab-content" *ngIf="showContent">								
-								<div id="hotel" class="hide">
+								<div id="hotel" class="hide" *ngIf="searchResults.attractions.length>0">
 									<h3>Near by Attractions</h3>
 									<div class="checkbox-inline" *ngFor="let attraction of searchResults.attractions">
 										<label><input type="checkbox" name="attractions" value="{{attraction}}" [checked]="false" (change)="updateCheckedOptions($event.target.getAttribute('value'), $event.target.checked)">{{attraction}}</label>

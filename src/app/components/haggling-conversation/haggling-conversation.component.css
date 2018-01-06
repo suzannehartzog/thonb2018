@@ -2,9 +2,8 @@
 /* Change Body Attributes */
 
 .fill {
-    height: 700px;
+    height: 500px;
     padding-top: 0;
-    padding-bottom: 5%;
 }
 
 
@@ -27,12 +26,13 @@
 }
 /* Header Wrapper */
 .header-wrap {
-    height: 10%;
+    height: 6%;
 }
 /* Content Wrapper */
 .content-wrap {
     height: 90%;
     overflow: auto;
+    border-left: 1px solid #ccc;
 }
 .content-wrap .contact{
     min-height: 0;
@@ -101,7 +101,7 @@
 /******************* CONTACTS ***************/
 /* Contact Item */
 .contact {
-    padding: 8px 20px 7px;
+    padding: 8px 10px;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
     width: 100%;
@@ -122,7 +122,7 @@
 /* Message Item */
 .msg
 {
-    padding: 15px 9px 19px;
+    padding: 10px;
     border-bottom: 1px solid #ddd;
     border-left: 1px solid #ddd;
 }
@@ -131,6 +131,7 @@
 {
     color: #2285b3;
     font-weight: 700;
+    margin: 0;
 }
 /* Message Time */
 .time
@@ -198,7 +199,14 @@
     display: inline-block;
     width: 100%;
 }
-
+.media-body h5{
+    font-size: 1em;
+}
+.media-body small p{
+    font-size: 1.1em;
+    color: #423f3f;
+    line-height: 1.4em;
+}
 /* Animate Side Information Menu */
 #Messages {
     -webkit-transition: width 0.15s ease, margin 0.15s ease;
@@ -228,27 +236,43 @@ h5.contact-person-name {
     margin-top: 0;
     margin-bottom: 9px;
     text-align: left;
+    font-size: .9em;
+    white-space: initial;
+    font-weight: 400;
 }
 .contact-company {
 	font-size: 0.8em;
     font-weight: bold;
 }
 .contact-body .image {
-    width: 20%;
+    width: 10%;
     display: inline-block;
     vertical-align: top;
+    float: left;
 }
 .contact-body  {
 	width: 20%;
     display: inline-block;
     vertical-align: top;
 }
-.contact-body .image img {
-    height: 40px;
-    width: 50px;
+.contact-body .image i {
+    font-size: 1.2em;
+    margin-top: 5px;
 }
 .contact-text {
 	display: inline-block;
-    width: 80%;
+    width: 88%;
     text-align: left;
+    float: right;
+}
+.box {
+    background: #fff;
+    margin: 10px 0 30px;
+    border: solid 1px #e6e6e6;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    -webkit-box-shadow: 0 1px 5px rgb(68, 100, 158);
+    box-shadow: 0 1px 5px rgb(68, 100, 158);
 }

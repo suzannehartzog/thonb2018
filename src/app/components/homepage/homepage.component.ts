@@ -27,20 +27,28 @@ export class HomepageComponent implements OnInit {
   }
 
   startSlider() {
-      let itemWidth:number;
+      let itemWidth:any;
+      let direction:boolean;
       if($(window).width() < 768){
-        itemWidth = $(".flexslider").width()/1;
+        itemWidth = "100%";
+        direction = false;
       }else if($(window).width() < 1024){
         itemWidth = $(".flexslider").width()/3;
+        direction = true;
       }else{
         itemWidth = $(".flexslider").width()/4;
+        direction = true;
       }
       $('.flexslider').flexslider({
         animation: "slide",
         controlNav: false,
-        animationLoop: false,
+        directionNav: direction,
+        animationLoop: true,
         itemWidth: itemWidth,
-        itemMargin: 5,
+        itemMargin: 0,
+        slideshow: true, 
+        slideshowSpeed: 4000,
+        touch: true,
         start: function(slider){
           $('body').removeClass('loading');
         }

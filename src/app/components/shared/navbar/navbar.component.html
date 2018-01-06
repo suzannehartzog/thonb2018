@@ -44,11 +44,11 @@
 							<div style="min-height: 220px;">
 								<ul class="notificationList">
 									<li *ngFor="let notification of notificationList">
-										<a style="color:#000; line-height: 17px;" href="javascript:void(0)" (click)="selectRoute(notification.notificationType)">{{notification.description}}</a>
+										<a href="javascript:void(0)" (click)="selectRoute(notification.notificationType)">{{notification.description}}</a>
 									</li>
 								</ul>
 							</div>
-							<div class="seeAll"><a href="#">See All</a></div>
+							<div class="seeAll"><a href="javascript:void(0);">See All</a></div>
 						</div>
 					</li>
                     <!-- <li><a href="javascript:void(0);">Help</a></li>-->

@@ -54,4 +54,8 @@ export class ViewDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+  checkout(id){
+    localStorage.setItem("checkoutId", id);
+    this.router.navigate(['/check-out']);
+  }  
 }

@@ -5,10 +5,10 @@
 		
 		<div class="container">
 			<div class="col-md-8" id="basket" *ngIf="showPaymentSuccessContent">
-				<div class="alert alert-success" *ngIf="showPaymentContent.auctionBookingStatus=='success'">
+				<div class="alert alert-success" *ngIf="paymentDetails.auctionStatus=='Success'">
 					<strong>Your booking is confirmed.</strong>
 				</div>
-				<div class="alert alert-success" *ngIf="showPaymentContent.auctionBookingStatus=='failure'">
+				<div class="alert alert-success" *ngIf="paymentDetails.auctionStatus=='Failure'">
 					Booking failed.
 				</div>
 				<div class="box">
@@ -16,8 +16,8 @@
 						<h3>Booking Details</h3>
 						<div class="table-responsive">
 							<div class="form-group">
-								<label><strong>Name</strong> : showPaymentContent.auctionBidderDtl.bidderName</label>
-								<label><strong>Booking Id</strong> : showPaymentContent.bookingTransactionId</label>
+								<label><strong>Name</strong> : {{paymentDetails.bidderName}}</label>
+								<label><strong>Booking Id</strong> : {{paymentDetails.bookingTransactionId}}</label>
 							</div>
 						</div>
 					</form>
@@ -29,13 +29,34 @@
 					<form method="post" action="#">
 						<h3>Payment Options</h3>
 						<div class="table-responsive">
-							<div class="form-group">
-								<label>Name on Card</label>
-								<input type="text" value="{{checkoutDetails.user.userName}}" class="form-control" />
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label>Name on Card</label>										
+									<input type="text" value="{{checkoutDetails.user.userName}}" class="form-control" />
+								</div>
 							</div>
-							<div class="form-group">
-								<label>Card Number</label>
-								<input type="text" maxlength="16" value="123456789654123" class="form-control" />
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label>Card Number</label>			
+									<div class="input-group">										
+										<input type="text" maxlength="16" value="123456789654123" class="form-control" />
+										<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-8">
+									<label>Card Expire On</label>
+									<div class="input-group">										
+										<input type="number" step="1" min="1" max="12" value="" placeholder="MM" class="form-control" />
+										<span class="input-group-addon">-</span>
+										<input type="number" step="1" min="2017" max="9999" value="" placeholder="YYYY" class="form-control" />
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									CV Code
+									<input type="number" value="" placeholder="CVV" class="form-control" />
+								</div>
 							</div>
 							<div class="form-group">
 								<a href="javascript:void(0);" (click)="payNow()" class="btn save-bid-btn width-100"><i class="fa fa-money"></i> PAY NOW <i class="fa fa-inr"></i> {{checkoutDetails.auction.buyNowPrice}}</a>

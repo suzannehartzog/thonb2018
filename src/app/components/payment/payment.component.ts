@@ -54,7 +54,6 @@ export class PaymentComponent implements OnInit {
         this.paymentDetails = data;
         this.showPaymentSuccessContent = true;
         this.showPaymentContent = false;
-        console.log(this.paymentDetails);
       }, (error) => {
         console.log(error); 
       },

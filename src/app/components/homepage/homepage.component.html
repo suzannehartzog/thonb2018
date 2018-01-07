@@ -5,8 +5,9 @@
     <div class="banner-search"> 
         <div class="container">
             <div class="searchbox-holder">
-                <form [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)" >
-                    <input id="search" formControlName="searchQuery" type="text" placeholder="Search as you wish">
+                <form method="get" id="searchForm" [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)" >
+                    <input id="speech" formControlName="searchQuery" type="text" placeholder="Search as you wish">
+                    <a (click)="process();" id="btn" class="Start" href="javascript:void(0)"><i class="fa fa-microphone"></i></a>
                 </form>
             </div>
         </div>

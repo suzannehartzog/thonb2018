@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-
 // Import your library
 import { CollapsibleModule } from 'angular2-collapsible'; // <-- import the module
 

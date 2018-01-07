@@ -297,8 +297,9 @@ body a:hover{
 .searchbox-holder {
     width: 50%;
     margin: 0 auto;
+    position: relative;
 }	
-input[type=text]#search {
+input[type=text]#speech {
     width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -1892,8 +1893,9 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
     .searchbox-holder {
         width: 100%;
         margin: 0 auto;
+        position: relative;
     }
-    input[type=text]#search{
+    input[type=text]#speech{
         padding: .6em 2em;
     }
 }
